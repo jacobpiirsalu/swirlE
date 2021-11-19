@@ -67,7 +67,7 @@ int main()
         corr_factor = gain*abs(rightC_sense - leftC_sense)/(leftC_sense + rightC_sense);
         //left_corr_factor = gain*abs(leftC_sense - rightC_sense)/(leftC_sense + rightC_sense);
 
-        printf("R %f L %f\n", rightC_sense, leftC_sense);
+        //printf("R %f L %f\n", rightC_sense, leftC_sense);
         servo_pos += direction * sweep_limit / frequency_hz;
 
         if (servo_pos > sweep_limit) {
