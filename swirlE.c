@@ -135,7 +135,7 @@ int main()
 //        }
         //printf("%f\n",corr_factor_avg);
         if(false){}
-        else if(corr_factor-0.2 > 0) {
+        else if(corr_factor-0.5 > 0) {
 //            //ch = 7; right servo
 //            rc_servo_send_pulse_normalized(7, -servo_pos * 1/1.0* r_wheel_gain/max_speed);
 //
@@ -157,7 +157,7 @@ int main()
             //ch = 8; left servo
             //rc_servo_send_pulse_normalized(8, servo_pos * 0.15);
     }
-    else if(corr_factor+0.2 < 0) {
+    else if(corr_factor+0.5 < 0) {
 //            //ch = 7; right servo
 //            rc_servo_send_pulse_normalized(7, -servo_pos * 1/1.0* r_wheel_gain/max_speed);
 //
