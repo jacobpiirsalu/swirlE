@@ -81,7 +81,7 @@ int main() {
         {
             avg_val_ctr = 0;
             double sum = 0;
-            for(int i = 0; i<5; i++)
+            for(int i = 0; i<3; i++)
             {
                 sum += corr_arr[i];
                 corr_factor_avg = sum/3.0;
