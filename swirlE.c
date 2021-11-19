@@ -55,7 +55,7 @@ int main() {
     double corr_factor = 0.0;
     double max_speed = 10.0;
     double gain = 10;
-    double r_wheel_gain = 1.2;
+    double r_wheel_gain = 1.4;
     int avg_val_ctr = 0;
     double corr_arr[3];
     //double delta_arr[5];
