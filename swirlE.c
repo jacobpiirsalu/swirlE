@@ -57,7 +57,7 @@ int main() {
     double gain = 10;
     double r_wheel_gain = 1.35;
     int avg_val_ctr = 0;
-    double corr_arr[4];
+    double corr_arr[5];
     //double delta_arr[5];
     double corr_factor_avg = 0.0;
     while (1) {
@@ -74,20 +74,33 @@ int main() {
         }
 
         //left_corr_factor = gain*abs(leftC_sense - rightC_sense)/(leftC_sense + rightC_sense);
+//        corr_arr[avg_val_ctr] = corr_factor;
+//        avg_val_ctr++;
+//        //delta_arr[avg_val_ctr] = rightC_sense - leftC_sense;
+//        if(avg_val_ctr>=4)
+//        {
+//            avg_val_ctr = 0;
+//            double sum = 0;
+//            for(int i = 0; i<4; i++)
+//            {
+//                sum += corr_arr[i];
+//                corr_factor_avg = sum/4.0;
+//            }
+//        }
+
+        sum = sum - corr_arr[avg_val_ctr];
         corr_arr[avg_val_ctr] = corr_factor;
-        avg_val_ctr++;
-        //delta_arr[avg_val_ctr] = rightC_sense - leftC_sense;
-        if(avg_val_ctr>=4)
-        {
-            avg_val_ctr = 0;
-            double sum = 0;
-            for(int i = 0; i<4; i++)
-            {
-                sum += corr_arr[i];
-                corr_factor_avg = sum/4.0;
-            }
-        }
+        sum =  sum + corr_factor;
+        avg_val_ctr = (avg_val_ctr+1) % 5; //window size
+        corr_factor_avg = sum / 5;
+
+
+
         printf("%f\n",corr_factor_avg);
+        if(is_green_detected(CS_OUT1,CS_OUT2))
+        {
+            printf("saw green\n");
+        }
         if (false) {}
         else if (corr_factor_avg - 1.0 > 0) {
 

@@ -457,4 +457,15 @@ void robot_gpio_init()
     rc_gpio_init_event(3, CS_OUT2, 0, GPIOEVENT_REQUEST_RISING_EDGE); //CS2, get output
 
 }
+bool is_green_detected(int OUTLeft, int OUTRight)
+{
+    if((colour_sensor_red(OUTLeft) + colour_sensor_blue(OUTLeft))/2 > (colour_sensor_green(OUTLeft) + 100 ))
+    {
+        return true;
+    }
+    if((colour_sensor_red(OUTRight) + colour_sensor_blue(OUTRight))/2 > (colour_sensor_green(OUTRight) + 100 ))
+    {
+        return true;
+    }
+}
 #endif //SWIRLE_SWIRLELIB_H
