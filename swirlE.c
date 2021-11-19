@@ -60,6 +60,7 @@ int main() {
     double corr_arr[5];
     //double delta_arr[5];
     double corr_factor_avg = 0.0;
+    double sum = 0;
     while (1) {
         //colour_sensor(CS_OUT1);//left sensor
         //colour_sensor(CS_OUT2);//right sensor
