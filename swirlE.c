@@ -141,7 +141,7 @@ int main()
 //
 //            //ch = 8; left servo
 //            rc_servo_send_pulse_normalized(8, servo_pos * 1/1.0/max_speed);
-            //ch = 7; right servo
+
             double pulse = (servo_pos*r_wheel_gain * (1.5*abs(corr_factor)/.15 + 0.15));
             if(pulse > 1.5)
             {
@@ -151,10 +151,11 @@ int main()
             {
                 pulse = -1.5;
             }
-            rc_servo_send_pulse_normalized(7, -1*pulse);
+            //ch = 7; right servo
+            //rc_servo_send_pulse_normalized(7, -1*pulse);
             printf("R: %f\n",pulse);
             //ch = 8; left servo
-            rc_servo_send_pulse_normalized(8, servo_pos * 0.15);
+            //rc_servo_send_pulse_normalized(8, servo_pos * 0.15);
     }
     else if(corr_factor_avg < 0) {
 //            //ch = 7; right servo
@@ -173,10 +174,10 @@ int main()
                 pulse = -1.5;
             }
             //ch = 7; right servo
-        rc_servo_send_pulse_normalized(7, -1*(servo_pos*r_wheel_gain * 0.15));
+        //rc_servo_send_pulse_normalized(7, -1*(servo_pos*r_wheel_gain * 0.15));
 
         //ch = 8; left servo
-        rc_servo_send_pulse_normalized(8, pulse);
+        //rc_servo_send_pulse_normalized(8, pulse);
         printf("l: %f",pulse);
     }
     // sleep roughly enough to maintain frequency_hz
