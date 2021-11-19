@@ -1,5 +1,5 @@
 /**
- *@file construction_check.c
+ *@file swirlE.c
  *@example
  *
  *
@@ -23,7 +23,7 @@
 #include <inttypes.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "swirlelib.h"
+#include "swirlelib.h" //all robot functions written here
 
 
 #pragma clang diagnostic push
@@ -42,8 +42,7 @@ int main()
     robot_gpio_init();
     // initialize PRU
     if (rc_servo_init()) return -1;
-    // turn on power
-    ///printf("Turning On 6V Servo Power Rail\n");
+    // turn on power - Turning On 6V Servo Power Rail
     rc_servo_power_rail_en(1);
     running = 1;
     printf("line-following-test\n");
@@ -63,8 +62,6 @@ int main()
         leftC_sense = colour_sensor_red(CS_OUT1) + colour_sensor_green(CS_OUT1) + colour_sensor_blue(CS_OUT1);
         rightC_sense = colour_sensor_red(CS_OUT2) + colour_sensor_green(CS_OUT2) + colour_sensor_blue(CS_OUT2);
 
-        //right_corr_factor = leftC_sense / (leftC_sense + rightC_sense);
-        //left_corr_factor = rightC_sense / (leftC_sense + rightC_sense);
         right_corr_factor = gain*abs(rightC_sense - leftC_sense)/(leftC_sense + rightC_sense);
         left_corr_factor = gain*abs(leftC_sense - rightC_sense)/(leftC_sense + rightC_sense);
 
