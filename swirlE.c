@@ -79,7 +79,7 @@ int main()
 
         if (servo_pos > sweep_limit) {
             double sum = 0;
-            for(int i = 0, i<25, i++)
+            for(int i = 0; i<25; i++)
             {
                 sum += corr_arr[i];
                 corr_factor_avg = sum/25.0;
