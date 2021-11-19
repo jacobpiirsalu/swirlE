@@ -117,7 +117,7 @@ int main()
 //            rc_servo_send_pulse_normalized(8, servo_pos * 1 * 1.1/4/max_speed);
 //
 //        }
-        printf("c fact: %f\n",corr_factor);
+        printf("%f\n",corr_factor);
         if(corr_factor>10000000){}
         else {
 //            //ch = 7; right servo
