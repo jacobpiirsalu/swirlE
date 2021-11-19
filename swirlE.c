@@ -74,14 +74,14 @@ int main() {
         }
         printf("%f\n",corr_factor);
         if (false) {}
-        else if (corr_factor - 0.9 > 0) {
+        else if (corr_factor - 0.6 > 0) {
 
             //ch = 7; right servo
             rc_servo_send_pulse_normalized(7, -1*r_wheel_gain * (servo_pos * 0.15*5));
             //printf("R: %f\n", pulse);
             //ch = 8; left servo
             rc_servo_send_pulse_normalized(8, servo_pos * 0.15);
-        } else if (corr_factor + 0.9 < 0) {
+        } else if (corr_factor + 0.6 < 0) {
 
             //ch = 7; right servo
             rc_servo_send_pulse_normalized(7, -1*r_wheel_gain * (servo_pos * 0.15));
