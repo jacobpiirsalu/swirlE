@@ -459,11 +459,11 @@ void robot_gpio_init()
 }
 bool is_green_detected(int OUTLeft, int OUTRight)
 {
-    if((colour_sensor_red(OUTLeft) + colour_sensor_blue(OUTLeft))/2 > (colour_sensor_green(OUTLeft) + 200 ))
+    if((colour_sensor_red(OUTLeft) + colour_sensor_blue(OUTLeft))/2 > (colour_sensor_green(OUTLeft) + 1000 ))
     {
         return true;
     }
-    if((colour_sensor_red(OUTRight) + colour_sensor_blue(OUTRight))/2 > (colour_sensor_green(OUTRight) + 200 ))
+    if((colour_sensor_red(OUTRight) + colour_sensor_blue(OUTRight))/2 > (colour_sensor_green(OUTRight) + 1000 ))
     {
         return true;
     }
