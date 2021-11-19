@@ -118,14 +118,14 @@ int main() {
             bluectr =0;
         }
         if (false) {}
-        else if (corr_factor_avg - 1.2 > 0) {
+        else if (corr_factor_avg - 1.15 > 0) {
 
             //ch = 7; right servo
             rc_servo_send_pulse_normalized(7, -1*r_wheel_gain * (servo_pos * 0.075*6));
             //printf("R: %f\n", pulse);
             //ch = 8; left servo
             rc_servo_send_pulse_normalized(8, 0*servo_pos * 0.075);
-        } else if (corr_factor_avg + 1.2 < 0) {
+        } else if (corr_factor_avg + 1.15 < 0) {
 
             //ch = 7; right servo
             rc_servo_send_pulse_normalized(7, -1*r_wheel_gain * 0*(servo_pos * 0.075));
