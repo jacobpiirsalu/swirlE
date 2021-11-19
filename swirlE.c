@@ -57,7 +57,7 @@ int main() {
     double gain = 10;
     double r_wheel_gain = 1.2;
     int avg_val_ctr = 0;
-    double corr_arr[4];
+    double corr_arr[3];
     //double delta_arr[5];
     double corr_factor_avg = 0.0;
     while (1) {
@@ -77,26 +77,26 @@ int main() {
         corr_arr[avg_val_ctr] = corr_factor;
         avg_val_ctr++;
         //delta_arr[avg_val_ctr] = rightC_sense - leftC_sense;
-        if(avg_val_ctr>=4)
+        if(avg_val_ctr>=3)
         {
             avg_val_ctr = 0;
             double sum = 0;
-            for(int i = 0; i<4; i++)
+            for(int i = 0; i<3; i++)
             {
                 sum += corr_arr[i];
-                corr_factor_avg = sum/4.0;
+                corr_factor_avg = sum/3.0;
             }
         }
-        printf("%f\n",corr_factor);
+        printf("%f\n",corr_factor_avg);
         if (false) {}
-        else if (corr_factor - 1.0 > 0) {
+        else if (corr_factor_avg - 1.0 > 0) {
 
             //ch = 7; right servo
             rc_servo_send_pulse_normalized(7, -1*r_wheel_gain * (servo_pos * 0.09*5));
             //printf("R: %f\n", pulse);
             //ch = 8; left servo
             rc_servo_send_pulse_normalized(8, servo_pos * 0.09);
-        } else if (corr_factor + 1.0 < 0) {
+        } else if (corr_factor_avg + 1.0 < 0) {
 
             //ch = 7; right servo
             rc_servo_send_pulse_normalized(7, -1*r_wheel_gain * (servo_pos * 0.09));
