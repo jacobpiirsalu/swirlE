@@ -87,16 +87,16 @@ int main() {
                 corr_factor_avg = sum/4.0;
             }
         }
-        printf("%f\n",corr_factor_avg);
+        printf("%f\n",corr_factor);
         if (false) {}
-        else if (corr_factor_avg - 1.0 > 0) {
+        else if (corr_factor - 1.0 > 0) {
 
             //ch = 7; right servo
             rc_servo_send_pulse_normalized(7, -1*r_wheel_gain * (servo_pos * 0.09*5));
             //printf("R: %f\n", pulse);
             //ch = 8; left servo
             rc_servo_send_pulse_normalized(8, servo_pos * 0.09);
-        } else if (corr_factor_avg + 1.0 < 0) {
+        } else if (corr_factor + 1.0 < 0) {
 
             //ch = 7; right servo
             rc_servo_send_pulse_normalized(7, -1*r_wheel_gain * (servo_pos * 0.09));
