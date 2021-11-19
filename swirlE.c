@@ -135,14 +135,14 @@ int main()
 //        }
         //printf("%f\n",corr_factor_avg);
         if(false){}
-        else if(corr_factor_avg > 0) {
+        else if(corr_factor > 0) {
 //            //ch = 7; right servo
 //            rc_servo_send_pulse_normalized(7, -servo_pos * 1/1.0* r_wheel_gain/max_speed);
 //
 //            //ch = 8; left servo
 //            rc_servo_send_pulse_normalized(8, servo_pos * 1/1.0/max_speed);
             //ch = 7; right servo
-            double pulse = (servo_pos*r_wheel_gain * (1.5*abs(corr_factor_avg)/.15 + 0.15));
+            double pulse = (servo_pos*r_wheel_gain * (1.5*abs(corr_factor)/.15 + 0.15));
             if(pulse > 1.5)
             {
                 pulse = 1.5;
@@ -163,7 +163,7 @@ int main()
 //            //ch = 8; left servo
 //            rc_servo_send_pulse_normalized(8, servo_pos * 1/1.0/max_speed);
 
-            double pulse = (servo_pos*r_wheel_gain * (1.5*abs(corr_factor_avg)/.15 + 0.15));
+            double pulse = (servo_pos*r_wheel_gain * (1.5*abs(corr_factor)/.15 + 0.15));
             if(pulse > 1.5)
             {
                 pulse = 1.5;
