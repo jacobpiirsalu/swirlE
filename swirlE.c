@@ -142,7 +142,7 @@ int main()
 //            //ch = 8; left servo
 //            rc_servo_send_pulse_normalized(8, servo_pos * 1/1.0/max_speed);
 
-            double pulse = (servo_pos*r_wheel_gain * (1.5*abs(corr_factor)/.15 + 0.15));
+            double pulse = (servo_pos*r_wheel_gain * (abs(corr_factor)/.15 + 0.15));
             if(pulse > 1.5)
             {
                 pulse = 1.5;
@@ -164,7 +164,7 @@ int main()
 //            //ch = 8; left servo
 //            rc_servo_send_pulse_normalized(8, servo_pos * 1/1.0/max_speed);
 
-            double pulse = (servo_pos*r_wheel_gain * (1.5*abs(corr_factor)/.15 + 0.15));
+            double pulse = (servo_pos*r_wheel_gain * (abs(corr_factor)/.15 + 0.15));
             if(pulse > 1.5)
             {
                 pulse = 1.5;
