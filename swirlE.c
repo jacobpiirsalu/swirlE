@@ -80,27 +80,27 @@ int main()
             //ch = 8; left servo
             rc_servo_send_pulse_normalized(8, servo_pos * .5/4/max_speed);
         }
-        else if (leftC_sense > rightC_sense + 350) {
-            //ch = 7; right servo
-            rc_servo_send_pulse_normalized(7, -servo_pos * .5/4* r_wheel_gain/max_speed);
-
-            //ch = 8; left servo
-            rc_servo_send_pulse_normalized(8, servo_pos * 7/4 * 1/max_speed);
-        }
-        else if (rightC_sense > leftC_sense + 250) {
-            //ch = 7; right servo
-            rc_servo_send_pulse_normalized(7, -servo_pos * 6/4*1* r_wheel_gain/max_speed);
-
-            //ch = 8; left servo
-            rc_servo_send_pulse_normalized(8, servo_pos * .8/4/max_speed);
-        }
-        else if (leftC_sense > rightC_sense + 250) {
-            //ch = 7; right servo
-            rc_servo_send_pulse_normalized(7, -servo_pos * .8/4* r_wheel_gain/max_speed);
-
-            //ch = 8; left servo
-            rc_servo_send_pulse_normalized(8, servo_pos * 6/4 * 1/max_speed);
-        }
+//        else if (leftC_sense > rightC_sense + 350) {
+//            //ch = 7; right servo
+//            rc_servo_send_pulse_normalized(7, -servo_pos * .5/4* r_wheel_gain/max_speed);
+//
+//            //ch = 8; left servo
+//            rc_servo_send_pulse_normalized(8, servo_pos * 7/4 * 1/max_speed);
+//        }
+//        else if (rightC_sense > leftC_sense + 250) {
+//            //ch = 7; right servo
+//            rc_servo_send_pulse_normalized(7, -servo_pos * 6/4*1* r_wheel_gain/max_speed);
+//
+//            //ch = 8; left servo
+//            rc_servo_send_pulse_normalized(8, servo_pos * .8/4/max_speed);
+//        }
+//        else if (leftC_sense > rightC_sense + 250) {
+//            //ch = 7; right servo
+//            rc_servo_send_pulse_normalized(7, -servo_pos * .8/4* r_wheel_gain/max_speed);
+//
+//            //ch = 8; left servo
+//            rc_servo_send_pulse_normalized(8, servo_pos * 6/4 * 1/max_speed);
+//        }
 //        else if(rightC_sense > leftC_sense + 100) {
 //            //ch = 7; right servo
 //            rc_servo_send_pulse_normalized(7, -servo_pos * 1/4 * 1.1 * r_wheel_gain / max_speed);
