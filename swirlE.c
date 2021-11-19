@@ -73,7 +73,7 @@ int main()
             servo_pos = sweep_limit;
         }
 
-        if (rightC_sense > leftC_sense + 350) {
+        if (rightC_sense > leftC_sense + 350*10000) {
             //ch = 7; right servo
             rc_servo_send_pulse_normalized(7, -servo_pos *7*1/4* r_wheel_gain/max_speed);
 
