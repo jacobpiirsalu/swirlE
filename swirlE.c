@@ -107,6 +107,7 @@ int main() {
         loopctr++;
         if(is_blue_detected(CS_OUT1,CS_OUT2))
         {
+            printf("saw blue\n");
             bluectr++;
         }
         if(bluectr > 2){
