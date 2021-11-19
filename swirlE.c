@@ -178,7 +178,7 @@ int main()
 
         //ch = 8; left servo
         //rc_servo_send_pulse_normalized(8, pulse);
-        printf("l: %f",pulse);
+        printf("L: %f\n",pulse);
     } else {
         printf("no change\n");
     }
