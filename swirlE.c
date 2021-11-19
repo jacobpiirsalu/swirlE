@@ -153,8 +153,8 @@ int main()
 //
 //            //ch = 8; left servo
 //            rc_servo_send_pulse_normalized(8, servo_pos * 1/1.0/max_speed);
-        ch = 7; right servo
-        //rc_servo_send_pulse_normalized(7, -1*(servo_pos*r_wheel_gain * 0.15));
+        //ch = 7; right servo
+        rc_servo_send_pulse_normalized(7, -1*(servo_pos*r_wheel_gain * 0.15));
 
         //ch = 8; left servo
         rc_servo_send_pulse_normalized(8, servo_pos * (1.5*abs(corr_factor_avg)/.15 + 0.15));
