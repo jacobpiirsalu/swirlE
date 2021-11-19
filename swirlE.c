@@ -8,6 +8,7 @@
  *@author     Jacob Piirsalu
  *@date       11/11/2021
  */
+ //TO-DO: determine min servo speed
 #include <stdio.h>
 #include <getopt.h>
 #include <stdlib.h>    // for atoi
@@ -116,11 +117,16 @@ int main()
 //
 //        }
         else {
+//            //ch = 7; right servo
+//            rc_servo_send_pulse_normalized(7, -servo_pos * 1/1.0* r_wheel_gain/max_speed);
+//
+//            //ch = 8; left servo
+//            rc_servo_send_pulse_normalized(8, servo_pos * 1/1.0/max_speed);
             //ch = 7; right servo
-            rc_servo_send_pulse_normalized(7, -servo_pos * 1/1.0* r_wheel_gain/max_speed);
+            rc_servo_send_pulse_normalized(7, -servo_pos * 0.1);
 
             //ch = 8; left servo
-            rc_servo_send_pulse_normalized(8, servo_pos * 1/1.0/max_speed);
+            rc_servo_send_pulse_normalized(8, servo_pos * 0.1);
         }
         // sleep roughly enough to maintain frequency_hz
         rc_usleep(1000000 / frequency_hz);
