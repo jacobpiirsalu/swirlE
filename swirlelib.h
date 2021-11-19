@@ -467,5 +467,6 @@ bool is_green_detected(int OUTLeft, int OUTRight)
     {
         return true;
     }
+    return false;
 }
 #endif //SWIRLE_SWIRLELIB_H
