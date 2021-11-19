@@ -57,7 +57,7 @@ int main() {
     double gain = 10;
     double r_wheel_gain = 1.35;
     int avg_val_ctr = 0;
-    double corr_arr[10];
+    double corr_arr[5];
     //double delta_arr[5];
     int bluectr = 0;
     int loopctr = 0;
@@ -94,8 +94,8 @@ int main() {
         sum = sum - corr_arr[avg_val_ctr];
         corr_arr[avg_val_ctr] = corr_factor;
         sum =  sum + corr_factor;
-        avg_val_ctr = (avg_val_ctr+1) % 10; //window size
-        corr_factor_avg = sum / 10;
+        avg_val_ctr = (avg_val_ctr+1) % 5; //window size
+        corr_factor_avg = sum / 5;
 
 
 
