@@ -72,9 +72,7 @@ int main() {
         if (servo_pos > sweep_limit) {
             servo_pos = sweep_limit;
         }
-
-        //printf("%f\n",corr_factor_avg);
-        printf("%f",corr_factor);
+        printf("%f\n",corr_factor);
         if (false) {}
         else if (corr_factor - 0.7 > 0) {
 
