@@ -69,19 +69,19 @@ int main()
 
         corr_factor = gain*(rightC_sense - leftC_sense)/(leftC_sense + rightC_sense);
         //left_corr_factor = gain*abs(leftC_sense - rightC_sense)/(leftC_sense + rightC_sense);
-        corr_arr[avg_val_ctr] = corr_factor;
-        avg_val_ctr++;
-        //delta_arr[avg_val_ctr] = rightC_sense - leftC_sense;
-        if(avg_val_ctr>=5)
-        {
-            avg_val_ctr = 0;
-            double sum = 0;
-            for(int i = 0; i<5; i++)
-            {
-                sum += corr_arr[i];
-                corr_factor_avg = sum/5.0;
-            }
-        }
+//        corr_arr[avg_val_ctr] = corr_factor;
+//        avg_val_ctr++;
+//        //delta_arr[avg_val_ctr] = rightC_sense - leftC_sense;
+//        if(avg_val_ctr>=5)
+//        {
+//            avg_val_ctr = 0;
+//            double sum = 0;
+//            for(int i = 0; i<5; i++)
+//            {
+//                sum += corr_arr[i];
+//                corr_factor_avg = sum/5.0;
+//            }
+//        }
 
         //printf("R %f L %f\n", rightC_sense, leftC_sense);
         servo_pos += direction * sweep_limit / frequency_hz;
