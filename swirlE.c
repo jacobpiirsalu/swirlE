@@ -110,7 +110,7 @@ int main() {
             printf("saw blue\n");
             bluectr++;
         }
-        if(bluectr > 3){
+        if(bluectr > 5){
             break;
         }
         if(loopctr > 50){
