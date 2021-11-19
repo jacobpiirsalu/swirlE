@@ -156,7 +156,7 @@ int main() {
 
             //ch = 7; right servo
             rc_servo_send_pulse_normalized(7, -1*r_wheel_gain * (servo_pos * 0.075*5));
-            //printf("R: %f\n", pulse);
+            //printf("R: %f\n", pulse); d
             //ch = 8; left servo
             rc_servo_send_pulse_normalized(8, servo_pos * 0.075);
         } else if (corr_factor_avg + 0.8 < 0) {
