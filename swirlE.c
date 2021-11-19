@@ -59,6 +59,7 @@ int main()
     double r_wheel_gain = 1.2;
     int avg_val_ctr = 0;
     double corr_arr[25];
+    double corr_factor_avg = 0.0;
     while (1) {
         //colour_sensor(CS_OUT1);//left sensor
         //colour_sensor(CS_OUT2);//right sensor
@@ -77,6 +78,12 @@ int main()
         servo_pos += direction * sweep_limit / frequency_hz;
 
         if (servo_pos > sweep_limit) {
+            double sum = 0;
+            for(int i = 0, i<25, i++)
+            {
+                sum += corr_arr[i];
+                corr_factor_avg = sum/25.0;
+            }
             servo_pos = sweep_limit;
         }
 
@@ -123,7 +130,7 @@ int main()
 //            rc_servo_send_pulse_normalized(8, servo_pos * 1 * 1.1/4/max_speed);
 //
 //        }
-        printf("%f\n",corr_factor);
+        printf("%f\n",corr_factor_avg);
         if(false){}
         else {
 //            //ch = 7; right servo
@@ -132,7 +139,7 @@ int main()
 //            //ch = 8; left servo
 //            rc_servo_send_pulse_normalized(8, servo_pos * 1/1.0/max_speed);
             //ch = 7; right servo
-            rc_servo_send_pulse_normalized(7, -servo_pos*r_wheel_gain * corr_factor * 0.15);
+            rc_servo_send_pulse_normalized(7, -servo_pos*r_wheel_gain * corr_factor_avg * 0.15);
 
             //ch = 8; left servo
             rc_servo_send_pulse_normalized(8, servo_pos * 0.15);
