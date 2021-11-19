@@ -74,7 +74,7 @@ int main() {
         }
 
         //printf("%f\n",corr_factor_avg);
-        printf("%f",corr_factor)
+        printf("%f",corr_factor);
         if (false) {}
         else if (corr_factor - 0.7 > 0) {
 
