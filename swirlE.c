@@ -105,7 +105,24 @@ int main() {
             rc_servo_send_pulse_normalized(8, (servo_pos * 0.09*5));
             //printf("L: %f\n", pulse);
 
-        } else {
+        } else if (corr_factor_avg - 0.6 > 0) {
+
+            //ch = 7; right servo
+            rc_servo_send_pulse_normalized(7, -1*r_wheel_gain * (servo_pos * 0.09*2));
+            //printf("R: %f\n", pulse);
+            //ch = 8; left servo
+            rc_servo_send_pulse_normalized(8, servo_pos * 0.09);
+        } else if (corr_factor_avg + 0.6 < 0) {
+
+            //ch = 7; right servo
+            rc_servo_send_pulse_normalized(7, -1*r_wheel_gain * (servo_pos * 0.09));
+
+            //ch = 8; left servo
+            rc_servo_send_pulse_normalized(8, (servo_pos * 0.09*2));
+            //printf("L: %f\n", pulse);
+
+        }
+        else {
             //ch = 7; right servo
             rc_servo_send_pulse_normalized(7, -1*r_wheel_gain * (servo_pos * 0.09));
 
