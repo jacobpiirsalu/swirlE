@@ -8,7 +8,7 @@
  *@author     Jacob Piirsalu
  *@date       11/11/2021
  */
- //TO-DO: determine min servo speed
+//TO-DO: determine min servo speed
 #include <stdio.h>
 #include <getopt.h>
 #include <stdlib.h>    // for atoi
@@ -31,8 +31,7 @@
 #pragma ide diagnostic ignored "EndlessLoop"
 
 
-int main()
-{
+int main() {
     double servo_pos = 0;
     double sweep_limit = 1.5;
     uint64_t dsm_nanos = 0;
@@ -67,130 +66,67 @@ int main()
         leftC_sense = colour_sensor_red(CS_OUT1) + colour_sensor_green(CS_OUT1) + colour_sensor_blue(CS_OUT1);
         rightC_sense = colour_sensor_red(CS_OUT2) + colour_sensor_green(CS_OUT2) + colour_sensor_blue(CS_OUT2);
 
-        corr_factor = gain*(rightC_sense - leftC_sense)/(leftC_sense + rightC_sense);
-        //left_corr_factor = gain*abs(leftC_sense - rightC_sense)/(leftC_sense + rightC_sense);
-//        corr_arr[avg_val_ctr] = corr_factor;
-//        avg_val_ctr++;
-//        //delta_arr[avg_val_ctr] = rightC_sense - leftC_sense;
-//        if(avg_val_ctr>=5)
-//        {
-//            avg_val_ctr = 0;
-//            double sum = 0;
-//            for(int i = 0; i<5; i++)
-//            {
-//                sum += corr_arr[i];
-//                corr_factor_avg = sum/5.0;
-//            }
-//        }
-
-        //printf("R %f L %f\n", rightC_sense, leftC_sense);
+        corr_factor = gain * (rightC_sense - leftC_sense) / (leftC_sense + rightC_sense);
         servo_pos += direction * sweep_limit / frequency_hz;
 
         if (servo_pos > sweep_limit) {
             servo_pos = sweep_limit;
         }
 
-//        if (rightC_sense > leftC_sense + 350*10000) {
-//            //ch = 7; right servo
-//            rc_servo_send_pulse_normalized(7, -servo_pos *7*1/4* r_wheel_gain/max_speed);
-//
-//            //ch = 8; left servo
-//            rc_servo_send_pulse_normalized(8, servo_pos * .5/4/max_speed);
-//        }
-//        else if (leftC_sense > rightC_sense + 350) {
-//            //ch = 7; right servo
-//            rc_servo_send_pulse_normalized(7, -servo_pos * .5/4* r_wheel_gain/max_speed);
-//
-//            //ch = 8; left servo
-//            rc_servo_send_pulse_normalized(8, servo_pos * 7/4 * 1/max_speed);
-//        }
-//        else if (rightC_sense > leftC_sense + 250) {
-//            //ch = 7; right servo
-//            rc_servo_send_pulse_normalized(7, -servo_pos * 6/4*1* r_wheel_gain/max_speed);
-//
-//            //ch = 8; left servo
-//            rc_servo_send_pulse_normalized(8, servo_pos * .8/4/max_speed);
-//        }
-//        else if (leftC_sense > rightC_sense + 250) {
-//            //ch = 7; right servo
-//            rc_servo_send_pulse_normalized(7, -servo_pos * .8/4* r_wheel_gain/max_speed);
-//
-//            //ch = 8; left servo
-//            rc_servo_send_pulse_normalized(8, servo_pos * 6/4 * 1/max_speed);
-//        }
-//        else if(rightC_sense > leftC_sense + 100) {
-//            //ch = 7; right servo
-//            rc_servo_send_pulse_normalized(7, -servo_pos * 1/4 * 1.1 * r_wheel_gain / max_speed);
-//
-//            //ch = 8; left servo
-//            rc_servo_send_pulse_normalized(8, servo_pos * 1/4 / max_speed);
-//        }
-//        else if (leftC_sense > rightC_sense + 100) {
-//            //ch = 7; right servo
-//            rc_servo_send_pulse_normalized(7, -servo_pos * 1/4* r_wheel_gain/max_speed);
-//
-//            //ch = 8; left servo
-//            rc_servo_send_pulse_normalized(8, servo_pos * 1 * 1.1/4/max_speed);
-//
-//        }
         //printf("%f\n",corr_factor_avg);
-        if(false){}
-        else if(corr_factor-0.7 > 0) {
-//            //ch = 7; right servo
-//            rc_servo_send_pulse_normalized(7, -servo_pos * 1/1.0* r_wheel_gain/max_speed);
-//
-//            //ch = 8; left servo
-//            rc_servo_send_pulse_normalized(8, servo_pos * 1/1.0/max_speed);
+        printf("%f",corr_factor)
+        if (false) {}
+        else if (corr_factor - 0.7 > 0) {
 
-//            double pulse = (servo_pos*r_wheel_gain * (abs(corr_factor)/.15 + 0.15));
-//            if(pulse > 1.5)
-//            {
-//                pulse = 1.5;
-//            }
-//            else if(pulse < -1.5)
-//            {
-//                pulse = -1.5;
-//            }
             //ch = 7; right servo
-            rc_servo_send_pulse_normalized(7, -1*pulse);
-            printf("R: %f\n",pulse);
+            rc_servo_send_pulse_normalized(7, -1*r_wheel_gain * (servo_pos * 0.15*4));
+            //printf("R: %f\n", pulse);
             //ch = 8; left servo
             rc_servo_send_pulse_normalized(8, servo_pos * 0.15);
-    }
-    else if(corr_factor+0.7 < 0) {
-//            //ch = 7; right servo
-//            rc_servo_send_pulse_normalized(7, -servo_pos * 1/1.0* r_wheel_gain/max_speed);
-//
-//            //ch = 8; left servo
-//            rc_servo_send_pulse_normalized(8, servo_pos * 1/1.0/max_speed);
+        } else if (corr_factor + 0.7 < 0) {
 
-//            double pulse = (servo_pos*r_wheel_gain * (abs(corr_factor)/.15 + 0.15));
-//            if(pulse > 1.5)
-//            {
-//                pulse = 1.5;
-//            }
-//            else if(pulse < -1.5)
-//            {
-//                pulse = -1.5;
-//            }
             //ch = 7; right servo
-        rc_servo_send_pulse_normalized(7, -1*(servo_pos*r_wheel_gain * 0.15));
-
-        //ch = 8; left servo
-        rc_servo_send_pulse_normalized(8, pulse);
-        printf("L: %f\n",pulse);
-
-    } else {
-        printf("no change\n");
-            //ch = 7; right servo
-            rc_servo_send_pulse_normalized(7, -1*(servo_pos*r_wheel_gain * 0.15));
+            rc_servo_send_pulse_normalized(7, -1*r_wheel_gain * (servo_pos * 0.15));
 
             //ch = 8; left servo
-            rc_servo_send_pulse_normalized(8, (servo_pos * 0.15));
+            rc_servo_send_pulse_normalized(8, * (servo_pos * 0.15*4));
+            //printf("L: %f\n", pulse);
+
+        } else if (corr_factor - 0.5 > 0) {
+
+            //ch = 7; right servo
+            rc_servo_send_pulse_normalized(7, -1*r_wheel_gain * (servo_pos * 0.15*3));
+            //printf("R: %f\n", pulse);
+            //ch = 8; left servo
+            rc_servo_send_pulse_normalized(8, servo_pos * 0.15);
+        } else if (corr_factor + 0.5 < 0) {
+
+            //ch = 7; right servo
+            rc_servo_send_pulse_normalized(7, -1*r_wheel_gain * (servo_pos * 0.15));
+
+            //ch = 8; left servo
+            rc_servo_send_pulse_normalized(8, * (servo_pos * 0.15*3));
+            //printf("L: %f\n", pulse);
+        } else if (corr_factor - 0.3 > 0) {
+
+            //ch = 7; right servo
+            rc_servo_send_pulse_normalized(7, -1*r_wheel_gain * (servo_pos * 0.15*2));
+            //printf("R: %f\n", pulse);
+            //ch = 8; left servo
+            rc_servo_send_pulse_normalized(8, servo_pos * 0.15);
+        } else if (corr_factor + 0.3 < 0) {
+
+            //ch = 7; right servo
+            rc_servo_send_pulse_normalized(7, -1*r_wheel_gain * (servo_pos * 0.15));
+
+            //ch = 8; left servo
+            rc_servo_send_pulse_normalized(8, * (servo_pos * 0.15*2));
+            //printf("L: %f\n", pulse);
+        }
+
+        // sleep roughly enough to maintain frequency_hz
+        rc_usleep(1000000 / frequency_hz);
     }
-    // sleep roughly enough to maintain frequency_hz
-    rc_usleep(1000000 / frequency_hz);
-}
     // turn off power rail and cleanup
     rc_servo_power_rail_en(0);
     rc_servo_cleanup();
