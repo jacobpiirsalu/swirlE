@@ -58,8 +58,8 @@ int main()
     double gain = 10;
     double r_wheel_gain = 1.2;
     int avg_val_ctr = 0;
-    double corr_arr[25];
-    //double delta_arr[25];
+    double corr_arr[5];
+    //double delta_arr[5];
     double corr_factor_avg = 0.0;
     while (1) {
         //colour_sensor(CS_OUT1);//left sensor
@@ -72,14 +72,14 @@ int main()
         corr_arr[avg_val_ctr] = corr_factor;
         avg_val_ctr++;
         //delta_arr[avg_val_ctr] = rightC_sense - leftC_sense;
-        if(avg_val_ctr>=25)
+        if(avg_val_ctr>=5)
         {
             avg_val_ctr = 0;
             double sum = 0;
-            for(int i = 0; i<25; i++)
+            for(int i = 0; i<5; i++)
             {
                 sum += corr_arr[i];
-                corr_factor_avg = sum/25.0;
+                corr_factor_avg = sum/5.0;
             }
         }
 
