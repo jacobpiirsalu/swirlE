@@ -59,6 +59,8 @@ int main() {
     int avg_val_ctr = 0;
     double corr_arr[5];
     //double delta_arr[5];
+    int bluectr = 0;
+    int loopctr = 0;
     double corr_factor_avg = 0.0;
     double sum = 0;
     while (1) {
@@ -98,9 +100,21 @@ int main() {
 
 
         printf("%f\n",corr_factor_avg);
-        if(is_green_detected(CS_OUT1,CS_OUT2))
+//        if(is_green_detected(CS_OUT1,CS_OUT2))
+//        {
+//            printf("saw green\n");
+//        }
+        loopctr++
+        if(is_blue_detected(CS_OUT1,CS_OUT2))
         {
-            printf("saw green\n");
+            bluectr++;
+        }
+        if(bluectr > 2){
+            break;
+        }
+        if(loopctr > 50){
+            loopctr=0;
+            bluectr =0;
         }
         if (false) {}
         else if (corr_factor_avg - 1.0 > 0) {
