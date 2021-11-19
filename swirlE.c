@@ -123,10 +123,10 @@ int main()
 //            //ch = 8; left servo
 //            rc_servo_send_pulse_normalized(8, servo_pos * 1/1.0/max_speed);
             //ch = 7; right servo
-            rc_servo_send_pulse_normalized(7, -servo_pos * 0.1);
+            rc_servo_send_pulse_normalized(7, -servo_pos*r_wheel_gain * 0.2);
 
             //ch = 8; left servo
-            rc_servo_send_pulse_normalized(8, servo_pos * 0.1);
+            rc_servo_send_pulse_normalized(8, servo_pos * 0.2);
         }
         // sleep roughly enough to maintain frequency_hz
         rc_usleep(1000000 / frequency_hz);
