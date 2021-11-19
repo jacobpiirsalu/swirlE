@@ -56,7 +56,7 @@ int main()
     double corr_factor = 0.0;
     double max_speed = 10.0;
     double gain = 10;
-    double r_wheel_gain = 1.35;
+    double r_wheel_gain = 1.3;
     while (1) {
         //colour_sensor(CS_OUT1);//left sensor
         //colour_sensor(CS_OUT2);//right sensor
