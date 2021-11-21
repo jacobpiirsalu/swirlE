@@ -70,6 +70,7 @@ int main() {
 
     while (running) {
         double l_blue_val = colour_sensor_blue(CS_OUT1);
+        double r_blue_val = colour_sensor_blue(CS_OUT1);
         l_b_avg = rolling_avg(l_blue_arr,&l_blue_val,&l_b_sum);
         r_b_avg = rolling_avg(r_blue_arr,&r_blue_val,&r_b_sum);
 
