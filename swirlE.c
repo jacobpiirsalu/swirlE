@@ -195,27 +195,27 @@ int main() {
             pulseL = pulseL < 1.5 ? pulseL : 1.5;
             rc_servo_send_pulse_normalized(8, pulseL);
         }
-        else if (corr_factor_avg - 0.60/4 > 0) {
-            //ch = 7; right servo
-            pulseR = r_wheel_gain * (servo_pos * max_speed * 3);
-            pulseR = pulseR < 1.5 ? pulseR : 1.5;
-            rc_servo_send_pulse_normalized(7, -pulseR);
-
-            //ch = 8; left servo
-            pulseL = servo_pos * max_speed;
-            pulseL = pulseL < 1.5 ? pulseL : 1.5;
-            rc_servo_send_pulse_normalized(8, pulseL);
-        } else if (corr_factor_avg + 0.60/4 < 0) {
-            //ch = 7; right servo
-            pulseR = r_wheel_gain * (servo_pos * max_speed);
-            pulseR = pulseR < 1.5 ? pulseR : 1.5;
-            rc_servo_send_pulse_normalized(7, -pulseR);
-
-            //ch = 8; left servo
-            pulseL = (servo_pos * max_speed * 3);
-            pulseL = pulseL < 1.5 ? pulseL : 1.5;
-            rc_servo_send_pulse_normalized(8, pulseL);
-        }
+//        else if (corr_factor_avg - 0.60/4 > 0) {
+//            //ch = 7; right servo
+//            pulseR = r_wheel_gain * (servo_pos * max_speed * 3);
+//            pulseR = pulseR < 1.5 ? pulseR : 1.5;
+//            rc_servo_send_pulse_normalized(7, -pulseR);
+//
+//            //ch = 8; left servo
+//            pulseL = servo_pos * max_speed;
+//            pulseL = pulseL < 1.5 ? pulseL : 1.5;
+//            rc_servo_send_pulse_normalized(8, pulseL);
+//        } else if (corr_factor_avg + 0.60/4 < 0) {
+//            //ch = 7; right servo
+//            pulseR = r_wheel_gain * (servo_pos * max_speed);
+//            pulseR = pulseR < 1.5 ? pulseR : 1.5;
+//            rc_servo_send_pulse_normalized(7, -pulseR);
+//
+//            //ch = 8; left servo
+//            pulseL = (servo_pos * max_speed * 3);
+//            pulseL = pulseL < 1.5 ? pulseL : 1.5;
+//            rc_servo_send_pulse_normalized(8, pulseL);
+//        }
 //        else if (corr_factor_avg - 0.5/4 > 0) {
 //            //ch = 7; right servo
 //            pulseR = r_wheel_gain * (servo_pos * max_speed * 2);
