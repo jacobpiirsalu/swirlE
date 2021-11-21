@@ -70,7 +70,7 @@ int main() {
     printf("starting line following\n");
     int blue_ctr = 0;
     while (running) {
-        loopctr++
+        loopctr++;
         double l_red_val = colour_sensor_red(CS_OUT1);
         double r_red_val = colour_sensor_red(CS_OUT2);
         l_r_avg = rolling_avg(l_red_arr,&l_red_val,&l_r_sum);
