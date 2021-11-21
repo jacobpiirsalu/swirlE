@@ -51,8 +51,14 @@ int main() {
     double corr_arr[7];
     double corr_factor_avg = 0.0;
     double sum = 0;
+
     printf("starting main while loop\n");
-    while (1) {
+    uint64_t *timeRise1Ptr = malloc(sizeof(uint64_t));
+    while(1) {
+        printf("%d\n",rc_gpio_poll(3, OUT, 10000, timeRise1Ptr);
+    }
+
+    while (0) {
         leftC_sense = colour_sensor_red(CS_OUT1) + colour_sensor_green(CS_OUT1) + colour_sensor_blue(CS_OUT1); //left
         rightC_sense = colour_sensor_red(CS_OUT2) + colour_sensor_green(CS_OUT2) + colour_sensor_blue(CS_OUT2); //right
 
