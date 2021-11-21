@@ -111,7 +111,7 @@ int main() {
             if (blue_delta_l < 0 || blue_delta_r < 0) {
                 blue_ctr = 0;
             }
-            if (blue_ctr > 1) {
+            if (blue_ctr > 2) {
                 blue_ctr = 0;
                 break;
             }
