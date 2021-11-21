@@ -47,7 +47,7 @@ int main() {
     double max_speed = 0.08*1.25; //base speed of swirlE
     // - works decently at 0.08*1.5 and window size 3
     double gain = 10;
-    double r_wheel_gain = 1.2;
+    double r_wheel_gain = 1.3;
     int avg_val_ctr = 0;
     int window = 3;
     double corr_arr[3];
@@ -182,27 +182,27 @@ int main() {
             pulseL = pulseL < 1.5 ? pulseL : 1.5;
             rc_servo_send_pulse_normalized(8, pulseL);
         }
-//        else if (corr_factor_avg - 0.6 > 0) {
-//            //ch = 7; right servo
-//            pulseR = r_wheel_gain * (servo_pos * max_speed * 3);
-//            pulseR = pulseR < 1.5 ? pulseR : 1.5;
-//            rc_servo_send_pulse_normalized(7, -pulseR);
-//
-//            //ch = 8; left servo
-//            pulseL = servo_pos * max_speed;
-//            pulseL = pulseL < 1.5 ? pulseL : 1.5;
-//            rc_servo_send_pulse_normalized(8, pulseL);
-//        } else if (corr_factor_avg + 0.6 < 0) {
-//            //ch = 7; right servo
-//            pulseR = r_wheel_gain * (servo_pos * max_speed);
-//            pulseR = pulseR < 1.5 ? pulseR : 1.5;
-//            rc_servo_send_pulse_normalized(7, -pulseR);
-//
-//            //ch = 8; left servo
-//            pulseL = (servo_pos * max_speed * 3);
-//            pulseL = pulseL < 1.5 ? pulseL : 1.5;
-//            rc_servo_send_pulse_normalized(8, pulseL);
-//        }
+        else if (corr_factor_avg - 0.6 > 0) {
+            //ch = 7; right servo
+            pulseR = r_wheel_gain * (servo_pos * max_speed * 3);
+            pulseR = pulseR < 1.5 ? pulseR : 1.5;
+            rc_servo_send_pulse_normalized(7, -pulseR);
+
+            //ch = 8; left servo
+            pulseL = servo_pos * max_speed;
+            pulseL = pulseL < 1.5 ? pulseL : 1.5;
+            rc_servo_send_pulse_normalized(8, pulseL);
+        } else if (corr_factor_avg + 0.6 < 0) {
+            //ch = 7; right servo
+            pulseR = r_wheel_gain * (servo_pos * max_speed);
+            pulseR = pulseR < 1.5 ? pulseR : 1.5;
+            rc_servo_send_pulse_normalized(7, -pulseR);
+
+            //ch = 8; left servo
+            pulseL = (servo_pos * max_speed * 3);
+            pulseL = pulseL < 1.5 ? pulseL : 1.5;
+            rc_servo_send_pulse_normalized(8, pulseL);
+        }
         else {
             //ch = 7; right servo
             pulseR = r_wheel_gain * (servo_pos * max_speed);
