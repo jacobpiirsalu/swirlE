@@ -101,7 +101,7 @@ int main() {
 
         //printf("%f\n", corr_factor_avg);
         printf("%d\n",loopctr);
-        if(loopctr>1000) {
+        if(loopctr>1500) {
             double blue_delta_l = l_b_avg - (l_r_avg + l_g_avg) / 2.0; //blue should be higher
             double blue_delta_r = r_b_avg - (r_r_avg + r_g_avg) / 2.0; //blue should be higher
             //when over blue
@@ -112,7 +112,7 @@ int main() {
             if (blue_delta_l < 0 || blue_delta_r < 0) {
                 blue_ctr = 0;
             }
-            if (blue_ctr > 1) {
+            if (blue_ctr > 0) {
                 blue_ctr = 0;
                 break;
             }
