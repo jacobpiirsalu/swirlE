@@ -17,6 +17,8 @@
 #define CS_OUT1 2 //GPIO3_2, PURPLE -> left colour sensor
 #define CS_OUT2 1 //GPIO3_1, BLU -> right colour sensor
 
+#define WINDOW 7
+
 static int running = 1;
 
 void robot_forward(int numRotations, int frequency_hz) {
@@ -431,6 +433,20 @@ bool is_blue_detected(int OUTLeft, int OUTRight) {
         return true;
     }
     return false;
+}
+double rolling_avg(double *corr_arr, double *corr_factor, double *sum) {
+    //double sum = 0;
+    //double corr_arr[WINDOW] = {0};
+    int avg_val_ctr = 0;
+    double corr_factor_avg = 0;
+    //double corr_factor = 0;
+
+    sum = sum - corr_arr[avg_val_ctr];
+    corr_arr[avg_val_ctr] = corr_factor;
+    sum = sum + corr_factor;
+    avg_val_ctr = (avg_val_ctr + 1) % WINDOW; //window size
+    corr_factor_avg = sum / WINDOW;
+    return corr_factor_avg;
 }
 
 #endif //SWIRLE_SWIRLELIB_H

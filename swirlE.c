@@ -8,7 +8,6 @@
  *@author     Jacob Piirsalu
  *@date       11/11/2021
  */
-//TO-DO: determine min servo speed
 #include <stdio.h>
 #include <getopt.h>
 #include <stdlib.h>    // for atoi
@@ -40,43 +39,61 @@ int main() {
     if (rc_servo_init()) return -1;
     // turn on power - Turning On 6V Servo Power Rail
     rc_servo_power_rail_en(1);
-    running = 1;
     double leftC_sense = 0.0;
     double rightC_sense = 0.0;
     double corr_factor = 0.0;
     double max_speed = 0.08*1.1; //base speed of swirlE
     // - works decently at 0.08*1.25 and window size 3
     //safe speed is 0.08
+
     double gain = 10;
-    double r_wheel_gain = 1.5; //1.35 when full battery 1.5 when under 50%
+    double r_wheel_gain = 1.35; //1.35 when full battery 1.5 when under 50%
     int avg_val_ctr = 0;
-    int window = 7;
-    double corr_arr[7];
+
+    double l_red_arr[WINDOW];
+    double l_green_arr[WINDOW];
+    double l_blue_arr[WINDOW];
+
+    double r_red_arr[WINDOW];
+    double r_green_arr[WINDOW];
+    double r_blue_arr[WINDOW];
+
+    double l_r_sum = 0, l_g_sum = 0, l_b_sum = 0, r_r_sum = 0, r_g_sum = 0, r_b_sum = 0;
+    double l_r_avg = 0, l_g_avg = 0, l_b_avg = 0, r_r_avg = 0, r_g_avg = 0, r_b_avg = 0;
+
+
+    double corr_arr[WINDOW];
     double corr_factor_avg = 0.0;
     double sum = 0;
 
-    printf("starting main while loop\n");
+    printf("starting line following\n");
 
-    while (1) {
+    while (running) {
+
+
         leftC_sense = colour_sensor_red(CS_OUT1) + colour_sensor_green(CS_OUT1) + colour_sensor_blue(CS_OUT1); //left
         rightC_sense = colour_sensor_red(CS_OUT2) + colour_sensor_green(CS_OUT2) + colour_sensor_blue(CS_OUT2); //right
 
         corr_factor = gain * (rightC_sense - leftC_sense) / (leftC_sense + rightC_sense);
+
+
+        corr_factor_avg = rolling_avg(&corr_arr,&corr_factor,&sum)
+//        sum = sum - corr_arr[avg_val_ctr];
+//        corr_arr[avg_val_ctr] = corr_factor;
+//        sum = sum + corr_factor;
+//        avg_val_ctr = (avg_val_ctr + 1) % WINDOW; //window size
+//        corr_factor_avg = sum / WINDOW;
+
+        printf("%f\n", corr_factor_avg);
+
+
+        double pulseL = 0.0;
+        double pulseR = 0.0;
         servo_pos += direction * sweep_limit / frequency_hz;
 
         if (servo_pos > sweep_limit) {
             servo_pos = sweep_limit;
         }
-
-        sum = sum - corr_arr[avg_val_ctr];
-        corr_arr[avg_val_ctr] = corr_factor;
-        sum = sum + corr_factor;
-        avg_val_ctr = (avg_val_ctr + 1) % window; //window size
-        corr_factor_avg = sum / window;
-
-        printf("%f\n", corr_factor_avg);
-        double pulseL = 0.0;
-        double pulseR = 0.0;
         if (corr_factor_avg - 1.10 > 0) {
 
             //ch = 7; right servo, -1 pulse
