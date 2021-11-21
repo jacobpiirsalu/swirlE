@@ -66,9 +66,11 @@ int main() {
     double corr_factor_avg = 0.0;
     double sum = 0;
 
+    double loopctr = 0;
     printf("starting line following\n");
     int blue_ctr = 0;
     while (running) {
+        loopctr++
         double l_red_val = colour_sensor_red(CS_OUT1);
         double r_red_val = colour_sensor_red(CS_OUT2);
         l_r_avg = rolling_avg(l_red_arr,&l_red_val,&l_r_sum);
@@ -98,21 +100,22 @@ int main() {
 //        corr_factor_avg = sum / WINDOW;
 
         //printf("%f\n", corr_factor_avg);
-        double blue_delta_l = l_b_avg-(l_r_avg+l_g_avg)/2.0; //blue should be higher
-        double blue_delta_r = r_b_avg-(r_r_avg+r_g_avg)/2.0; //blue should be higher
-        //when over blue
-        printf("%f\n",blue_delta_l);
-        if(blue_delta_l > 0 || blue_delta_r > 0) {
-            blue_ctr++;
+        if(loopctr>10) {
+            double blue_delta_l = l_b_avg - (l_r_avg + l_g_avg) / 2.0; //blue should be higher
+            double blue_delta_r = r_b_avg - (r_r_avg + r_g_avg) / 2.0; //blue should be higher
+            //when over blue
+            printf("%f\n", blue_delta_l);
+            if (blue_delta_l > 0 || blue_delta_r > 0) {
+                blue_ctr++;
+            }
+            if (blue_delta_l < 0 || blue_delta_r < 0) {
+                blue_ctr = 0;
+            }
+            if (blue_ctr > 1) {
+                blue_ctr = 0;
+                break;
+            }
         }
-        if(blue_delta_l < 0 || blue_delta_r < 0) {
-            blue_ctr = 0;
-        }
-        if(blue_ctr > 1) {
-            blue_ctr = 0;
-            break;
-        }
-
         double pulseL = 0.0;
         double pulseR = 0.0;
         servo_pos += direction * sweep_limit / frequency_hz;
