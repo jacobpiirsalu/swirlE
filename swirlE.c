@@ -51,7 +51,7 @@ int main() {
     double corr_arr[7];
     double corr_factor_avg = 0.0;
     double sum = 0;
-    while (running) {
+    while (1) {
         leftC_sense = colour_sensor_red(CS_OUT1) + colour_sensor_green(CS_OUT1) + colour_sensor_blue(CS_OUT1); //left
         rightC_sense = colour_sensor_red(CS_OUT2) + colour_sensor_green(CS_OUT2) + colour_sensor_blue(CS_OUT2); //right
 
