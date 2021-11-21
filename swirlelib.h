@@ -435,11 +435,8 @@ bool is_blue_detected(int OUTLeft, int OUTRight) {
     return false;
 }
 double rolling_avg(double *corr_arr, double *corr_factor, double *sum) {
-    //double sum = 0;
-    //double corr_arr[WINDOW] = {0};
     int avg_val_ctr = 0;
     double corr_factor_avg = 0;
-    //double corr_factor = 0;
 
     *sum = *sum - *(corr_arr + avg_val_ctr);
     *(corr_arr + avg_val_ctr) = *corr_factor;
