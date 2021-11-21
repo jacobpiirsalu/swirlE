@@ -149,6 +149,7 @@ void robot_turn_cw(double degrees, int frequency_hz) {
 void robot_move_cup_down(int frequency_hz) {
     double direction = 1.0;
     int counter = 0;
+    double net_servo_pos = 0.0;
     double degrees = 100;
     double reqRotations = degrees / 2.0 * (1.5 / 180.0);
     double servo_pos = 0;
