@@ -77,7 +77,7 @@ int main() {
         corr_factor = gain * (rightC_sense - leftC_sense) / (leftC_sense + rightC_sense);
 
 
-        corr_factor_avg = rolling_avg(&corr_arr,&corr_factor,&sum)
+        corr_factor_avg = rolling_avg(&corr_arr,&corr_factor,&sum);
 //        sum = sum - corr_arr[avg_val_ctr];
 //        corr_arr[avg_val_ctr] = corr_factor;
 //        sum = sum + corr_factor;
