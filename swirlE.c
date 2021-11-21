@@ -104,6 +104,9 @@ int main() {
         if(blue_delta > 0) {
             blue_ctr++;
         }
+        if(blue_delta < 0) {
+            blue_ctr = 0;
+        }
         if(blue_ctr > 4) {
             blue_ctr = 0;
             break;
