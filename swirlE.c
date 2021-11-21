@@ -66,7 +66,7 @@ int main() {
     double corr_factor_avg = 0.0;
     double sum = 0;
 
-    double loopctr = 0;
+    int loopctr = 0;
     printf("starting line following\n");
     int blue_ctr = 0;
     while (running) {
