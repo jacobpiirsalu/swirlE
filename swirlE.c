@@ -94,10 +94,22 @@ int main() {
             rc_servo_send_pulse_normalized(7, -1 * r_wheel_gain * (servo_pos * max_speed * 6));
 
             //ch = 8; left servo
-            rc_servo_send_pulse_normalized(8, servo_pos * max_speed);
+            rc_servo_send_pulse_normalized(8, servo_pos * max_speed * 0.25);
         } else if (corr_factor_avg + 1.0 < 0) {
             //ch = 7; right servo
-            rc_servo_send_pulse_normalized(7, -1 * r_wheel_gain * (servo_pos * max_speed));
+            rc_servo_send_pulse_normalized(7, -1 * r_wheel_gain * (servo_pos * max_speed)*0.25);
+
+            //ch = 8; left servo
+            rc_servo_send_pulse_normalized(8, (servo_pos * max_speed * 6));
+        } else if (corr_factor_avg - 0.9 > 0) {
+            //ch = 7; right servo
+            rc_servo_send_pulse_normalized(7, -1 * r_wheel_gain * (servo_pos * max_speed * 6));
+
+            //ch = 8; left servo
+            rc_servo_send_pulse_normalized(8, servo_pos * max_speed * 0.5);
+        } else if (corr_factor_avg + 0.9 < 0) {
+            //ch = 7; right servo
+            rc_servo_send_pulse_normalized(7, -1 * r_wheel_gain * (servo_pos * max_speed)*0.5);
 
             //ch = 8; left servo
             rc_servo_send_pulse_normalized(8, (servo_pos * max_speed * 6));
@@ -137,13 +149,13 @@ int main() {
 
             //ch = 8; left servo
             rc_servo_send_pulse_normalized(8, (servo_pos * max_speed * 3));
-        } else if (corr_factor_avg - 0.4 > 0) {
+        } else if (corr_factor_avg - 0.5 > 0) {
             //ch = 7; right servo
             rc_servo_send_pulse_normalized(7, -1 * r_wheel_gain * (servo_pos * max_speed * 2));
 
             //ch = 8; left servo
             rc_servo_send_pulse_normalized(8, servo_pos * max_speed);
-        } else if (corr_factor_avg + 0.4 < 0) {
+        } else if (corr_factor_avg + 0.5 < 0) {
             //ch = 7; right servo
             rc_servo_send_pulse_normalized(7, -1 * r_wheel_gain * (servo_pos * max_speed));
 
