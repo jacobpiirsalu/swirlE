@@ -46,6 +46,7 @@ int main() {
     double corr_factor = 0.0;
     double max_speed = 0.08*1.1; //base speed of swirlE
     // - works decently at 0.08*1.25 and window size 3
+    //safe speed is 0.08
     double gain = 10;
     double r_wheel_gain = 1.5; //1.35 when full battery 1.5 when under 50%
     int avg_val_ctr = 0;
@@ -55,10 +56,6 @@ int main() {
     double sum = 0;
 
     printf("starting main while loop\n");
-//    uint64_t *timeRise1Ptr = malloc(sizeof(uint64_t));
-//    while(1) { //weird color sensing thing
-//        printf("%d\n",rc_gpio_poll(3, CS_OUT2, 10000, timeRise1Ptr));
-//    }
 
     while (1) {
         leftC_sense = colour_sensor_red(CS_OUT1) + colour_sensor_green(CS_OUT1) + colour_sensor_blue(CS_OUT1); //left
