@@ -53,12 +53,12 @@ int main() {
     double sum = 0;
 
     printf("starting main while loop\n");
-    uint64_t *timeRise1Ptr = malloc(sizeof(uint64_t));
-    while(1) { //weird color sensing thing
-        printf("%d\n",rc_gpio_poll(3, CS_OUT2, 10000, timeRise1Ptr));
-    }
+//    uint64_t *timeRise1Ptr = malloc(sizeof(uint64_t));
+//    while(1) { //weird color sensing thing
+//        printf("%d\n",rc_gpio_poll(3, CS_OUT2, 10000, timeRise1Ptr));
+//    }
 
-    while (0) {
+    while (1) {
         leftC_sense = colour_sensor_red(CS_OUT1) + colour_sensor_green(CS_OUT1) + colour_sensor_blue(CS_OUT1); //left
         rightC_sense = colour_sensor_red(CS_OUT2) + colour_sensor_green(CS_OUT2) + colour_sensor_blue(CS_OUT2); //right
 
