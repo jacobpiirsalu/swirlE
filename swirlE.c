@@ -44,12 +44,12 @@ int main() {
     double leftC_sense = 0.0;
     double rightC_sense = 0.0;
     double corr_factor = 0.0;
-    double max_speed = 0.08*2; //base speed of swirlE
+    double max_speed = 0.08*1.5; //base speed of swirlE
     double gain = 10;
     double r_wheel_gain = 1.35;
     int avg_val_ctr = 0;
-    int window = 2;
-    double corr_arr[2];
+    int window = 5;
+    double corr_arr[5];
     double corr_factor_avg = 0.0;
     double sum = 0;
 
