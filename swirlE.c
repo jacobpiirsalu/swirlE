@@ -55,7 +55,7 @@ int main() {
     printf("starting main while loop\n");
     uint64_t *timeRise1Ptr = malloc(sizeof(uint64_t));
     while(1) { //weird color sensing thing
-        printf("%d\n",rc_gpio_poll(3, CS_OUT1, 10000, timeRise1Ptr));
+        printf("%d\n",rc_gpio_poll(3, CS_OUT2, 10000, timeRise1Ptr));
     }
 
     while (0) {
