@@ -69,6 +69,17 @@ int main() {
     printf("starting line following\n");
 
     while (running) {
+        double l_red_val = colour_sensor_red(CS_OUT1);
+        double r_red_val = colour_sensor_red(CS_OUT1);
+        l_r_avg = rolling_avg(l_red_arr,&l_red_val,&l_r_sum);
+        r_r_avg = rolling_avg(r_red_arr,&r_red_val,&r_r_sum);
+
+        double l_green_val = colour_sensor_green(CS_OUT1);
+        double r_green_val = colour_sensor_green(CS_OUT1);
+        l_g_avg = rolling_avg(l_green_arr,&l_green_val,&l_g_sum);
+        r_g_avg = rolling_avg(r_green_arr,&r_green_val,&r_g_sum);
+
+
         double l_blue_val = colour_sensor_blue(CS_OUT1);
         double r_blue_val = colour_sensor_blue(CS_OUT1);
         l_b_avg = rolling_avg(l_blue_arr,&l_blue_val,&l_b_sum);
@@ -87,7 +98,7 @@ int main() {
 //        corr_factor_avg = sum / WINDOW;
 
         //printf("%f\n", corr_factor_avg);
-        printf("L: %f  R:%f\n",l_b_avg,r_b_avg);
+        printf("RG: %f  B: %f\n",(l_r_avg+l_g_avg)/2.0,l_b_avg);
 
 
         double pulseL = 0.0;
