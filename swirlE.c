@@ -49,8 +49,8 @@ int main() {
     double gain = 10;
     double r_wheel_gain = 1.3;
     int avg_val_ctr = 0;
-    int window = 7;
-    double corr_arr[7];
+    int window = 6;
+    double corr_arr[6];
     double corr_factor_avg = 0.0;
     double sum = 0;
 
