@@ -100,7 +100,7 @@ int main() {
         //printf("%f\n", corr_factor_avg);
         double blue_delta = (l_r_avg+l_g_avg+r_r_avg+r_g_avg)/4.0-(l_b_avg+r_b_avg)/2.0;
         printf("%f\n",blue_delta);
-        if(blue_delta > 150.0) break;
+        if(blue_delta > 100.0) break;
 
         double pulseL = 0.0;
         double pulseR = 0.0;
