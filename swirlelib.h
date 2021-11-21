@@ -338,8 +338,8 @@ double colour_sensor_red(int OUT) {
     uint64_t *timeRise1Ptr = malloc(sizeof(uint64_t));
     uint64_t *timeFall1Ptr = malloc(sizeof(uint64_t));
 
-    while (!rc_gpio_poll(3, OUT, 10000, timeRise1Ptr) == 1);
-    while (!rc_gpio_poll(3, OUT, 10000, timeFall1Ptr) == 2);
+    while (!(rc_gpio_poll(3, OUT, 10000, timeRise1Ptr) == 1));
+    while (!(rc_gpio_poll(3, OUT, 10000, timeFall1Ptr) == 2));
 
     freq = (-1e9 / ((double) *timeRise1Ptr - (double) *timeFall1Ptr)) * 2.0;
     free(timeRise1Ptr);
@@ -358,16 +358,12 @@ double colour_sensor_green(int OUT) {
     //READ READ S2 = L, S3 = L
     rc_gpio_set_value(2, CS_S2, 1); //set S2 L
     rc_gpio_set_value(2, CS_S3, 1); //set S3 L
-    uint64_t *timeRiseDummy = malloc(sizeof(uint64_t));
-
-    uint64_t timeRise1 = 0;
-    uint64_t timeRise2 = 0;
 
     uint64_t *timeRise1Ptr = malloc(sizeof(uint64_t));
     uint64_t *timeFall1Ptr = malloc(sizeof(uint64_t));
 
-    while (!rc_gpio_poll(3, OUT, 10000, timeRise1Ptr) == 1);
-    while (!rc_gpio_poll(3, OUT, 10000, timeFall1Ptr) == 2);
+    while (!(rc_gpio_poll(3, OUT, 10000, timeRise1Ptr) == 1));
+    while (!(rc_gpio_poll(3, OUT, 10000, timeFall1Ptr) == 2));
 
     freq = (-1e9 / ((double) *timeRise1Ptr - (double) *timeFall1Ptr)) * 2.0;
     free(timeRise1Ptr);
@@ -386,16 +382,12 @@ double colour_sensor_blue(int OUT) {
     //READ READ S2 = L, S3 = L
     rc_gpio_set_value(2, CS_S2, 0); //set S2 L
     rc_gpio_set_value(2, CS_S3, 1); //set S3 L
-    uint64_t *timeRiseDummy = malloc(sizeof(uint64_t));
-
-    uint64_t timeRise1 = 0;
-    uint64_t timeRise2 = 0;
 
     uint64_t *timeRise1Ptr = malloc(sizeof(uint64_t));
     uint64_t *timeFall1Ptr = malloc(sizeof(uint64_t));
 
-    while (!rc_gpio_poll(3, OUT, 10000, timeRise1Ptr) == 1);
-    while (!rc_gpio_poll(3, OUT, 10000, timeFall1Ptr) == 2);
+    while (!(rc_gpio_poll(3, OUT, 10000, timeRise1Ptr) == 1));
+    while (!(rc_gpio_poll(3, OUT, 10000, timeFall1Ptr) == 2));
 
     freq = (-1e9 / ((double) *timeRise1Ptr - (double) *timeFall1Ptr)) * 2.0;
     free(timeRise1Ptr);
