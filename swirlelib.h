@@ -17,7 +17,7 @@
 #define CS_OUT1 2 //GPIO3_2, PURPLE -> left colour sensor
 #define CS_OUT2 1 //GPIO3_1, BLU -> right colour sensor
 
-static int running;
+static int running = 1;
 
 void robot_forward(int numRotations, int frequency_hz) {
     double servo_pos = 0;
