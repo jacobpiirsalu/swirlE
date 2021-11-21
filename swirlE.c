@@ -44,8 +44,8 @@ int main() {
     double leftC_sense = 0.0;
     double rightC_sense = 0.0;
     double corr_factor = 0.0;
-    double max_speed = 0.08*1.25; //base speed of swirlE
-    // - works decently at 0.08*1.5 and window size 3
+    double max_speed = 0.08*1.1; //base speed of swirlE
+    // - works decently at 0.08*1.25 and window size 3
     double gain = 10;
     double r_wheel_gain = 1.3;
     int avg_val_ctr = 0;
