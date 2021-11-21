@@ -154,7 +154,6 @@ void robot_move_cup_down(int frequency_hz) {
     double servo_pos = 0;
     //double direction = 1;	// switches between 1 &-1 in sweep mode
     double sweep_limit = 1.5 * direction;
-    double net_servo_pos = 0;
 
     // Main loop runs at frequency_hz
     int rotationsCompleted = 0;
@@ -351,8 +350,6 @@ double colour_sensor_red(int OUT) {
 }
 
 double colour_sensor_green(int OUT) {
-
-    double timeElapsed = 0.0;
     double freq = 0.0;
 
     //READ READ S2 = L, S3 = L
@@ -375,8 +372,6 @@ double colour_sensor_green(int OUT) {
 }
 
 double colour_sensor_blue(int OUT) {
-
-    double timeElapsed = 0.0;
     double freq = 0.0;
 
     //READ READ S2 = L, S3 = L

@@ -32,8 +32,6 @@
 int main() {
     double servo_pos = 0;
     double sweep_limit = 1.5;
-    uint64_t dsm_nanos = 0;
-    int width_us = 0;
     int ch = 0;    // channel to test, 0 means all channels
     double direction = 1;    // switches between 1 &-1 in sweep mode
     int frequency_hz = 50;    // default 50hz frequency to send pulses
@@ -45,10 +43,6 @@ int main() {
     running = 1;
     double leftC_sense = 0.0;
     double rightC_sense = 0.0;
-    double left_corr_factor = 0.0;
-    double right_corr_factor = 0.0;
-    double left_servo_kp = 0.0;
-    double right_servo_kp = 0.0;
     double corr_factor = 0.0;
     double max_speed = 0.08; //base speed of swirlE
     double gain = 10;
