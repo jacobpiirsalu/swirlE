@@ -17,7 +17,7 @@
 #define CS_OUT1 2 //GPIO3_2, PURPLE -> left colour sensor
 #define CS_OUT2 1 //GPIO3_1, BLU -> right colour sensor
 
-#define WINDOW 7
+#define WINDOW 5
 
 static int running = 1;
 
