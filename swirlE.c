@@ -48,7 +48,8 @@ int main() {
     double gain = 10;
     double r_wheel_gain = 1.35;
     int avg_val_ctr = 0;
-    double corr_arr[7];
+    int window = 2;
+    double corr_arr[2];
     double corr_factor_avg = 0.0;
     double sum = 0;
 
@@ -72,8 +73,8 @@ int main() {
         sum = sum - corr_arr[avg_val_ctr];
         corr_arr[avg_val_ctr] = corr_factor;
         sum = sum + corr_factor;
-        avg_val_ctr = (avg_val_ctr + 1) % 7; //window size
-        corr_factor_avg = sum / 7;
+        avg_val_ctr = (avg_val_ctr + 1) % window; //window size
+        corr_factor_avg = sum / window;
 
         printf("%f\n", corr_factor_avg);
 
