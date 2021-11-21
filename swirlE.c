@@ -53,7 +53,7 @@ int main() {
     double left_servo_kp = 0.0;
     double right_servo_kp = 0.0;
     double corr_factor = 0.0;
-    double max_speed = 0.09*1.5; //speed of swirlE
+    double max_speed = 0.09*1.25; //speed of swirlE
     double gain = 10;
     double r_wheel_gain = 1.35;
     int avg_val_ctr = 0;
