@@ -47,7 +47,7 @@ int main() {
     double max_speed = 0.08*1.1; //base speed of swirlE
     // - works decently at 0.08*1.25 and window size 3
     double gain = 10;
-    double r_wheel_gain = 1.5;
+    double r_wheel_gain = 1.5; //1.35 when full battery 1.5 when under 50%
     int avg_val_ctr = 0;
     int window = 7;
     double corr_arr[7];
