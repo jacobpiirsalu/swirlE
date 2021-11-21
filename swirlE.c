@@ -107,7 +107,7 @@ int main() {
         if(blue_delta < 0) {
             blue_ctr = 0;
         }
-        if(blue_ctr > 4) {
+        if(blue_ctr > 3) {
             blue_ctr = 0;
             break;
         }
