@@ -98,13 +98,14 @@ int main() {
 //        corr_factor_avg = sum / WINDOW;
 
         //printf("%f\n", corr_factor_avg);
-        double blue_delta = (l_b_avg+r_b_avg)/2.0-(l_r_avg+l_g_avg+r_r_avg+r_g_avg)/4.0; //blue should be higher
+        double blue_delta_l = l_b_avg-(l_r_avg+l_g_avg)/2.0; //blue should be higher
+        double blue_delta_r = r_b_avg-(r_r_avg+r_g_avg)/2.0; //blue should be higher
         //when over blue
-        printf("%f\n",blue_delta);
-        if(blue_delta > 0) {
+        printf("%f\n",blue_delta_l);
+        if(blue_delta_l > 0 || blue_delta_r > 0) {
             blue_ctr++;
         }
-        if(blue_delta < 0) {
+        if(blue_delta_l < 0 || blue_delta_r < 0) {
             blue_ctr = 0;
         }
         if(blue_ctr > 2) {
