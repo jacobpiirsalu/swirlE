@@ -87,8 +87,8 @@ int main() {
         l_b_avg = rolling_avg(l_blue_arr,&l_blue_val,&l_b_sum);
         r_b_avg = rolling_avg(r_blue_arr,&r_blue_val,&r_b_sum);
 
-        leftC_sense = colour_sensor_red(CS_OUT1) + colour_sensor_green(CS_OUT1) + colour_sensor_blue(CS_OUT1); //left
-        rightC_sense = colour_sensor_red(CS_OUT2) + colour_sensor_green(CS_OUT2) + colour_sensor_blue(CS_OUT2); //right
+        leftC_sense = l_red_val + l_green_val + l_blue_val //left
+        rightC_sense = r_red_val + r_green_val + r_blue_val; //right
 
         corr_factor = gain * (rightC_sense - leftC_sense) / (leftC_sense + rightC_sense);
 
