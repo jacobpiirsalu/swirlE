@@ -67,11 +67,11 @@ int main() {
     double sum = 0;
 
     int loopctr = 0;
-    printf("starting line following\n");
+    printf("red test\n");
     int blue_ctr = 0;
 
-    while(!(robot_move_cup_up(frequency_hz) == 1));
-    rc_usleep(1000000/2.0);
+    //while(!(robot_move_cup_up(frequency_hz) == 1));
+    //rc_usleep(1000000/2.0);
     double pulseR = 0.0;
     double pulseL = 0.0;
     while(1){
