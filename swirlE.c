@@ -82,7 +82,7 @@ int main() {
         sum = sum + corr_factor;
         avg_val_ctr = (avg_val_ctr + 1) % WINDOW; //window size
         corr_factor_avg = sum / WINDOW;
-        printf("%f\n",corr_factor_avg);
+        //printf("%f\n",corr_factor_avg);
 
         servo_pos += direction * sweep_limit / frequency_hz;
 
@@ -91,11 +91,12 @@ int main() {
         }
 
         //printf("%d\n",loopctr) ;
-        if(loopctr>5) {
+        if(loopctr>3) {
             double l_red_val = colour_sensor_red(CS_OUT1);
             double r_red_val = colour_sensor_red(CS_OUT2);
             l_r_avg = rolling_avg(l_red_arr,&l_red_val,&l_r_sum);
             r_r_avg = rolling_avg(r_red_arr,&r_red_val,&r_r_sum);
+            printf("%f,%f\n",l_r_avg,r_r_avg);
 
             double l_green_val = colour_sensor_green(CS_OUT1);
             double r_green_val = colour_sensor_green(CS_OUT2);
