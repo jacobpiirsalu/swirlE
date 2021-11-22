@@ -148,7 +148,7 @@ void robot_turn_cw(double degrees, int frequency_hz) {
     }
 }
 
-void robot_move_cup_down(int frequency_hz) {
+int robot_move_cup_down(int frequency_hz) {
     double direction = 1.0;
     int counter = 0;
     double net_servo_pos = 0.0;
@@ -192,9 +192,10 @@ void robot_move_cup_down(int frequency_hz) {
         if (counter > 39) break;
 
     }
+    return 1;
 }
 
-void robot_move_cup_up(int frequency_hz) {
+int robot_move_cup_up(int frequency_hz) {
     double direction = -1.0;
     int counter = 0;
     double servo_pos = 0;
@@ -240,6 +241,7 @@ void robot_move_cup_up(int frequency_hz) {
         if (counter > 30) break;
 
     }
+    return 1;
 }
 
 double distance_measurement_left() {

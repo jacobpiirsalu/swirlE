@@ -69,9 +69,8 @@ int main() {
     int loopctr = 0;
     printf("starting line following\n");
     int blue_ctr = 0;
-    robot_move_cup_up(frequency_hz);
-    rc_usleep(10000000);
-    robot_move_cup_down(frequency_hz);
+    while(!(robot_move_cup_up(frequency_hz) == 1));
+    while(!(robot_move_cup_down(frequency_hz)==1));
     //robot_move_cup_up(frequency_hz);
     while (0) {
         loopctr++;
