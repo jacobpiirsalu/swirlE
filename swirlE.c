@@ -173,7 +173,7 @@ int main() {
 //        avg_val_ctr = (avg_val_ctr + 1) % WINDOW; //window size
 //        corr_factor_avg = sum / WINDOW;
         corr_factor_avg = rolling_avg(corr_arr,&corr_factor,&sum);
-        //printf("%f\n",corr_factor_avg);
+        printf("%f\n",corr_factor_avg);
 
         //printf("%f\n",corr_factor_avg);
 
@@ -369,16 +369,16 @@ int main() {
             double blue_delta_l = l_b_avg - (l_r_avg + l_g_avg) / 2.0; //blue should be higher
             double blue_delta_r = r_b_avg - (r_r_avg + r_g_avg) / 2.0; //blue should be higher
             //when over blue
-            printf("%f\n", blue_delta_l);
-            if (blue_delta_l > 0 || blue_delta_r > 0) {
+            //printf("%f\n", blue_delta_l);
+            if (blue_delta_l > 100) {
                 blue_ctr++;
             }
-            if (blue_delta_l < 0 || blue_delta_r < 0) {
+            if (blue_delta_l < 100) {
                 blue_ctr = 0;
             }
             if (blue_ctr > 2) {
                 blue_ctr = 0;
-                //break;
+                break;
                 //printf("\nsaw blue\n");
             }
         }
