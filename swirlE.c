@@ -82,6 +82,7 @@ int main() {
         sum = sum + corr_factor;
         avg_val_ctr = (avg_val_ctr + 1) % WINDOW; //window size
         corr_factor_avg = sum / WINDOW;
+        printf("%f\n",corr_factor_avg);
 
         servo_pos += direction * sweep_limit / frequency_hz;
 
@@ -89,7 +90,7 @@ int main() {
             servo_pos = sweep_limit;
         }
 
-        printf("%d\n",loopctr);
+        //printf("%d\n",loopctr);
         if(loopctr>2125) {
             double l_red_val = colour_sensor_red(CS_OUT1);
             double r_red_val = colour_sensor_red(CS_OUT2);
