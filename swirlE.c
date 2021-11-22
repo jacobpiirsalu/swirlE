@@ -75,6 +75,12 @@ int main() {
     double pulseR = 0.0;
     double pulseL = 0.0;
     while(1) {
+        servo_pos += direction * sweep_limit / frequency_hz;
+
+        if (servo_pos > sweep_limit) {
+            servo_pos = sweep_limit;
+        }
+
         //ch = 7; right servo
         pulseR = r_wheel_gain * (servo_pos * max_speed);
         pulseR = pulseR < 1.5 ? pulseR : 1.5;
