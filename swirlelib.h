@@ -238,7 +238,7 @@ int robot_move_cup_up(int frequency_hz) {
         // sleep roughly enough to maintain frequency_hz
         rc_usleep(1000000 / frequency_hz);
 
-        if (counter > 30) break;
+        if (counter > 35) break;
 
     }
     return 1;
