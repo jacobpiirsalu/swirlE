@@ -175,7 +175,7 @@ int main() {
         corr_factor_avg = rolling_avg(corr_arr,&corr_factor,&sum);
         //printf("%f\n",corr_factor_avg);
 
-        printf("%f\n",corr_factor_avg);
+        //printf("%f\n",corr_factor_avg);
 
         servo_pos += direction * sweep_limit / frequency_hz;
 
