@@ -392,6 +392,12 @@ int main() {
         // sleep roughly enough to maintain frequency_hz
         rc_usleep(1000000 / frequency_hz);
     }
+    rc_usleep(1000000/2.0);
+    while(!(robot_move_forward_bullseye(frequency_hz))==1);
+    rc_usleep(1000000/2.0);
+    while(!(robot_move_cup_down(frequency_hz)==1));
+    rc_usleep(1000000/2.0);
+    while(!(robot_turn_cw(110,frequency_hz)));
     // turn off power rail and cleanup
     rc_servo_power_rail_en(0);
     rc_servo_cleanup();
