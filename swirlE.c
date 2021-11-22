@@ -76,17 +76,18 @@ int main() {
         rightC_sense = colour_sensor_red(CS_OUT2) + colour_sensor_green(CS_OUT2) + colour_sensor_blue(CS_OUT2); //right
 
         corr_factor = gain * (rightC_sense - leftC_sense) / (leftC_sense + rightC_sense);
-        servo_pos += direction * sweep_limit / frequency_hz;
-
-        if (servo_pos > sweep_limit) {
-            servo_pos = sweep_limit;
-        }
 
         sum = sum - corr_arr[avg_val_ctr];
         corr_arr[avg_val_ctr] = corr_factor;
         sum = sum + corr_factor;
         avg_val_ctr = (avg_val_ctr + 1) % WINDOW; //window size
         corr_factor_avg = sum / WINDOW;
+
+        servo_pos += direction * sweep_limit / frequency_hz;
+
+        if (servo_pos > sweep_limit) {
+            servo_pos = sweep_limit;
+        }
 
         printf("%d\n",loopctr);
         if(loopctr>2125) {
