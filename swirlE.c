@@ -85,8 +85,8 @@ int main() {
         sum = sum - corr_arr[avg_val_ctr];
         corr_arr[avg_val_ctr] = corr_factor;
         sum = sum + corr_factor;
-        avg_val_ctr = (avg_val_ctr + 1) % window; //window size
-        corr_factor_avg = sum / window;
+        avg_val_ctr = (avg_val_ctr + 1) % WINDOW; //window size
+        corr_factor_avg = sum / WINDOW;
 
         printf("%d\n",loopctr);
         if(loopctr>2125) {
