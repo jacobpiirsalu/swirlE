@@ -96,7 +96,7 @@ int main() {
 
         printf("%f,%f\n",l_r_avg,r_r_avg);
     }
-    while(1) {
+    while(0) {
         servo_pos += direction * sweep_limit / frequency_hz;
 
         if (servo_pos > sweep_limit) {
