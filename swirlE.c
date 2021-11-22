@@ -47,7 +47,7 @@ int main() {
     //safe speed is 0.08
 
     double gain = 10;
-    double r_wheel_gain = 1.35; //1.35 when full battery 1.5 when under 50%
+    double r_wheel_gain = 1.5; //1.35 when full battery 1.5 when under 50%
     int avg_val_ctr = 0;
 
     double l_red_arr[WINDOW];
