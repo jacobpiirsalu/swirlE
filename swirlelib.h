@@ -244,7 +244,54 @@ int robot_move_cup_up(int frequency_hz) {
     }
     return 1;
 }
+int robot_move_forward_bullseye(int frequency_hz) {
+    double direction = -1.0;
+    int counter = 0;
+    double servo_pos = 0;
+    //double direction = 1;	// switches between 1 &-1 in sweep mode
+    double sweep_limit = 1.5 * direction;
+    double net_servo_pos = 0;
+    //int rotationsCompleted = 0;
 
+    // Main loop runs at frequency_hz
+    int rotationsCompleted = 0;
+    while (running) {
+        // scale with frequency
+        servo_pos += direction * sweep_limit / frequency_hz;
+        // reset pulse width at end of sweep
+
+        net_servo_pos = (servo_pos + direction * rotationsCompleted * 1.5);
+        //printf("%f: %f\n", net_servo_pos * (180 / 1.5) * 2, servo_pos * (180 / 1.5) * 2);
+        if (servo_pos > sweep_limit) {
+            servo_pos = sweep_limit;
+            rotationsCompleted++;
+            //direction = -1;
+        }
+
+        /**
+          if(servo_pos < (-sweep_limit)){
+          servo_pos = -sweep_limit;
+          direction = 1;
+          }
+
+        **/
+        // send result
+
+        //ch = 7;
+        if (rc_servo_send_pulse_normalized(7, -servo_pos / 2.8) == -1) return -1;
+        counter++;
+
+        //ch = 8;
+        if(rc_servo_send_pulse_normalized(8,servo_pos/2.8)==-1) return -1;
+
+        // sleep roughly enough to maintain frequency_hz
+        rc_usleep(1000000 / frequency_hz);
+
+        if (counter > 10) break;
+
+    }
+    return 1;
+}
 double distance_measurement_left() {
     int counterRise = 0;
     int counterFall = 0;

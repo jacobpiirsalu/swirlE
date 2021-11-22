@@ -129,7 +129,7 @@ int main() {
     rc_usleep(1000000/2.0);
     while(!(robot_move_cup_down(frequency_hz)==1));
     rc_usleep(1000000/2.0);
-    while(!(robot_turn_cw(100,frequency_hz)));
+    while(!(robot_turn_cw(110,frequency_hz)));
 //    rc_usleep(1000000/2.0);
 //    while(!(robot_turn_cw(90,frequency_hz)));
     rc_usleep(1000000/2.0);
