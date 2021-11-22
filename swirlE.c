@@ -125,7 +125,7 @@ int main() {
 
     }
     rc_usleep(1000000/2.0);
-    while(!(robot_move_forward_bullseye(frequency_hz)));
+    while(!(robot_move_forward_bullseye(frequency_hz))==1);
     rc_usleep(1000000/2.0);
     while(!(robot_move_cup_down(frequency_hz)==1));
     rc_usleep(1000000/2.0);
