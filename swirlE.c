@@ -173,6 +173,7 @@ int main() {
 //        avg_val_ctr = (avg_val_ctr + 1) % WINDOW; //window size
 //        corr_factor_avg = sum / WINDOW;
         corr_factor_avg = rolling_avg(corr_arr,&corr_factor,&sum);
+        printf("%f",corr_factor_avg);
 
         //printf("%f\n",corr_factor_avg);
 
