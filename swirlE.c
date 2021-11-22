@@ -342,7 +342,7 @@ int main() {
 
 
         //printf("%d\n",loopctr) ;
-        if(loopctr>10) {
+        if(loopctr>10000) {
 //            double l_red_val = colour_sensor_red(CS_OUT1);
 //            double r_red_val = colour_sensor_red(CS_OUT2);
 //            l_r_avg = rolling_avg(l_red_arr,&l_red_val,&l_r_sum);
@@ -393,6 +393,8 @@ int main() {
         // sleep roughly enough to maintain frequency_hz
         rc_usleep(1000000 / frequency_hz);
     }
+    rc_usleep(1000000/2.0);
+    while(!(robot_move_cup_up(frequency_hz)==1));
     rc_usleep(1000000/2.0);
     while(!(robot_move_forward_bullseye(frequency_hz))==1);
     rc_usleep(1000000/2.0);
