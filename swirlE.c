@@ -342,7 +342,7 @@ int main() {
 
 
         //printf("%d\n",loopctr) ;
-        if(loopctr>10000) {
+        if(loopctr>10) {
 //            double l_red_val = colour_sensor_red(CS_OUT1);
 //            double r_red_val = colour_sensor_red(CS_OUT2);
 //            l_r_avg = rolling_avg(l_red_arr,&l_red_val,&l_r_sum);
