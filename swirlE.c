@@ -122,7 +122,7 @@ int main() {
             if (blue_ctr > 1) {
                 blue_ctr = 0;
                 //break;
-                printf("\nsaw blue\n");
+                //printf("\nsaw blue\n");
             }
         }
         double pulseL = 0.0;
