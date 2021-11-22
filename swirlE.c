@@ -342,7 +342,7 @@ int main() {
 
 
         //printf("%d\n",loopctr) ;
-        if(loopctr>10) {
+        if(loopctr>100) {
 //            double l_red_val = colour_sensor_red(CS_OUT1);
 //            double r_red_val = colour_sensor_red(CS_OUT2);
 //            l_r_avg = rolling_avg(l_red_arr,&l_red_val,&l_r_sum);
@@ -378,6 +378,7 @@ int main() {
             }
             if (blue_ctr > 2) {
                 blue_ctr = 0;
+                printf("\nsaw blue\n");
                 break;
                 //printf("\nsaw blue\n");
             }
