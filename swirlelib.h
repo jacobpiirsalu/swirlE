@@ -49,7 +49,7 @@ void robot_forward(int numRotations, int frequency_hz) {
         // send result
 
         //ch = 7;
-        if (rc_servo_send_pulse_normalized(7, -(servo_pos / 4)*1.35) == -1) return -1;
+        if (rc_servo_send_pulse_normalized(7, -(servo_pos / 4)*1.4) == -1) return -1;
 
         //ch = 8;
         if (rc_servo_send_pulse_normalized(8, servo_pos / 4) == -1) return -1;
