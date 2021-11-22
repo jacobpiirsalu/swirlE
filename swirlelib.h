@@ -49,7 +49,7 @@ void robot_forward(int numRotations, int frequency_hz) {
         // send result
 
         //ch = 7;
-        if (rc_servo_send_pulse_normalized(7, -(servo_pos / 4)*1.5) == -1) return -1;
+        if (rc_servo_send_pulse_normalized(7, -(servo_pos / 4)*1.7) == -1) return -1;
 
         //ch = 8;
         if (rc_servo_send_pulse_normalized(8, servo_pos / 4) == -1) return -1;
@@ -277,7 +277,7 @@ int robot_move_forward_bullseye(int frequency_hz) {
         // send result
 
         //ch = 7;
-        if (rc_servo_send_pulse_normalized(7, -r_wheel_gain * r_wheel_gain/1.5 * servo_pos*max_speed) == -1) return -1;
+        if (rc_servo_send_pulse_normalized(7, -r_wheel_gain * r_wheel_gain/1.25 * servo_pos*max_speed) == -1) return -1;
 
         //ch = 8;
         if(rc_servo_send_pulse_normalized(8,servo_pos*max_speed)==-1) return -1;
