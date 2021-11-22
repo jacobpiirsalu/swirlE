@@ -90,7 +90,7 @@ int main() {
             servo_pos = sweep_limit;
         }
 
-        //printf("%d\n",loopctr);
+        //printf("%d\n",loopctr) ;
         if(loopctr>5) {
             double l_red_val = colour_sensor_red(CS_OUT1);
             double r_red_val = colour_sensor_red(CS_OUT2);
