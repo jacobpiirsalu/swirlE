@@ -261,16 +261,10 @@ int robot_move_forward_bullseye(int frequency_hz) {
     // Main loop runs at frequency_hz
     int rotationsCompleted = 0;
     while (running) {
-        // scale with frequency
         servo_pos += direction * sweep_limit / frequency_hz;
-        // reset pulse width at end of sweep
 
-        net_servo_pos = (servo_pos + direction * rotationsCompleted * 1.5);
-        //printf("%f: %f\n", net_servo_pos * (180 / 1.5) * 2, servo_pos * (180 / 1.5) * 2);
         if (servo_pos > sweep_limit) {
             servo_pos = sweep_limit;
-            rotationsCompleted++;
-            //direction = -1;
         }
 
         /**
@@ -291,7 +285,7 @@ int robot_move_forward_bullseye(int frequency_hz) {
 
         // sleep roughly enough to maintain frequency_hz
         rc_usleep(1000000 / frequency_hz);
-
+        counter++;
         if (counter > 5) break;
 
     }
