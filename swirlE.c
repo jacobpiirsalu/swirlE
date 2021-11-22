@@ -69,7 +69,8 @@ int main() {
     int loopctr = 0;
     printf("starting line following\n");
     int blue_ctr = 0;
-    while (running) {
+    robot_move_cup_up(frequency_hz);
+    while (0) {
         loopctr++;
 
         leftC_sense = colour_sensor_red(CS_OUT1) + colour_sensor_green(CS_OUT1) + colour_sensor_blue(CS_OUT1); //left
