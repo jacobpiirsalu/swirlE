@@ -426,8 +426,8 @@ double colour_sensor_blue(int OUT) {
     double freq = 0.0;
 
     //READ READ S2 = L, S3 = L
-    rc_gpio_set_value(2, CS_S2, 1); //set S2 L
-    rc_gpio_set_value(2, CS_S3, 0); //set S3 L
+    rc_gpio_set_value(2, CS_S2, 0); //set S2 L
+    rc_gpio_set_value(2, CS_S3, 1); //set S3 L
 
     uint64_t *timeRise1Ptr = malloc(sizeof(uint64_t));
     uint64_t *timeFall1Ptr = malloc(sizeof(uint64_t));
