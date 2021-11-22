@@ -75,23 +75,23 @@ int main() {
     double pulseR = 0.0;
     double pulseL = 0.0;
     while(1){
-        double l_red_val = colour_sensor_red(CS_OUT1);
+        //double l_red_val = colour_sensor_red(CS_OUT1);
         double r_red_val = colour_sensor_red(CS_OUT2);
-        l_r_avg = rolling_avg(l_red_arr,&l_red_val,&l_r_sum);
+        //l_r_avg = rolling_avg(l_red_arr,&l_red_val,&l_r_sum);
         r_r_avg = rolling_avg(r_red_arr,&r_red_val,&r_r_sum);
         //printf("%f,%f\n",l_r_avg,r_r_avg);
 
-        double l_green_val = colour_sensor_green(CS_OUT1);
-        double r_green_val = colour_sensor_green(CS_OUT2);
-        l_g_avg = rolling_avg(l_green_arr,&l_green_val,&l_g_sum);
-        r_g_avg = rolling_avg(r_green_arr,&r_green_val,&r_g_sum);
+//        double l_green_val = colour_sensor_green(CS_OUT1);
+//        double r_green_val = colour_sensor_green(CS_OUT2);
+//        l_g_avg = rolling_avg(l_green_arr,&l_green_val,&l_g_sum);
+//        r_g_avg = rolling_avg(r_green_arr,&r_green_val,&r_g_sum);
+//
+//        double l_blue_val = colour_sensor_blue(CS_OUT1);
+//        double r_blue_val = colour_sensor_blue(CS_OUT2);
+//        l_b_avg = rolling_avg(l_blue_arr,&l_blue_val,&l_b_sum);
+//        r_b_avg = rolling_avg(r_blue_arr,&r_blue_val,&r_b_sum);
 
-        double l_blue_val = colour_sensor_blue(CS_OUT1);
-        double r_blue_val = colour_sensor_blue(CS_OUT2);
-        l_b_avg = rolling_avg(l_blue_arr,&l_blue_val,&l_b_sum);
-        r_b_avg = rolling_avg(r_blue_arr,&r_blue_val,&r_b_sum);
-
-        printf("%f,%f\n",l_r_avg,r_r_avg);
+        printf("%f\n",r_r_avg);
     }
     while(0) {
         servo_pos += direction * sweep_limit / frequency_hz;
