@@ -252,6 +252,11 @@ int robot_move_forward_bullseye(int frequency_hz) {
     double sweep_limit = 1.5 * direction;
     double net_servo_pos = 0;
     //int rotationsCompleted = 0;
+    double max_speed = 0.08*1.0; //base speed of swirlE
+    // - works decently at 0.08*1.25 and window size 3
+    //safe speed is 0.08
+
+    double r_wheel_gain = 1.35; //1.35 when full battery 1.5 when under 50%
 
     // Main loop runs at frequency_hz
     int rotationsCompleted = 0;
@@ -278,11 +283,11 @@ int robot_move_forward_bullseye(int frequency_hz) {
         // send result
 
         //ch = 7;
-        if (rc_servo_send_pulse_normalized(7, -servo_pos / 2.8) == -1) return -1;
+        if (rc_servo_send_pulse_normalized(7, -r_wheel_gain*servo_pos *max_speed) == -1) return -1;
         counter++;
 
         //ch = 8;
-        if(rc_servo_send_pulse_normalized(8,servo_pos/2.8)==-1) return -1;
+        if(rc_servo_send_pulse_normalized(8,servo_pos*max_speed)==-1) return -1;
 
         // sleep roughly enough to maintain frequency_hz
         rc_usleep(1000000 / frequency_hz);
