@@ -102,13 +102,14 @@ int main() {
             double r_green_val = colour_sensor_green(CS_OUT2);
             l_g_avg = rolling_avg(l_green_arr,&l_green_val,&l_g_sum);
             r_g_avg = rolling_avg(r_green_arr,&r_green_val,&r_g_sum);
+            printf("%f\n",l_g_avg);
 
 
             double l_blue_val = colour_sensor_blue(CS_OUT1);
             double r_blue_val = colour_sensor_blue(CS_OUT2);
             l_b_avg = rolling_avg(l_blue_arr,&l_blue_val,&l_b_sum);
             r_b_avg = rolling_avg(r_blue_arr,&r_blue_val,&r_b_sum);
-            printf("%f\n",l_b_avg);
+
 
             double blue_delta_l = l_b_avg - (l_r_avg + l_g_avg) / 2.0; //blue should be higher
             double blue_delta_r = r_b_avg - (r_r_avg + r_g_avg) / 2.0; //blue should be higher
