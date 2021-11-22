@@ -96,7 +96,7 @@ int main() {
             double r_red_val = colour_sensor_red(CS_OUT2);
             l_r_avg = rolling_avg(l_red_arr,&l_red_val,&l_r_sum);
             r_r_avg = rolling_avg(r_red_arr,&r_red_val,&r_r_sum);
-            printf("%f,%f\n",l_red_val,r_red_val);
+            printf("%f,%f\n",l_r_avg,r_r_avg);
 
             double l_green_val = colour_sensor_green(CS_OUT1);
             double r_green_val = colour_sensor_green(CS_OUT2);
@@ -132,6 +132,7 @@ int main() {
         if (servo_pos > sweep_limit) {
             servo_pos = sweep_limit;
         }
+        /**
         if (corr_factor_avg - 1.10/1.1000 > 0) {
 
             //ch = 7; right servo, -1 pulse
@@ -287,6 +288,7 @@ int main() {
             pulseL = pulseL < 1.5 ? pulseL : 1.5;
             rc_servo_send_pulse_normalized(8, pulseL);
         }
+        **/
         // sleep roughly enough to maintain frequency_hz
         rc_usleep(1000000 / frequency_hz);
     }
