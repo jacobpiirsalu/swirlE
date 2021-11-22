@@ -72,7 +72,7 @@ int main() {
     while(!(robot_move_cup_up(frequency_hz) == 1));
     while(!(robot_move_cup_down(frequency_hz)==1));
     rc_usleep(1000000);
-    robot_forward(10,frequency_hz);
+    //robot_forward(10,frequency_hz);
     //robot_move_cup_up(frequency_hz);
     while (0) {
         loopctr++;
