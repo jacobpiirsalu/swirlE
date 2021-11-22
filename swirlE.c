@@ -173,7 +173,7 @@ int main() {
 //        avg_val_ctr = (avg_val_ctr + 1) % WINDOW; //window size
 //        corr_factor_avg = sum / WINDOW;
         corr_factor_avg = rolling_avg(corr_arr,&corr_factor,&sum);
-        printf("%f",corr_factor_avg);
+        printf("%f\n",corr_factor_avg);
 
         //printf("%f\n",corr_factor_avg);
 
@@ -363,7 +363,7 @@ int main() {
             rc_usleep(1);
             r_b_avg = rolling_avg(r_blue_arr,&r_blue_val,&r_b_sum);
             rc_usleep(1);
-            printf("%f,%f,%f\n",l_r_avg,l_g_avg,l_b_avg);
+            //printf("%f,%f,%f\n",l_r_avg,l_g_avg,l_b_avg);
 
 
             double blue_delta_l = l_b_avg - (l_r_avg + l_g_avg) / 2.0; //blue should be higher
