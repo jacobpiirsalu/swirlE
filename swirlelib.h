@@ -102,7 +102,7 @@ void robot_back(int numRotations, int frequency_hz) {
     }
 }
 
-void robot_turn_cw(double degrees, int frequency_hz) {
+int robot_turn_cw(double degrees, int frequency_hz) {
     double reqRotations = degrees / 2.0 * (1.5 / 180.0);
     double servo_pos = 0;
     double direction = 1;    // switches between 1 &-1 in sweep mode
@@ -146,6 +146,7 @@ void robot_turn_cw(double degrees, int frequency_hz) {
         if (net_servo_pos > reqRotations * 2.8) break;
 
     }
+    return 1;
 }
 
 int robot_move_cup_down(int frequency_hz) {

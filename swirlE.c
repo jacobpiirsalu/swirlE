@@ -69,11 +69,62 @@ int main() {
     int loopctr = 0;
     printf("starting line following\n");
     int blue_ctr = 0;
+
     while(!(robot_move_cup_up(frequency_hz) == 1));
+    rc_usleep(1000000/2.0);
+    while(1) {
+        //ch = 7; right servo
+        pulseR = r_wheel_gain * (servo_pos * max_speed);
+        pulseR = pulseR < 1.5 ? pulseR : 1.5;
+        rc_servo_send_pulse_normalized(7, -pulseR);
+
+        //ch = 8; left servo
+        pulseL = (servo_pos * max_speed);
+        pulseL = pulseL < 1.5 ? pulseL : 1.5;
+        rc_servo_send_pulse_normalized(8, pulseL);
+
+        double l_red_val = colour_sensor_red(CS_OUT1);
+        double r_red_val = colour_sensor_red(CS_OUT2);
+        l_r_avg = rolling_avg(l_red_arr,&l_red_val,&l_r_sum);
+        r_r_avg = rolling_avg(r_red_arr,&r_red_val,&r_r_sum);
+        //printf("%f,%f\n",l_r_avg,r_r_avg);
+
+        double l_green_val = colour_sensor_green(CS_OUT1);
+        double r_green_val = colour_sensor_green(CS_OUT2);
+        l_g_avg = rolling_avg(l_green_arr,&l_green_val,&l_g_sum);
+        r_g_avg = rolling_avg(r_green_arr,&r_green_val,&r_g_sum);
+
+        double l_blue_val = colour_sensor_blue(CS_OUT1);
+        double r_blue_val = colour_sensor_blue(CS_OUT2);
+        l_b_avg = rolling_avg(l_blue_arr,&l_blue_val,&l_b_sum);
+        r_b_avg = rolling_avg(r_blue_arr,&r_blue_val,&r_b_sum);
+
+        double blue_delta_l = l_b_avg - (l_r_avg + l_g_avg) / 2.0; //blue should be higher
+        double blue_delta_r = r_b_avg - (r_r_avg + r_g_avg) / 2.0; //blue should be higher
+        //when over blue
+        //printf("%f\n", blue_delta_l);
+        if (blue_delta_l > 0) {
+            blue_ctr++;
+        }
+        if (blue_delta_l < 0) {
+            blue_ctr = 0;
+        }
+        if (blue_ctr > 1) {
+            blue_ctr = 0;
+            printf("\nsaw blue\n");
+            break;
+        }
+
+    }
+    rc_usleep(1000000/2.0);
+    robot_forward(0.5,frequency_hz);
     rc_usleep(1000000/2.0);
     while(!(robot_move_cup_down(frequency_hz)==1));
     rc_usleep(1000000/2.0);
-    robot_forward(10,frequency_hz);
+    while(!(robot_turn_cw(180)));
+    rc_usleep(1000000/2.0);
+    robot_forward(5,frequency_hz);
+
     //robot_move_cup_up(frequency_hz);
     while (0) {
         loopctr++;
