@@ -21,7 +21,7 @@
 
 //colour detection thresholds
 #define TURN_THRESHOLD 0.1
-#define BLUE_THRESHOLD 50
+#define BLUE_THRESHOLD 500
 #define SLEEP_TIME 50000
 #define DOUBLE_RED_THRESHOLD 50
 
