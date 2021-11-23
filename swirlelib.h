@@ -20,7 +20,7 @@
 #define WINDOW 7
 
 //colour detection thresholds
-#define TURN_THRESHOLD 0.12
+#define TURN_THRESHOLD 0.2
 #define BLUE_THRESHOLD 5000
 #define SLEEP_TIME 50000
 #define DOUBLE_RED_THRESHOLD 50

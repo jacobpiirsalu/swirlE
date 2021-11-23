@@ -117,7 +117,7 @@ int main() {
                 if (corr_factor_avg - TURN_THRESHOLD > 0) { //left sensor greater than right, turn right
 
                     //ch = 7; right servo, -1 pulse
-                    pulseR = r_wheel_gain * (servo_pos * max_speed * 6);
+                    pulseR = r_wheel_gain * (servo_pos * max_speed * 3);
                     pulseR = pulseR < 1.5 ? pulseR : 1.5;
                     rc_servo_send_pulse_normalized(7, -pulseR);
 
@@ -132,7 +132,7 @@ int main() {
                     rc_servo_send_pulse_normalized(7, -pulseR);
 
                     //ch = 8; left servo
-                    pulseL = (servo_pos * max_speed * 6);
+                    pulseL = (servo_pos * max_speed * 3);
                     pulseL = pulseL < 1.5 ? pulseL : 1.5;
                     rc_servo_send_pulse_normalized(8, pulseL);
                 } else {
