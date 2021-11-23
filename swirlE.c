@@ -169,7 +169,7 @@ int main() {
                 }
             }
             if(!state[0] && !state[1] && !state[2] && state[3]) { //returning after drop off in state 0001
-                if(r_r_avg - DOUBLE_RED_THRESHOLD > (r_g_avg+r_b_avg)/2.0 || l_r_avg - DOUBLE_RED_THRESHOLD > (l_g_avg+l_b_avg)/2.0) {
+                if((r_r_avg - DOUBLE_RED_THRESHOLD > (r_g_avg+r_b_avg)/2.0) || (l_r_avg - DOUBLE_RED_THRESHOLD > (l_g_avg+l_b_avg)/2.0)) {
                     printf("\nend of course, shutting off\n");
                     break;
                 }
