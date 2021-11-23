@@ -78,6 +78,10 @@ int main() {
     //robot_move_cup_up(frequency_hz); //cup starts down
     //rc_usleep(SLEEP_TIME);
     int loopctr = 0;
+    FILE *fp;
+
+    fp = fopen("/output.csv", "w+");
+
     //MAIN CODE:
     while(1) {
         loopctr++;
@@ -112,7 +116,8 @@ int main() {
             if (servo_pos > sweep_limit) {
                 servo_pos = sweep_limit;
             }
-            printf("%d,%f,%f,%f,%f,%f,%f\n",loopctr,l_r_avg,l_g_avg,l_b_avg,r_r_avg,r_g_avg,r_b_avg);
+            fprintf(fp, "%d,%f,%f,%f,%f,%f,%f\n",loopctr,l_r_avg,l_g_avg,l_b_avg,r_r_avg,r_g_avg,r_b_avg);
+            //printf("%d,%f,%f,%f,%f,%f,%f\n",loopctr,l_r_avg,l_g_avg,l_b_avg,r_r_avg,r_g_avg,r_b_avg);
 
         }
     }
