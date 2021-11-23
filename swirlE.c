@@ -77,7 +77,7 @@ int main() {
     //state is arranged as: forward/back, capturing, dropping, returning
     //robot_move_cup_up(frequency_hz); //cup starts down
     //rc_usleep(SLEEP_TIME);
-    int loopctr;
+    int loopctr = 0;
     //MAIN CODE:
     while(1) {
         loopctr++;
