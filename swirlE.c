@@ -395,12 +395,42 @@ int main() {
         rc_usleep(1000000 / frequency_hz);
     }
     while (1) {
+        leftC_sense = colour_sensor_red(CS_OUT1) + colour_sensor_green(CS_OUT1) + colour_sensor_blue(CS_OUT1); //left
+        rc_usleep(1);
+        rightC_sense = colour_sensor_red(CS_OUT2) + colour_sensor_green(CS_OUT2) + colour_sensor_blue(CS_OUT2); //right
+
+        corr_factor = gain * (rightC_sense - leftC_sense) / (leftC_sense + rightC_sense);
+        corr_factor_avg = rolling_avg(corr_arr,&corr_factor,&sum)
         servo_pos += direction * sweep_limit / frequency_hz;
 
         if (servo_pos > sweep_limit) {
             servo_pos = sweep_limit;
         }
-        if(1) {
+
+        if (corr_factor_avg - 1.10/1.0000 > 0) {
+
+            //ch = 7; right servo, -1 pulse
+            pulseR = r_wheel_gain * (servo_pos * max_speed * 6);
+            pulseR = pulseR < 1.5 ? pulseR : 1.5;
+            rc_servo_send_pulse_normalized(7, -pulseR);
+
+            //ch = 8; left servo
+            pulseL = 0 * servo_pos * max_speed;
+            pulseL = pulseL < 1.5 ? pulseL : 1.5;
+            rc_servo_send_pulse_normalized(8, pulseL);
+        }
+        else if (corr_factor_avg + 1.10/1.0000 < 0) {
+            //ch = 7; right servo
+            pulseR = r_wheel_gain * 0 * (servo_pos * max_speed);
+            pulseR = pulseR < 1.5 ? pulseR : 1.5;
+            rc_servo_send_pulse_normalized(7, -pulseR);
+
+            //ch = 8; left servo
+            pulseL = (servo_pos * max_speed * 6);
+            pulseL = pulseL < 1.5 ? pulseL : 1.5;
+            rc_servo_send_pulse_normalized(8, pulseL);
+        }
+        else {
             //ch = 7; right servo
             pulseR = r_wheel_gain * (servo_pos * max_speed);
             pulseR = pulseR < 1.5 ? pulseR : 1.5;
