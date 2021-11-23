@@ -80,7 +80,7 @@ int main() {
     int loopctr = 0;
     FILE *fp;
 
-    fp = fopen("/output.csv", "w+");
+    fp = fopen("./output.csv", "w+");
 
     //MAIN CODE:
     while(1) {
