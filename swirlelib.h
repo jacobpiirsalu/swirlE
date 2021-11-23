@@ -19,6 +19,12 @@
 
 #define WINDOW 7
 
+//colour detection thresholds
+#define TURN_THRESHOLD 0.1
+#define BLUE_THRESHOLD 50
+#define SLEEP_TIME 50000
+#define DOUBLE_RED_THRESHOLD
+
 static int running = 1;
 
 void robot_forward(int numRotations, int frequency_hz) {
