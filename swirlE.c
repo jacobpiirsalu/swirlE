@@ -77,8 +77,10 @@ int main() {
     //state is arranged as: forward/back, capturing, dropping, returning
     robot_move_cup_up(frequency_hz); //cup starts down
     rc_usleep(SLEEP_TIME);
+    int loopctr;
     //MAIN CODE:
     while(1) {
+        loopctr++;
         if (!state[1] && !state[2]) { //line following state X00X
             double l_red_val = colour_sensor_red(CS_OUT1);
             rc_usleep(1);
@@ -110,7 +112,7 @@ int main() {
             if (servo_pos > sweep_limit) {
                 servo_pos = sweep_limit;
             }
-            printf("%f\n", corr_factor_avg);
+            printf("%d,%f,%f,%f,%f,%f,%f\n",loopctr,l_r_avg,l_g_avg,l_b_avg,r_r_avg,r_g_avg,r_b_avg);
 
         }
     }
