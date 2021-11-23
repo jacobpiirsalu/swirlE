@@ -150,13 +150,22 @@ int main() {
             if(state[0] && !state[1] && !state[2] && !state[3]) { //if going towards bullseye in state 1000
                 if(l_b_avg > ((l_g_avg+l_r_avg)/2.0 + BLUE_THRESHOLD) || r_b_avg > ((r_g_avg+r_r_avg)/2.0 + BLUE_THRESHOLD)) {
                     printf("\nsaw blue, going to capture mode\n");
-                    state = {1, 1, 0, 0}; //change state to capture mode
+                    //state = {1, 1, 0, 0}; //change state to capture mode
+                    state[0] = 1;
+                    state[1] = 1;
+                    state[2] = 0;
+                    state[3] = 0;
+
                 }
             }
             if(!state[0] && !state[1] && !state[2] && !state[3]) { //if sees tree on the way back in state 0000
                 if(distance_measurement_left() < 12) {
                     printf("\nsaw dropzone, going to drop off mode\n");
-                    state = {0,0,1,0};
+                    //state = {0,0,1,0};
+                    state[0] = 0;
+                    state[1] = 0;
+                    state[2] = 1;
+                    state[3] = 0;
                 }
             }
             if(!state[0] && !state[1] && !state[2] && state[3]) { //returning after drop off in state 0001
@@ -180,7 +189,11 @@ int main() {
             robot_move_cup_down(frequency_hz);
             rc_usleep(SLEEP_TIME);
             robot_turn_cw(110,frequency_hz);
-            state = {0, 0, 0, 0}; //set state back to line following
+            //state = {0, 0, 0, 0}; //set state back to line following
+            state[0] = 0;
+            state[1] = 0;
+            state[2] = 0;
+            state[3] = 0;
         }
         if(!state[0] && !state[1] && state[2] && !state[3]) { //drop off state 0010
             //stop
@@ -196,7 +209,11 @@ int main() {
             rc_ulseep(SLEEP_TIME);
             robot_turn_cw(110.0/2,frequency_hz); //turn cw 90
             rc_usleep(SLEEP_TIME);
-            state = {0,0,0,1};
+            //state = {0,0,0,1};
+            state[0] = 0;
+            state[1] = 0;
+            state[2] = 0;
+            state[3] = 1;
         }
 
     }
