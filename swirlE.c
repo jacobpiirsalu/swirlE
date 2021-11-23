@@ -159,7 +159,7 @@ int main() {
 //    robot_forward(5,frequency_hz);
 
     //robot_move_cup_up(frequency_hz);
-    while (1) {
+    while (0) {
         loopctr++;
 
         leftC_sense = colour_sensor_red(CS_OUT1) + colour_sensor_green(CS_OUT1) + colour_sensor_blue(CS_OUT1); //left
@@ -341,7 +341,6 @@ int main() {
             rc_servo_send_pulse_normalized(8, pulseL);
         }
 
-
         //printf("%d\n",loopctr) ;
         if(loopctr>100) {
 //            double l_red_val = colour_sensor_red(CS_OUT1);
@@ -395,6 +394,25 @@ int main() {
         // sleep roughly enough to maintain frequency_hz
         rc_usleep(1000000 / frequency_hz);
     }
+    while (1) {
+        servo_pos += direction * sweep_limit / frequency_hz;
+
+        if (servo_pos > sweep_limit) {
+            servo_pos = sweep_limit;
+        }
+        if(1) {
+            //ch = 7; right servo
+            pulseR = r_wheel_gain * (servo_pos * max_speed);
+            pulseR = pulseR < 1.5 ? pulseR : 1.5;
+            rc_servo_send_pulse_normalized(7, -pulseR);
+
+            //ch = 8; left servo
+            pulseL = (servo_pos * max_speed);
+            pulseL = pulseL < 1.5 ? pulseL : 1.5;
+            rc_servo_send_pulse_normalized(8, pulseL);
+        }
+    }
+
     rc_usleep(1000000/2.0);
     while(!(robot_move_cup_up(frequency_hz)==1));
     rc_usleep(1000000/2.0);
