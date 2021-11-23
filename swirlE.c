@@ -112,7 +112,7 @@ int main() {
             }
             printf("%f\n", corr_factor_avg);
             //line following state: 1000 and 0000
-            if (r_r_avg > (r_g_avg + r_b_avg) / 2 || l_r_avg > (l_g_avg + l_b_avg) / 2) { //only turn if seeing red
+            if (r_r_avg - 50 > (r_g_avg + r_b_avg) / 2 || l_r_avg - 50 > (l_g_avg + l_b_avg) / 2) { //only turn if seeing red
                 printf("\nturning\n");
                 if (corr_factor_avg - TURN_THRESHOLD*3 > 0) { //left sensor greater than right, turn right
 
