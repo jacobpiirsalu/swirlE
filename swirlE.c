@@ -117,7 +117,7 @@ int main() {
                 servo_pos = sweep_limit;
             }
             fprintf(fp, "%d,%f,%f,%f,%f,%f,%f\n",loopctr,l_r_avg,l_g_avg,l_b_avg,r_r_avg,r_g_avg,r_b_avg);
-            //printf("%d,%f,%f,%f,%f,%f,%f\n",loopctr,l_r_avg,l_g_avg,l_b_avg,r_r_avg,r_g_avg,r_b_avg);
+            printf("%d,%f,%f,%f,%f,%f,%f\n",loopctr,l_r_avg,l_g_avg,l_b_avg,r_r_avg,r_g_avg,r_b_avg);
 
         }
     }
