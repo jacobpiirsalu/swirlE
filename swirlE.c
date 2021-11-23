@@ -121,9 +121,9 @@ int main() {
             }
             printf("%f\n", corr_factor_avg);
             //line following state: 1000 and 0000
-            if (r_r_avg - 50 > (r_g_avg + r_b_avg) / 2 || l_r_avg - 50 > (l_g_avg + l_b_avg) / 2) { //only turn if seeing red
+            if (1) { //only turn if seeing red
                 printf("\nturning\n");
-                if (corr_factor_avg - TURN_THRESHOLD*3 > 0) { //left sensor greater than right, turn right
+                if (l_r_avg < LEFT_RED_LINE + 100) { //left sensor greater than right, turn right
 
                     //ch = 7; right servo, -1 pulse
                     pulseR = r_wheel_gain * (servo_pos * max_speed * 10);
@@ -134,7 +134,7 @@ int main() {
                     pulseL = 0 * servo_pos * max_speed;
                     pulseL = pulseL < 1.5 ? pulseL : 1.5;
                     rc_servo_send_pulse_normalized(8, pulseL);
-                } else if (corr_factor_avg + TURN_THRESHOLD*3 < 0) { //right sensor greater than left, turn left
+                } else if (l_r_avg < LEFT_RED_LINE + 100) { //right sensor greater than left, turn left
                     //ch = 7; right servo
                     pulseR = r_wheel_gain * 0 * (servo_pos * max_speed);
                     pulseR = pulseR < 1.5 ? pulseR : 1.5;
@@ -145,50 +145,51 @@ int main() {
                     pulseL = pulseL < 1.5 ? pulseL : 1.5;
                     rc_servo_send_pulse_normalized(8, pulseL);
                 }
-                else if (corr_factor_avg - TURN_THRESHOLD*2 > 0) { //left sensor greater than right, turn right
-
-                    //ch = 7; right servo, -1 pulse
-                    pulseR = r_wheel_gain * (servo_pos * max_speed * 10);
-                    pulseR = pulseR < 1.5 ? pulseR : 1.5;
-                    rc_servo_send_pulse_normalized(7, -pulseR);
-
-                    //ch = 8; left servo
-                    pulseL = 0.5 * servo_pos * max_speed;
-                    pulseL = pulseL < 1.5 ? pulseL : 1.5;
-                    rc_servo_send_pulse_normalized(8, pulseL);
-                } else if (corr_factor_avg + TURN_THRESHOLD*2 < 0) { //right sensor greater than left, turn left
-                    //ch = 7; right servo
-                    pulseR = r_wheel_gain * 0.5 * (servo_pos * max_speed);
-                    pulseR = pulseR < 1.5 ? pulseR : 1.5;
-                    rc_servo_send_pulse_normalized(7, -pulseR);
-
-                    //ch = 8; left servo
-                    pulseL = (servo_pos * max_speed * 10);
-                    pulseL = pulseL < 1.5 ? pulseL : 1.5;
-                    rc_servo_send_pulse_normalized(8, pulseL);
-                }
-                else if (corr_factor_avg - TURN_THRESHOLD*2 > 0) { //left sensor greater than right, turn right
-
-                    //ch = 7; right servo, -1 pulse
-                    pulseR = r_wheel_gain * (servo_pos * max_speed * 5);
-                    pulseR = pulseR < 1.5 ? pulseR : 1.5;
-                    rc_servo_send_pulse_normalized(7, -pulseR);
-
-                    //ch = 8; left servo
-                    pulseL = servo_pos * max_speed;
-                    pulseL = pulseL < 1.5 ? pulseL : 1.5;
-                    rc_servo_send_pulse_normalized(8, pulseL);
-                } else if (corr_factor_avg + TURN_THRESHOLD < 0) { //right sensor greater than left, turn left
-                    //ch = 7; right servo
-                    pulseR = r_wheel_gain * (servo_pos * max_speed);
-                    pulseR = pulseR < 1.5 ? pulseR : 1.5;
-                    rc_servo_send_pulse_normalized(7, -pulseR);
-
-                    //ch = 8; left servo
-                    pulseL = (servo_pos * max_speed * 5);
-                    pulseL = pulseL < 1.5 ? pulseL : 1.5;
-                    rc_servo_send_pulse_normalized(8, pulseL);
-                } else {
+//                else if (corr_factor_avg - TURN_THRESHOLD*2 > 0) { //left sensor greater than right, turn right
+//
+//                    //ch = 7; right servo, -1 pulse
+//                    pulseR = r_wheel_gain * (servo_pos * max_speed * 10);
+//                    pulseR = pulseR < 1.5 ? pulseR : 1.5;
+//                    rc_servo_send_pulse_normalized(7, -pulseR);
+//
+//                    //ch = 8; left servo
+//                    pulseL = 0.5 * servo_pos * max_speed;
+//                    pulseL = pulseL < 1.5 ? pulseL : 1.5;
+//                    rc_servo_send_pulse_normalized(8, pulseL);
+//                } else if (corr_factor_avg + TURN_THRESHOLD*2 < 0) { //right sensor greater than left, turn left
+//                    //ch = 7; right servo
+//                    pulseR = r_wheel_gain * 0.5 * (servo_pos * max_speed);
+//                    pulseR = pulseR < 1.5 ? pulseR : 1.5;
+//                    rc_servo_send_pulse_normalized(7, -pulseR);
+//
+//                    //ch = 8; left servo
+//                    pulseL = (servo_pos * max_speed * 10);
+//                    pulseL = pulseL < 1.5 ? pulseL : 1.5;
+//                    rc_servo_send_pulse_normalized(8, pulseL);
+//                }
+//                else if (corr_factor_avg - TURN_THRESHOLD*2 > 0) { //left sensor greater than right, turn right
+//
+//                    //ch = 7; right servo, -1 pulse
+//                    pulseR = r_wheel_gain * (servo_pos * max_speed * 5);
+//                    pulseR = pulseR < 1.5 ? pulseR : 1.5;
+//                    rc_servo_send_pulse_normalized(7, -pulseR);
+//
+//                    //ch = 8; left servo
+//                    pulseL = servo_pos * max_speed;
+//                    pulseL = pulseL < 1.5 ? pulseL : 1.5;
+//                    rc_servo_send_pulse_normalized(8, pulseL);
+//                } else if (corr_factor_avg + TURN_THRESHOLD < 0) { //right sensor greater than left, turn left
+//                    //ch = 7; right servo
+//                    pulseR = r_wheel_gain * (servo_pos * max_speed);
+//                    pulseR = pulseR < 1.5 ? pulseR : 1.5;
+//                    rc_servo_send_pulse_normalized(7, -pulseR);
+//
+//                    //ch = 8; left servo
+//                    pulseL = (servo_pos * max_speed * 5);
+//                    pulseL = pulseL < 1.5 ? pulseL : 1.5;
+//                    rc_servo_send_pulse_normalized(8, pulseL);
+//                }
+                else {
                     //ch = 7; right servo
                     pulseR = r_wheel_gain * (servo_pos * max_speed);
                     pulseR = pulseR < 1.5 ? pulseR : 1.5;
