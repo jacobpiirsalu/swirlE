@@ -66,17 +66,17 @@ int main() {
     double corr_factor_avg = 0.0;
     double sum = 0;
 
-    printf("red test\n");
+    printf("RGB test\n");
     //robot_forward(1,frequency_hz);
 
     double pulseR = 0.0;
     double pulseL = 0.0;
 
     //setting states for operation
-    bool state[4] = {1, 0, 0, 0}; //initial state
+    //bool state[4] = {1, 0, 0, 0}; //initial state
     //state is arranged as: forward/back, capturing, dropping, returning
-    robot_move_cup_up(frequency_hz); //cup starts down
-    rc_usleep(SLEEP_TIME);
+    //robot_move_cup_up(frequency_hz); //cup starts down
+    //rc_usleep(SLEEP_TIME);
     int loopctr;
     //MAIN CODE:
     while(1) {
