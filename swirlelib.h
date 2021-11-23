@@ -17,10 +17,10 @@
 #define CS_OUT1 2//GPIO3_2, PURPLE -> left colour sensor
 #define CS_OUT2 1//GPIO3_1, BLU -> right colour sensor //swap
 
-#define WINDOW 7
+#define WINDOW 10
 
 //colour detection thresholds
-#define TURN_THRESHOLD 0.2
+#define TURN_THRESHOLD 0.1
 #define BLUE_THRESHOLD 5000
 #define SLEEP_TIME 50000
 #define DOUBLE_RED_THRESHOLD 50
