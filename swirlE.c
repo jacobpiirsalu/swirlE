@@ -403,11 +403,33 @@ int main() {
         corr_factor_avg = rolling_avg(corr_arr,&corr_factor,&sum);
         servo_pos += direction * sweep_limit / frequency_hz;
 
+        double l_red_val = colour_sensor_red(CS_OUT1);
+        double r_red_val = colour_sensor_red(CS_OUT2);
+        l_r_avg = rolling_avg(l_red_arr,&l_red_val,&l_r_sum);
+        r_r_avg = rolling_avg(r_red_arr,&r_red_val,&r_r_sum);
+        //printf("%f,%f\n",l_r_avg,r_r_avg);
+
+        double l_green_val = colour_sensor_green(CS_OUT1);
+        double r_green_val = colour_sensor_green(CS_OUT2);
+        l_g_avg = rolling_avg(l_green_arr,&l_green_val,&l_g_sum);
+        r_g_avg = rolling_avg(r_green_arr,&r_green_val,&r_g_sum);
+
+
+        double l_blue_val = colour_sensor_blue(CS_OUT1);
+        rc_usleep(1);
+        double r_blue_val = colour_sensor_blue(CS_OUT2);
+        rc_usleep(1);
+        l_b_avg = rolling_avg(l_blue_arr,&l_blue_val,&l_b_sum);
+        rc_usleep(1);
+        r_b_avg = rolling_avg(r_blue_arr,&r_blue_val,&r_b_sum);
+        rc_usleep(1);
+        //printf("%f,%f,%f\n",l_r_avg,l_g_avg,l_b_avg);
+
         if (servo_pos > sweep_limit) {
             servo_pos = sweep_limit;
         }
         printf("%f\n",corr_factor_avg);
-        if (corr_factor_avg - 0.1/1.0000 > 0) {
+        if (r_r_avg > l_r_avg + 100) {
 
             //ch = 7; right servo, -1 pulse
             pulseR = r_wheel_gain * (servo_pos * max_speed * 6);
@@ -419,7 +441,7 @@ int main() {
             pulseL = pulseL < 1.5 ? pulseL : 1.5;
             rc_servo_send_pulse_normalized(8, pulseL);
         }
-        else if (corr_factor_avg + 0.1/1.0000 < 0) {
+        else if (r_r_avg + 100 < l_r_avg) {
             //ch = 7; right servo
             pulseR = r_wheel_gain * 0 * (servo_pos * max_speed);
             pulseR = pulseR < 1.5 ? pulseR : 1.5;
