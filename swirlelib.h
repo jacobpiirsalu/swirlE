@@ -14,8 +14,8 @@
 //define colour sensor pins
 #define CS_S2 2 //GPIO2_2, LED RED, GREEN
 #define CS_S3 3 //GPIO2_3, LED GREEN, WHITE
-#define CS_OUT1 1//GPIO3_2, PURPLE -> left colour sensor
-#define CS_OUT2 2//GPIO3_1, BLU -> right colour sensor //swap
+#define CS_OUT1 2//GPIO3_2, PURPLE -> left colour sensor
+#define CS_OUT2 1//GPIO3_1, BLU -> right colour sensor //swap
 
 #define WINDOW 7
 
