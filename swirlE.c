@@ -80,24 +80,33 @@ int main() {
     //MAIN CODE:
     while(1) {
         if(!state[1] && !state[2]) { //line following state X00X
+            rc_usleep(10);
             double l_red_val = colour_sensor_red(CS_OUT1);
-            rc_usleep(1);
+            rc_usleep(10);
             double r_red_val = colour_sensor_red(CS_OUT2);
+            rc_usleep(10);
             l_r_avg = rolling_avg(l_red_arr, &l_red_val, &l_r_sum);
+            rc_usleep(10);
             r_r_avg = rolling_avg(r_red_arr, &r_red_val, &r_r_sum);
-
+            rc_usleep(10);
             double l_green_val = colour_sensor_green(CS_OUT1);
-            rc_usleep(1);
+            rc_usleep(10);
             double r_green_val = colour_sensor_green(CS_OUT2);
+            rc_usleep(10);
             l_g_avg = rolling_avg(l_green_arr, &l_green_val, &l_g_sum);
+            rc_usleep(10);
             r_g_avg = rolling_avg(r_green_arr, &r_green_val, &r_g_sum);
+            rc_usleep(10);
 
 
             double l_blue_val = colour_sensor_blue(CS_OUT1);
-            rc_usleep(1);
+            rc_usleep(10);
             double r_blue_val = colour_sensor_blue(CS_OUT2);
+            rc_usleep(10);
             l_b_avg = rolling_avg(l_blue_arr, &l_blue_val, &l_b_sum);
+            rc_usleep(10);
             r_b_avg = rolling_avg(r_blue_arr, &r_blue_val, &r_b_sum);
+            rc_usleep(10);
 
             leftC_sense = l_r_avg + l_g_avg + l_b_avg; //left
 
