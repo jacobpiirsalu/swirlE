@@ -71,7 +71,8 @@ int main() {
 
     double pulseR = 0.0;
     double pulseL = 0.0;
-
+    int bluectr = 0;
+    bool saw_blue = false;
     //setting states for operation
     bool state[4] = {1, 0, 0, 0}; //initial state
     //state is arranged as: forward/back, capturing, dropping, returning
@@ -123,7 +124,7 @@ int main() {
             //line following state: 1000 and 0000
             if (1) { //only turn if seeing red
                 printf("\nturning\n");
-                if ((l_r_avg + 100) < LEFT_RED_LINE) { //left sensor greater than right, turn right
+                if ((l_r_avg + 150) < LEFT_RED_LINE) { //left sensor greater than right, turn right
 
                     //ch = 7; right servo, -1 pulse
                     pulseR = r_wheel_gain * (servo_pos * max_speed * 10);
@@ -134,7 +135,7 @@ int main() {
                     pulseL = 0 * servo_pos * max_speed;
                     pulseL = pulseL < 1.5 ? pulseL : 1.5;
                     rc_servo_send_pulse_normalized(8, pulseL);
-                } else if ((r_r_avg + 100) < RIGHT_RED_LINE) { //right sensor greater than left, turn left
+                } else if ((r_r_avg + 150) < RIGHT_RED_LINE) { //right sensor greater than left, turn left
                     //ch = 7; right servo
                     pulseR = r_wheel_gain * 0 * (servo_pos * max_speed);
                     pulseR = pulseR < 1.5 ? pulseR : 1.5;
@@ -202,14 +203,24 @@ int main() {
                 }
             }
             if(state[0] && !state[1] && !state[2] && !state[3]) { //if going towards bullseye in state 1000
-                if(l_r_avg < ((l_g_avg+l_b_avg)/2.0 - BLUE_THRESHOLD) || r_r_avg < ((r_g_avg+r_b_avg)/2.0 - BLUE_THRESHOLD)) {
+                if((l_b_avg + 250) < BLUE_THRESHOLD) {
+                    bluectr++;
+                }
+                if((l_b_avg + 250) > BLUE_THRESHOLD) {
+                    bluectr = 0;
+                }
+                if(bluectr >= 5) {
+                    saw_blue = true;
+                }
+                if(saw_blue) {
                     printf("\nsaw blue, going to capture mode\n");
                     //state = {1, 1, 0, 0}; //change state to capture mode
                     //pause change to blue temporarily
-//                    state[0] = 1;
-//                    state[1] = 1;
-//                    state[2] = 0;
-//                    state[3] = 0;
+                    state[0] = 1;
+                    state[1] = 1;
+                    state[2] = 0;
+                    state[3] = 0;
+
 
                 }
             }

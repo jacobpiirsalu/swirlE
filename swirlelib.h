@@ -21,13 +21,13 @@
 
 //colour detection thresholds
 #define TURN_THRESHOLD 0.1
-#define BLUE_THRESHOLD 5000
 #define SLEEP_TIME 50000
 #define DOUBLE_RED_THRESHOLD 50
 #define LEFT_WOOD_RED 1300
 #define LEFT_RED_LINE 870
 #define RIGHT_WOOD_RED 1050
 #define RIGHT_RED_LINE 750
+#define BLUE_THRESHOLD 500
 
 static int running = 1;
 
