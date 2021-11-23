@@ -206,7 +206,7 @@ int main() {
             robot_turn_cw((110.0/2.0)*3.0,frequency_hz); //turn cw 270 to get drop zone on left
             rc_usleep(SLEEP_TIME);
             robot_move_cup_up(frequency_hz); //let go of lego man
-            rc_ulseep(SLEEP_TIME);
+            rc_usleep(SLEEP_TIME);
             robot_turn_cw(110.0/2,frequency_hz); //turn cw 90
             rc_usleep(SLEEP_TIME);
             //state = {0,0,0,1};
