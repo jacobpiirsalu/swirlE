@@ -79,7 +79,7 @@ int main() {
     rc_usleep(SLEEP_TIME);
     //MAIN CODE:
     while(1) {
-        if(!state[1] && !state[2]) { //line following state X00X
+        if (!state[1] && !state[2]) { //line following state X00X
             double l_red_val = colour_sensor_red(CS_OUT1);
             rc_usleep(1);
             double r_red_val = colour_sensor_red(CS_OUT2);
@@ -111,111 +111,8 @@ int main() {
                 servo_pos = sweep_limit;
             }
             printf("%f\n", corr_factor_avg);
-            //line following state: 1000 and 0000
-            if (r_r_avg > (r_g_avg + r_b_avg) / 2 || l_r_avg > (l_g_avg + l_b_avg) / 2) { //only turn if seeing red
-                printf("\nturning\n");
-                if (corr_factor_avg - TURN_THRESHOLD > 0) { //left sensor greater than right, turn right
-
-                    //ch = 7; right servo, -1 pulse
-                    pulseR = r_wheel_gain * (servo_pos * max_speed * 3);
-                    pulseR = pulseR < 1.5 ? pulseR : 1.5;
-                    rc_servo_send_pulse_normalized(7, -pulseR);
-
-                    //ch = 8; left servo
-                    pulseL = 0 * servo_pos * max_speed;
-                    pulseL = pulseL < 1.5 ? pulseL : 1.5;
-                    rc_servo_send_pulse_normalized(8, pulseL);
-                } else if (corr_factor_avg + TURN_THRESHOLD < 0) { //right sensor greater than left, turn left
-                    //ch = 7; right servo
-                    pulseR = r_wheel_gain * 0 * (servo_pos * max_speed);
-                    pulseR = pulseR < 1.5 ? pulseR : 1.5;
-                    rc_servo_send_pulse_normalized(7, -pulseR);
-
-                    //ch = 8; left servo
-                    pulseL = (servo_pos * max_speed * 3);
-                    pulseL = pulseL < 1.5 ? pulseL : 1.5;
-                    rc_servo_send_pulse_normalized(8, pulseL);
-                } else {
-                    //ch = 7; right servo
-                    pulseR = r_wheel_gain * (servo_pos * max_speed);
-                    pulseR = pulseR < 1.5 ? pulseR : 1.5;
-                    rc_servo_send_pulse_normalized(7, -pulseR);
-
-                    //ch = 8; left servo
-                    pulseL = (servo_pos * max_speed);
-                    pulseL = pulseL < 1.5 ? pulseL : 1.5;
-                    rc_servo_send_pulse_normalized(8, pulseL);
-                }
-            }
-            if(state[0] && !state[1] && !state[2] && !state[3]) { //if going towards bullseye in state 1000
-                if(l_r_avg < ((l_g_avg+l_b_avg)/2.0 - BLUE_THRESHOLD) || r_r_avg < ((r_g_avg+r_b_avg)/2.0 - BLUE_THRESHOLD)) {
-                    printf("\nsaw blue, going to capture mode\n");
-                    //state = {1, 1, 0, 0}; //change state to capture mode
-                    state[0] = 1;
-                    state[1] = 1;
-                    state[2] = 0;
-                    state[3] = 0;
-
-                }
-            }
-            if(!state[0] && !state[1] && !state[2] && !state[3]) { //if sees tree on the way back in state 0000
-                if(distance_measurement_left() < 12) {
-                    printf("\nsaw dropzone, going to drop off mode\n");
-                    //state = {0,0,1,0};
-                    state[0] = 0;
-                    state[1] = 0;
-                    state[2] = 1;
-                    state[3] = 0;
-                }
-            }
-            if(!state[0] && !state[1] && !state[2] && state[3]) { //returning after drop off in state 0001
-                if((r_r_avg - DOUBLE_RED_THRESHOLD) > (r_g_avg+r_b_avg)/2.0 || (l_r_avg - DOUBLE_RED_THRESHOLD) > (l_g_avg+l_b_avg)/2.0) {
-                    printf("\nend of course, shutting off\n");
-                    break;
-                }
-            }
 
         }
-        if(state[0] && state[1] && !state[2] && !state[3]) { //capturing state 1100
-            //stop
-            //ch = 7; right servo
-            rc_servo_send_pulse_normalized(7, 0);
-
-            //ch = 8; left servo
-            rc_servo_send_pulse_normalized(8, 0);
-
-            robot_move_forward_bullseye(frequency_hz);
-            rc_usleep(SLEEP_TIME);
-            robot_move_cup_down(frequency_hz);
-            rc_usleep(SLEEP_TIME);
-            robot_turn_cw(110,frequency_hz);
-            //state = {0, 0, 0, 0}; //set state back to line following
-            state[0] = 0;
-            state[1] = 0;
-            state[2] = 0;
-            state[3] = 0;
-        }
-        if(!state[0] && !state[1] && state[2] && !state[3]) { //drop off state 0010
-            //stop
-            //ch = 7; right servo
-            rc_servo_send_pulse_normalized(7, 0);
-
-            //ch = 8; left servo
-            rc_servo_send_pulse_normalized(8, 0);
-            rc_usleep(SLEEP_TIME);
-            robot_turn_cw((110.0/2.0)*3.0,frequency_hz); //turn cw 270 to get drop zone on left
-            rc_usleep(SLEEP_TIME);
-            robot_move_cup_up(frequency_hz); //let go of lego man
-            rc_usleep(SLEEP_TIME);
-            robot_turn_cw(110.0/2,frequency_hz); //turn cw 90
-            rc_usleep(SLEEP_TIME);
-            //state = {0,0,0,1};
-            state[0] = 0;
-            state[1] = 0;
-            state[2] = 0;
-            state[3] = 1;
-        }
-
     }
 
     // turn off power rail and cleanup
