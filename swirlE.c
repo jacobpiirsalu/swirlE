@@ -400,7 +400,7 @@ int main() {
         rightC_sense = colour_sensor_red(CS_OUT2) + colour_sensor_green(CS_OUT2) + colour_sensor_blue(CS_OUT2); //right
 
         corr_factor = gain * (rightC_sense - leftC_sense) / (leftC_sense + rightC_sense);
-        corr_factor_avg = rolling_avg(corr_arr,&corr_factor,&sum)
+        corr_factor_avg = rolling_avg(corr_arr,&corr_factor,&sum);
         servo_pos += direction * sweep_limit / frequency_hz;
 
         if (servo_pos > sweep_limit) {
