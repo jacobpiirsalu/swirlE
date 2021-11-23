@@ -195,10 +195,11 @@ int main() {
                 if(l_r_avg < ((l_g_avg+l_b_avg)/2.0 - BLUE_THRESHOLD) || r_r_avg < ((r_g_avg+r_b_avg)/2.0 - BLUE_THRESHOLD)) {
                     printf("\nsaw blue, going to capture mode\n");
                     //state = {1, 1, 0, 0}; //change state to capture mode
-                    state[0] = 1;
-                    state[1] = 1;
-                    state[2] = 0;
-                    state[3] = 0;
+                    //pause change to blue temporarily
+//                    state[0] = 1;
+//                    state[1] = 1;
+//                    state[2] = 0;
+//                    state[3] = 0;
 
                 }
             }
