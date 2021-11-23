@@ -406,7 +406,7 @@ int main() {
         if (servo_pos > sweep_limit) {
             servo_pos = sweep_limit;
         }
-        printf("%f\n",corr_factor_avg)
+        printf("%f\n",corr_factor_avg);
         if (corr_factor_avg - 0.5/1.0000 > 0) {
 
             //ch = 7; right servo, -1 pulse
