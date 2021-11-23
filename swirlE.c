@@ -123,7 +123,7 @@ int main() {
             //line following state: 1000 and 0000
             if (1) { //only turn if seeing red
                 printf("\nturning\n");
-                if (l_r_avg < (LEFT_RED_LINE + 1000)) { //left sensor greater than right, turn right
+                if ((l_r_avg + 100) < LEFT_RED_LINE) { //left sensor greater than right, turn right
 
                     //ch = 7; right servo, -1 pulse
                     pulseR = r_wheel_gain * (servo_pos * max_speed * 10);
@@ -134,7 +134,7 @@ int main() {
                     pulseL = 0 * servo_pos * max_speed;
                     pulseL = pulseL < 1.5 ? pulseL : 1.5;
                     rc_servo_send_pulse_normalized(8, pulseL);
-                } else if (r_r_avg < (RIGHT_RED_LINE + 1000)) { //right sensor greater than left, turn left
+                } else if ((r_r_avg + 100) < RIGHT_RED_LINE) { //right sensor greater than left, turn left
                     //ch = 7; right servo
                     pulseR = r_wheel_gain * 0 * (servo_pos * max_speed);
                     pulseR = pulseR < 1.5 ? pulseR : 1.5;
