@@ -73,7 +73,7 @@ int main() {
     double pulseL = 0.0;
 
     //setting states for operation
-    //bool state[4] = {1, 0, 0, 0}; //initial state
+    bool state[4] = {1, 0, 0, 0}; //initial state
     //state is arranged as: forward/back, capturing, dropping, returning
     //robot_move_cup_up(frequency_hz); //cup starts down
     //rc_usleep(SLEEP_TIME);
