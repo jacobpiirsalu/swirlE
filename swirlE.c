@@ -429,7 +429,7 @@ int main() {
             servo_pos = sweep_limit;
         }
         printf("%f  %f\n",r_r_avg,l_r_avg);
-        if (r_r_avg > l_r_avg + 50) {
+        if (r_r_avg + 50 < l_r_avg) {
 
             //ch = 7; right servo, -1 pulse
             pulseR = r_wheel_gain * (servo_pos * max_speed * 6);
@@ -441,7 +441,7 @@ int main() {
             pulseL = pulseL < 1.5 ? pulseL : 1.5;
             rc_servo_send_pulse_normalized(8, pulseL);
         }
-        else if (r_r_avg + 50 < l_r_avg) {
+        else if (r_r_avg > l_r_avg + 50) {
             //ch = 7; right servo
             pulseR = r_wheel_gain * 0 * (servo_pos * max_speed);
             pulseR = pulseR < 1.5 ? pulseR : 1.5;
