@@ -287,7 +287,7 @@ int main() {
             rc_usleep(SLEEP_TIME);
             robot_turn_ninety_ccw(frequency_hz);
             rc_usleep(SLEEP_TIME*10);
-            robot_back(4,frequency_hz);
+            robot_back(3,frequency_hz);
             rc_usleep(SLEEP_TIME*10);
 
             robot_move_cup_up(frequency_hz); //let go of lego man
