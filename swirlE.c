@@ -128,7 +128,7 @@ int main() {
 
             if(state[0] && !state[1] && !state[2] && !state[3]) { //if going towards bullseye in state 1000
                 printf("%f  %f\n",l_b_avg,r_b_avg);
-                if((l_b_avg) < BLUE_THRESHOLD+300 || (r_b_avg) < BLUE_THRESHOLD + 300) {
+                if(((l_b_avg) < BLUE_THRESHOLD+300 || (r_b_avg) < BLUE_THRESHOLD + 300) && l_g_avg > RIGHT_WOOD_RED) {
                     bluectr++;
                 }
                 if((l_b_avg) > BLUE_THRESHOLD + 300 || (r_b_avg) > BLUE_THRESHOLD + 300) {
