@@ -80,11 +80,11 @@ int main() {
     rc_usleep(SLEEP_TIME);
 //    robot_turn_ninety_ccw(frequency_hz);
 //    rc_usleep(SLEEP_TIME*1000);
-    robot_turn_ninety_cw(frequency_hz); //turn cw 90
-    rc_usleep(SLEEP_TIME*1000);
+//    robot_turn_ninety_cw(frequency_hz); //turn cw 90
+//    rc_usleep(SLEEP_TIME*1000);
     //robot_turn_ninety_cw(frequency_hz,1);
     //MAIN CODE:
-    while(0) {
+    while(1) {
         if(!state[1] && !state[2]) { //line following state X00X
             rc_usleep(20);
             double l_red_val = colour_sensor_red(CS_OUT1);
@@ -240,7 +240,7 @@ int main() {
                 }
             }
             if(!state[0] && !state[1] && !state[2] && state[3]) { //returning after drop off in state 0001
-                if((r_r_avg - DOUBLE_RED_THRESHOLD) > (r_g_avg+r_b_avg)/2.0 || (l_r_avg - DOUBLE_RED_THRESHOLD) > (l_g_avg+l_b_avg)/2.0) {
+                if((l_r_avg + 200) < LEFT_RED_LINE && (r_r_avg + 200) < RIGHT_RED_LINE) {
                     //printf("\nend of course, shutting off\n");
                     break;
                 }
