@@ -268,7 +268,7 @@ int main() {
             robot_turn_one_eighty(frequency_hz,1);
 
             rc_usleep(SLEEP_TIME*10);
-            //robot_back(3,frequency_hz);
+            robot_back(7,frequency_hz);
 
 
             //state = {0, 0, 0, 0}; //set state back to line following
