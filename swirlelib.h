@@ -27,7 +27,8 @@
 #define LEFT_RED_LINE 870
 #define RIGHT_WOOD_RED 1050
 #define RIGHT_RED_LINE 750
-#define BLUE_THRESHOLD 500
+//#define BLUE_THRESHOLD 500
+#define BLUE_THRESHOLD 625
 
 static int running = 1;
 

@@ -203,13 +203,13 @@ int main() {
                 }
             }
             if(state[0] && !state[1] && !state[2] && !state[3]) { //if going towards bullseye in state 1000
-                if((l_b_avg + 300) < BLUE_THRESHOLD || (r_b_avg + 300) < BLUE_THRESHOLD) {
+                if((l_b_avg + 100) < BLUE_THRESHOLD || (r_b_avg + 100) < BLUE_THRESHOLD) {
                     bluectr++;
                 }
-                if((l_b_avg + 300) > BLUE_THRESHOLD || (r_b_avg + 300) > BLUE_THRESHOLD) {
+                if((l_b_avg + 100) > BLUE_THRESHOLD || (r_b_avg + 100) > BLUE_THRESHOLD) {
                     bluectr = 0;
                 }
-                if(bluectr >= 5) {
+                if(bluectr >= 3) {
                     saw_blue = true;
                 }
                 if(saw_blue) {
