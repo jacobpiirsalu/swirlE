@@ -100,15 +100,15 @@ void robot_back(int numRotations, int frequency_hz) {
         // send result
 
         //ch = 7;
-        if (rc_servo_send_pulse_normalized(7, -servo_pos / 4) == -1) return -1;
+        if (rc_servo_send_pulse_normalized(7, -servo_pos / 10) == -1) return -1;
 
         //ch = 8;
-        if (rc_servo_send_pulse_normalized(8, servo_pos / 3.6) == -1) return -1;
+        if (rc_servo_send_pulse_normalized(8, servo_pos / 10) == -1) return -1;
 
         // sleep roughly enough to maintain frequency_hz
         rc_usleep(1000000 / frequency_hz);
 
-        if (rotationsCompleted >= numRotations * 4) break;
+        if (rotationsCompleted >= numRotations * 10) break;
 
     }
 }
@@ -201,7 +201,7 @@ int robot_move_cup_down(int frequency_hz) {
         // sleep roughly enough to maintain frequency_hz
         rc_usleep(1000000 / frequency_hz);
 
-        if (counter > 45) break;
+        if (counter > 47) break;
 
     }
     return 1;
