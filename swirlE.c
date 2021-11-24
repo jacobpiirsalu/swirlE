@@ -76,7 +76,7 @@ int main() {
     //setting states for operation
     bool state[4] = {1, 0, 0, 0}; //initial state
     //state is arranged as: forward/back, capturing, dropping, returning
-    robot_move_cup_up(frequency_hz); //cup starts down
+    //robot_move_cup_up(frequency_hz); //cup starts down
     rc_usleep(SLEEP_TIME*100);
     robot_turn_ninety_cw(frequency_hz);
     rc_usleep(SLEEP_TIME*100);
