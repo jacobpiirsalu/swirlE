@@ -43,7 +43,7 @@ int main() {
     double leftC_sense = 0.0;
     double rightC_sense = 0.0;
     double corr_factor = 0.0;
-    double max_speed = 0.08*1.5;//base speed of swirlE
+    double max_speed = 0.08*1.0;//base speed of swirlE
     // - works decently at 0.08*1.25 and window size 3
     //safe speed is 0.08
 
@@ -90,23 +90,23 @@ int main() {
         printf("%d\n",loopctr);
         if(!state[1] && !state[2]) { //line following state X00X
             //printf("line following\n");
-            rc_usleep(20);
+            rc_usleep(100);
             double l_red_val = colour_sensor_red(CS_OUT1);
-            rc_usleep(20);
+            rc_usleep(100);
             double r_red_val = colour_sensor_red(CS_OUT2);
-            rc_usleep(20);
+            rc_usleep(100);
             l_r_avg = rolling_avg(l_red_arr, &l_red_val, &l_r_sum);
-            rc_usleep(20);
+            //rc_usleep(20);
             r_r_avg = rolling_avg(r_red_arr, &r_red_val, &r_r_sum);
-            rc_usleep(20);
+            //rc_usleep(20);
             double l_green_val = colour_sensor_green(CS_OUT1);
-            rc_usleep(20);
+            rc_usleep(100);
             double r_green_val = colour_sensor_green(CS_OUT2);
-            rc_usleep(20);
+            rc_usleep(100);
             l_g_avg = rolling_avg(l_green_arr, &l_green_val, &l_g_sum);
-            rc_usleep(20);
+            //rc_usleep(20);
             r_g_avg = rolling_avg(r_green_arr, &r_green_val, &r_g_sum);
-            rc_usleep(20);
+            //rc_usleep(20);
 
 
             double l_blue_val = colour_sensor_blue(CS_OUT1);
