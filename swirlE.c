@@ -125,10 +125,10 @@ int main() {
             //line following state: 1000 and 0000
 
             if(state[0] && !state[1] && !state[2] && !state[3]) { //if going towards bullseye in state 1000
-                if((l_b_avg + 100) < BLUE_THRESHOLD || (r_b_avg + 100) < BLUE_THRESHOLD) {
+                if((l_b_avg + 400) < BLUE_THRESHOLD || (r_b_avg + 400) < BLUE_THRESHOLD) {
                     bluectr++;
                 }
-                if((l_b_avg + 100) > BLUE_THRESHOLD || (r_b_avg + 100) > BLUE_THRESHOLD) {
+                if((l_b_avg + 400) > BLUE_THRESHOLD || (r_b_avg + 400) > BLUE_THRESHOLD) {
                     bluectr = 0;
                 }
                 if(bluectr >= 2) {
