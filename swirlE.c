@@ -78,8 +78,9 @@ int main() {
     //state is arranged as: forward/back, capturing, dropping, returning
     robot_move_cup_up(frequency_hz); //cup starts down
     rc_usleep(SLEEP_TIME);
+    robot_turn_ninety(frequency_hz,1);
     //MAIN CODE:
-    while(1) {
+    while(0) {
         if(!state[1] && !state[2]) { //line following state X00X
             rc_usleep(20);
             double l_red_val = colour_sensor_red(CS_OUT1);
