@@ -209,7 +209,7 @@ int main() {
                 if((l_b_avg + 100) > BLUE_THRESHOLD || (r_b_avg + 100) > BLUE_THRESHOLD) {
                     bluectr = 0;
                 }
-                if(bluectr >= 3) {
+                if(bluectr >= 2) {
                     saw_blue = true;
                 }
                 if(saw_blue) {
