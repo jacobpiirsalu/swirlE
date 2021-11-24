@@ -31,7 +31,7 @@
 //#define BLUE_THRESHOLD 500
 #define BLUE_THRESHOLD 625
 #define GREEN_SEE_BLUE_THRESHOLD 800
-#define BULLSEYE_LOOP_CTR 1100
+#define BULLSEYE_LOOP_CTR 1300
 //blue low, green higher than baseline (phat margin) -> blue
 
 static int running = 1;
@@ -301,7 +301,7 @@ int robot_turn_one_eighty(int frequency_hz, double direction) {
         // sleep roughly enough to maintain frequency_hz
         rc_usleep(1000000 / frequency_hz);
 
-        if (counter > 85*2) break;
+        if (counter > 150) break;
 
     }
     return 1;
