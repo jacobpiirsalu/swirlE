@@ -263,12 +263,12 @@ int main() {
             rc_usleep(SLEEP_TIME*10);
             robot_move_cup_down(frequency_hz);
             rc_usleep(SLEEP_TIME*10);
-            robot_back(5,frequency_hz);
+            //robot_back(5,frequency_hz);
             //robot_turn_cw(110*2,frequency_hz);
             robot_turn_one_eighty(frequency_hz,1);
 
             rc_usleep(SLEEP_TIME*10);
-            robot_back(5,frequency_hz);
+            //robot_back(5,frequency_hz);
 
 
             //state = {0, 0, 0, 0}; //set state back to line following
