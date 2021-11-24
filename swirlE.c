@@ -85,6 +85,7 @@ int main() {
     //MAIN CODE:
     while(1) {
         loopctr++;
+        printf("%d\n",loopctr);
         if(!state[1] && !state[2]) { //line following state X00X
             rc_usleep(20);
             double l_red_val = colour_sensor_red(CS_OUT1);
