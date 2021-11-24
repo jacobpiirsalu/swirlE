@@ -385,11 +385,11 @@ int robot_turn_ninety_ccw(int frequency_hz) {
         // send result
 
         //ch = 7;
-        if (rc_servo_send_pulse_normalized(7, servo_pos*.5) == -1) return -1;
+        if (rc_servo_send_pulse_normalized(7, servo_pos*.25) == -1) return -1;
         counter++;
 
         //ch = 8;
-        if(rc_servo_send_pulse_normalized(8, servo_pos*.5)==-1) return -1;
+        if(rc_servo_send_pulse_normalized(8, servo_pos*.25)==-1) return -1;
 
         // sleep roughly enough to maintain frequency_hz
         rc_usleep(1000000 / frequency_hz);
