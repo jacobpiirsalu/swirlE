@@ -80,11 +80,9 @@ int main() {
     rc_usleep(SLEEP_TIME);
     rc_usleep(SLEEP_TIME);
     robot_turn_ninety(frequency_hz,-1);
-    rc_usleep(SLEEP_TIME);
-    robot_move_cup_up(frequency_hz); //let go of lego man
-    rc_usleep(SLEEP_TIME);
+    rc_usleep(SLEEP_TIME*1000);
     robot_turn_ninety(frequency_hz,1); //turn cw 90
-    rc_usleep(SLEEP_TIME);
+    rc_usleep(SLEEP_TIME*1000);
     //robot_turn_ninety(frequency_hz,1);
     //MAIN CODE:
     while(0) {
