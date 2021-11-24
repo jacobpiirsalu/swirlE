@@ -259,7 +259,7 @@ int robot_move_cup_up(int frequency_hz) {
     return 1;
 }
 int robot_turn_one_eighty(int frequency_hz, double direction) {
-    double direction = 1.0;
+    //double direction = 1.0;
     int counter = 0;
     double servo_pos = 0;
     //double direction = 1;	// switches between 1 &-1 in sweep mode
