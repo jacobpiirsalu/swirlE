@@ -72,6 +72,7 @@ int main() {
     double pulseR = 0.0;
     double pulseL = 0.0;
     int bluectr = 0;
+    int num_saw_blue = 0;
     bool saw_blue = false;
     //setting states for operation
     bool state[4] = {1, 0, 0, 0}; //initial state
@@ -128,13 +129,17 @@ int main() {
 
             if(state[0] && !state[1] && !state[2] && !state[3]) { //if going towards bullseye in state 1000
                 printf("%f\n",l_g_avg);
-                if(((l_b_avg) < BLUE_THRESHOLD+300 || (r_b_avg) < BLUE_THRESHOLD + 300) && (l_g_avg + r_g_avg)/2.0 > GREEN_SEE_BLUE_THRESHOLD) {
+                if(((l_b_avg) < BLUE_THRESHOLD+300 || (r_b_avg) < BLUE_THRESHOLD + 300)) {
                     bluectr++;
                 }
-                if(((l_b_avg) > BLUE_THRESHOLD+300 || (r_b_avg) > BLUE_THRESHOLD + 300) && (l_g_avg + r_g_avg)/2.0 < GREEN_SEE_BLUE_THRESHOLD) {
+                if(((l_b_avg) > BLUE_THRESHOLD+300 || (r_b_avg) > BLUE_THRESHOLD + 300)) {
                     bluectr = 0;
                 }
                 if(bluectr >= 4) { //4
+                    num_saw_blue++;
+
+                }
+                if(num_saw_blue == 3) {
                     saw_blue = true;
                 }
                 if(saw_blue) {
