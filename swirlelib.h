@@ -23,7 +23,7 @@
 #define TURN_THRESHOLD 0.1
 #define SLEEP_TIME 100000
 #define DOUBLE_RED_THRESHOLD 50
-#define LEFT_WOOD_RED 1500
+#define LEFT_WOOD_RED 1300
 //#define LEFT_RED_LINE 870
 #define LEFT_RED_LINE 750
 #define RIGHT_WOOD_RED 1050
@@ -31,7 +31,7 @@
 //#define BLUE_THRESHOLD 500
 #define BLUE_THRESHOLD 625
 #define GREEN_SEE_BLUE_THRESHOLD 800
-#define BULLSEYE_LOOP_CTR 1300
+#define BULLSEYE_LOOP_CTR 1500
 //blue low, green higher than baseline (phat margin) -> blue
 
 static int running = 1;
