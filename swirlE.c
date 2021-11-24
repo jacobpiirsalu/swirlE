@@ -73,7 +73,9 @@ int main() {
     double pulseR = 0.0;
     double pulseL = 0.0;
     int bluectr = 0;
+    int redctr = 0;
     bool saw_blue = false;
+    bool saw_red = false;
     //setting states for operation
     bool state[4] = {1, 0, 0, 0}; //initial state
     //state is arranged as: forward/back, capturing, dropping, returning
@@ -164,8 +166,16 @@ int main() {
                 }
             }
             if(!state[0] && !state[1] && !state[2] && state[3]) { //returning after drop off in state 0001
-                if((l_r_avg + 200) < LEFT_RED_LINE && (r_r_avg + 200) < RIGHT_RED_LINE) {
-                    //printf("\nend of course, shutting off\n");
+                if ((l_r_avg + 200) < LEFT_RED_LINE && (r_r_avg + 200) < RIGHT_RED_LINE) {
+                    redctr++;
+                }
+                if ((l_r_avg + 200) > LEFT_RED_LINE && (r_r_avg + 200) > RIGHT_RED_LINE) {
+                    redctr = 0;
+                }
+                if (redctr >= 4) { //4
+                    saw_red = true;
+                }
+                if(saw_red) {
                     break;
                 }
             }
@@ -204,7 +214,7 @@ int main() {
 
             robot_move_cup_up(frequency_hz); //let go of lego man
             rc_usleep(SLEEP_TIME);
-            robot_forward(2,frequency_hz);
+            robot_forward(1,frequency_hz);
             rc_usleep(SLEEP_TIME*10);
             robot_turn_ninety_cw(frequency_hz); //turn cw 90
             rc_usleep(SLEEP_TIME);
