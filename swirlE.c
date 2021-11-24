@@ -125,6 +125,7 @@ int main() {
                 servo_pos = sweep_limit;
             }
             //printf("\nturning\n");
+            printf("%f %f\n", l_r_avg, r_r_avg);
             if ((l_r_avg + 300) < LEFT_RED_LINE) { //left sensor greater than right, turn right
 
                 //ch = 7; right servo, -1 pulse
