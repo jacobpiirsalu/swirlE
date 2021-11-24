@@ -277,24 +277,24 @@ int main() {
             state[3] = 0;
         }
         if(!state[0] && !state[1] && state[2] && !state[3]) { //drop off state 0010
-            //stop
-            //ch = 7; right servo
-            rc_servo_send_pulse_normalized(7, 0);
-
-            //ch = 8; left servo
-            rc_servo_send_pulse_normalized(8, 0);
-            rc_usleep(SLEEP_TIME);
-            robot_turn_ninety_ccw(frequency_hz);
-            rc_usleep(SLEEP_TIME*10);
-            robot_back(3,frequency_hz);
-            rc_usleep(SLEEP_TIME*10);
-
-            robot_move_cup_up(frequency_hz); //let go of lego man
-            rc_usleep(SLEEP_TIME);
-            robot_forward(1,frequency_hz);
-            rc_usleep(SLEEP_TIME*10);
-            robot_turn_ninety_cw(frequency_hz); //turn cw 90
-            rc_usleep(SLEEP_TIME);
+//            //stop
+//            //ch = 7; right servo
+//            rc_servo_send_pulse_normalized(7, 0);
+//
+//            //ch = 8; left servo
+//            rc_servo_send_pulse_normalized(8, 0);
+//            rc_usleep(SLEEP_TIME);
+//            robot_turn_ninety_ccw(frequency_hz);
+//            rc_usleep(SLEEP_TIME*10);
+//            robot_back(3,frequency_hz);
+//            rc_usleep(SLEEP_TIME*10);
+//
+//            robot_move_cup_up(frequency_hz); //let go of lego man
+//            rc_usleep(SLEEP_TIME);
+//            robot_forward(1,frequency_hz);
+//            rc_usleep(SLEEP_TIME*10);
+//            robot_turn_ninety_cw(frequency_hz); //turn cw 90
+//            rc_usleep(SLEEP_TIME);
             //state = {0,0,0,1};
             state[0] = 0;
             state[1] = 0;
