@@ -345,7 +345,7 @@ int robot_turn_ninety_cw(int frequency_hz) {
         // sleep roughly enough to maintain frequency_hz
         rc_usleep(1000000 / frequency_hz);
 
-        if (counter > 90) break;
+        if (counter > 85) break;
 
     }
     return 1;
