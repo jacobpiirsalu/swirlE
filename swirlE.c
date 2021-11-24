@@ -77,10 +77,12 @@ int main() {
     bool state[4] = {1, 0, 0, 0}; //initial state
     //state is arranged as: forward/back, capturing, dropping, returning
     robot_move_cup_up(frequency_hz); //cup starts down
-    rc_usleep(SLEEP_TIME);
-
+    rc_usleep(SLEEP_TIME*100);
+    robot_turn_ninety_cw(frequency_hz);
+    rc_usleep(SLEEP_TIME*100);
+    robot_turn_ninety_ccw(frequency_hz);
     //MAIN CODE:
-    while(1) {
+    while(0) {
         if(!state[1] && !state[2]) { //line following state X00X
             rc_usleep(20);
             double l_red_val = colour_sensor_red(CS_OUT1);
@@ -191,7 +193,7 @@ int main() {
             //ch = 8; left servo
             rc_servo_send_pulse_normalized(8, 0);
             rc_usleep(SLEEP_TIME);
-            robot_turn_ninety_ccw(frequency_hz*2);
+            robot_turn_ninety_ccw(frequency_hz);
             rc_usleep(SLEEP_TIME*10);
             robot_back(4,frequency_hz);
             rc_usleep(SLEEP_TIME*10);
@@ -200,7 +202,7 @@ int main() {
             rc_usleep(SLEEP_TIME);
             robot_forward(5,frequency_hz);
             rc_usleep(SLEEP_TIME*10);
-            robot_turn_ninety_cw(frequency_hz*2); //turn cw 90
+            robot_turn_ninety_cw(frequency_hz); //turn cw 90
             rc_usleep(SLEEP_TIME);
             //state = {0,0,0,1};
             state[0] = 0;
