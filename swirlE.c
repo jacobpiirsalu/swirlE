@@ -109,13 +109,13 @@ int main() {
 
 
             double l_blue_val = colour_sensor_blue(CS_OUT1);
-            rc_usleep(10);
+            rc_usleep(20);
             double r_blue_val = colour_sensor_blue(CS_OUT2);
-            rc_usleep(10);
+            rc_usleep(20);
             l_b_avg = rolling_avg(l_blue_arr, &l_blue_val, &l_b_sum);
-            rc_usleep(10);
+            rc_usleep(20);
             r_b_avg = rolling_avg(r_blue_arr, &r_blue_val, &r_b_sum);
-            rc_usleep(10);
+            rc_usleep(20);
 
             leftC_sense = l_r_avg + l_g_avg + l_b_avg; //left
 
