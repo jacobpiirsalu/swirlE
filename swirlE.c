@@ -139,7 +139,7 @@ int main() {
                     if (((l_b_avg) > BLUE_THRESHOLD + 100 || (r_b_avg) > BLUE_THRESHOLD + 100)) {
                         bluectr = 0;
                     }
-                    if (bluectr >= 4) { //4
+                    if (bluectr >= 1) { //4
                         saw_blue = true;
                     }
                     if (saw_blue) {
