@@ -251,7 +251,7 @@ int main() {
             //ch = 8; left servo
             rc_servo_send_pulse_normalized(8, 0);
 
-            robot_move_forward_bullseye(frequency_hz);
+            //robot_move_forward_bullseye(frequency_hz);
             rc_usleep(SLEEP_TIME*100);
             robot_move_cup_down(frequency_hz);
             rc_usleep(SLEEP_TIME*100);
