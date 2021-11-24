@@ -110,13 +110,13 @@ int main() {
 
 
             double l_blue_val = colour_sensor_blue(CS_OUT1);
-            rc_usleep(20);
+            rc_usleep(100);
             double r_blue_val = colour_sensor_blue(CS_OUT2);
-            rc_usleep(20);
+            rc_usleep(100);
             l_b_avg = rolling_avg(l_blue_arr, &l_blue_val, &l_b_sum);
-            rc_usleep(20);
+            rc_usleep(100);
             r_b_avg = rolling_avg(r_blue_arr, &r_blue_val, &r_b_sum);
-            rc_usleep(20);
+            rc_usleep(100);
 
             if(state[0] && !state[1] && !state[2] && !state[3]) { //if going towards bullseye in state 1000
                 if(loopctr > BULLSEYE_LOOP_CTR) {
