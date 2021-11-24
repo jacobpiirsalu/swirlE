@@ -89,7 +89,7 @@ int main() {
         loopctr++;
         printf("%d\n",loopctr);
         if(!state[1] && !state[2]) { //line following state X00X
-            printf("line following\n");
+            //printf("line following\n");
             rc_usleep(20);
             double l_red_val = colour_sensor_red(CS_OUT1);
             rc_usleep(20);
@@ -125,7 +125,7 @@ int main() {
                 servo_pos = sweep_limit;
             }
             //printf("\nturning\n");
-            printf("%f %f\n", l_r_avg, r_r_avg);
+            //printf("%f %f\n", l_r_avg, r_r_avg);
             if ((l_r_avg + 300) < LEFT_RED_LINE) { //left sensor greater than right, turn right
 
                 //ch = 7; right servo, -1 pulse
