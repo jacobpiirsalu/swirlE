@@ -134,7 +134,7 @@ int main() {
                 if(((l_b_avg) > BLUE_THRESHOLD+300 || (r_b_avg) > BLUE_THRESHOLD + 300) && (l_g_avg + r_g_avg)/2.0 < GREEN_SEE_BLUE_THRESHOLD) {
                     bluectr = 0;
                 }
-                if(bluectr >= 10) { //4
+                if(bluectr >= 4) { //4
                     saw_blue = true;
                 }
                 if(saw_blue) {
