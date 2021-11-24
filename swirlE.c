@@ -89,6 +89,7 @@ int main() {
         loopctr++;
         printf("%d\n",loopctr);
         if(!state[1] && !state[2]) { //line following state X00X
+            printf("line following\n");
             rc_usleep(20);
             double l_red_val = colour_sensor_red(CS_OUT1);
             rc_usleep(20);
