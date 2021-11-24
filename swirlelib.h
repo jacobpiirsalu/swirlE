@@ -21,7 +21,7 @@
 
 //colour detection thresholds
 #define TURN_THRESHOLD 0.1
-#define SLEEP_TIME 50000
+#define SLEEP_TIME 100000
 #define DOUBLE_RED_THRESHOLD 50
 #define LEFT_WOOD_RED 1300
 #define LEFT_RED_LINE 870
@@ -339,7 +339,7 @@ int robot_move_forward_bullseye(int frequency_hz) {
         if (rc_servo_send_pulse_normalized(7, -r_wheel_gain * servo_pos*max_speed) == -1) return -1;
 
         //ch = 8;
-        if(rc_servo_send_pulse_normalized(8,servo_pos*max_speed)==-1) return -1;
+        if(rc_servo_send_pulse_normalized(8,servo_pos*max_speed*2)==-1) return -1;
 
         // sleep roughly enough to maintain frequency_hz
         rc_usleep(1000000 / frequency_hz);
