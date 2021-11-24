@@ -204,7 +204,7 @@ int main() {
 
             robot_move_cup_up(frequency_hz); //let go of lego man
             rc_usleep(SLEEP_TIME);
-            robot_forward(5,frequency_hz);
+            robot_forward(3,frequency_hz);
             rc_usleep(SLEEP_TIME*10);
             robot_turn_ninety_cw(frequency_hz); //turn cw 90
             rc_usleep(SLEEP_TIME);
