@@ -437,7 +437,7 @@ int robot_move_forward_bullseye(int frequency_hz) {
         // sleep roughly enough to maintain frequency_hz
         rc_usleep(1000000 / frequency_hz);
         counter++;
-        if (counter > 35/2.0) break;
+        if (counter > 35/5.0) break;
 
     }
     return 1;
