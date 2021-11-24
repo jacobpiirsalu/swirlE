@@ -259,7 +259,7 @@ int robot_move_cup_up(int frequency_hz) {
     return 1;
 }
 int robot_turn_one_eighty(int frequency_hz, double direction) {
-    //double direction = -1.0;
+    double direction = 1.0;
     int counter = 0;
     double servo_pos = 0;
     //double direction = 1;	// switches between 1 &-1 in sweep mode
@@ -292,16 +292,16 @@ int robot_turn_one_eighty(int frequency_hz, double direction) {
         // send result
 
         //ch = 7;
-        if (rc_servo_send_pulse_normalized(7, direction*servo_pos*0.5) == -1) return -1;
+        if (rc_servo_send_pulse_normalized(7, servo_pos*.1) == -1) return -1;
         counter++;
 
         //ch = 8;
-        if(rc_servo_send_pulse_normalized(8, direction*servo_pos*0.5)==-1) return -1;
+        if(rc_servo_send_pulse_normalized(8, servo_pos*.1)==-1) return -1;
 
         // sleep roughly enough to maintain frequency_hz
         rc_usleep(1000000 / frequency_hz);
 
-        if (counter > 35) break;
+        if (counter > 85*2) break;
 
     }
     return 1;
