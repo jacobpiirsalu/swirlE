@@ -76,13 +76,13 @@ int main() {
     //setting states for operation
     bool state[4] = {1, 0, 0, 0}; //initial state
     //state is arranged as: forward/back, capturing, dropping, returning
-    //robot_move_cup_up(frequency_hz); //cup starts down
-    rc_usleep(SLEEP_TIME*100);
-    robot_turn_ninety_cw(frequency_hz);
-    rc_usleep(SLEEP_TIME*100);
-    robot_turn_ninety_ccw(frequency_hz);
+    robot_move_cup_up(frequency_hz); //cup starts down
+//    rc_usleep(SLEEP_TIME*100);
+//    robot_turn_ninety_cw(frequency_hz);
+//    rc_usleep(SLEEP_TIME*100);
+//    robot_turn_ninety_ccw(frequency_hz);
     //MAIN CODE:
-    while(0) {
+    while(1) {
         if(!state[1] && !state[2]) { //line following state X00X
             rc_usleep(20);
             double l_red_val = colour_sensor_red(CS_OUT1);

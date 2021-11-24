@@ -29,6 +29,7 @@
 #define RIGHT_RED_LINE 750
 //#define BLUE_THRESHOLD 500
 #define BLUE_THRESHOLD 625
+//blue low, green higher than baseline (phat margin) -> blue
 
 static int running = 1;
 
