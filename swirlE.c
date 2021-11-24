@@ -133,10 +133,10 @@ int main() {
 
             if(state[0] && !state[1] && !state[2] && !state[3]) { //if going towards bullseye in state 1000
                 if(loopctr > BULLSEYE_LOOP_CTR) {
-                    if (((l_b_avg) < BLUE_THRESHOLD + 300 || (r_b_avg) < BLUE_THRESHOLD + 300)) {
+                    if (((l_b_avg) < BLUE_THRESHOLD + 100 || (r_b_avg) < BLUE_THRESHOLD + 100)) {
                         bluectr++;
                     }
-                    if (((l_b_avg) > BLUE_THRESHOLD + 300 || (r_b_avg) > BLUE_THRESHOLD + 300)) {
+                    if (((l_b_avg) > BLUE_THRESHOLD + 100 || (r_b_avg) > BLUE_THRESHOLD + 100)) {
                         bluectr = 0;
                     }
                     if (bluectr >= 4) { //4
