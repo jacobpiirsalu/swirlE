@@ -89,7 +89,7 @@ int main() {
         loopctr++;
         printf("%d\n",loopctr);
         if(!state[1] && !state[2]) { //line following state X00X
-            //printf("line following\n");
+            printf("line following\n");
             rc_usleep(100);
             double l_red_val = colour_sensor_red(CS_OUT1);
             rc_usleep(100);
@@ -117,7 +117,7 @@ int main() {
             rc_usleep(100);
             r_b_avg = rolling_avg(r_blue_arr, &r_blue_val, &r_b_sum);
             rc_usleep(100);
-
+            printf("read color sensors\n");
             if(state[0] && !state[1] && !state[2] && !state[3]) { //if going towards bullseye in state 1000
                 if(loopctr > BULLSEYE_LOOP_CTR) {
                     if (((l_b_avg) < BLUE_THRESHOLD + 100 || (r_b_avg) < BLUE_THRESHOLD + 100)) {
