@@ -192,7 +192,9 @@ int main() {
             rc_servo_send_pulse_normalized(8, 0);
             rc_usleep(SLEEP_TIME);
             robot_turn_ninety_ccw(frequency_hz);
-            rc_usleep(SLEEP_TIME);
+            rc_usleep(SLEEP_TIME*10);
+            robot_back(5,frequency_hz);
+            robot_forward(5,frequency_hz);
             robot_move_cup_up(frequency_hz); //let go of lego man
             rc_usleep(SLEEP_TIME);
             robot_turn_ninety_cw(frequency_hz); //turn cw 90

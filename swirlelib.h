@@ -43,7 +43,6 @@ void robot_forward(int numRotations, int frequency_hz) {
         // scale with frequency
         servo_pos += direction * sweep_limit / frequency_hz;
         // reset pulse width at end of sweep
-
         if (servo_pos > sweep_limit) {
             servo_pos = sweep_limit;
             rotationsCompleted++;
@@ -60,15 +59,15 @@ void robot_forward(int numRotations, int frequency_hz) {
         // send result
 
         //ch = 7;
-        if (rc_servo_send_pulse_normalized(7, -(servo_pos / 4)*1.5) == -1) return -1;
+        if (rc_servo_send_pulse_normalized(7, -servo_pos / 10) == -1) return -1;
 
         //ch = 8;
-        if (rc_servo_send_pulse_normalized(8, servo_pos / 4) == -1) return -1;
+        if (rc_servo_send_pulse_normalized(8, servo_pos / 10) == -1) return -1;
 
         // sleep roughly enough to maintain frequency_hz
         rc_usleep(1000000 / frequency_hz);
 
-        if (rotationsCompleted >= numRotations * 4) break;
+        if (rotationsCompleted >= numRotations * 10) break;
 
     }
 }
