@@ -201,7 +201,7 @@ int robot_move_cup_down(int frequency_hz) {
         // sleep roughly enough to maintain frequency_hz
         rc_usleep(1000000 / frequency_hz);
 
-        if (counter > 40) break;
+        if (counter > 45) break;
 
     }
     return 1;
@@ -298,7 +298,7 @@ int robot_turn_one_eighty(int frequency_hz, double direction) {
         // sleep roughly enough to maintain frequency_hz
         rc_usleep(1000000 / frequency_hz);
 
-        if (counter > 35) break;
+        if (counter > 45) break;
 
     }
     return 1;
@@ -431,7 +431,7 @@ int robot_move_forward_bullseye(int frequency_hz) {
         // sleep roughly enough to maintain frequency_hz
         rc_usleep(1000000 / frequency_hz);
         counter++;
-        if (counter > 30) break;
+        if (counter > 35) break;
 
     }
     return 1;
