@@ -29,6 +29,7 @@
 #pragma ide diagnostic ignored "EndlessLoop"
 
 int main() {
+    int loopctr = 0;
     double servo_pos = 0;
     double sweep_limit = 1.5;
     int ch = 0;    // channel to test, 0 means all channels
@@ -72,7 +73,6 @@ int main() {
     double pulseR = 0.0;
     double pulseL = 0.0;
     int bluectr = 0;
-    int num_saw_blue = 0;
     bool saw_blue = false;
     //setting states for operation
     bool state[4] = {1, 0, 0, 0}; //initial state
@@ -84,6 +84,7 @@ int main() {
 //    robot_turn_ninety_ccw(frequency_hz);
     //MAIN CODE:
     while(1) {
+        loopctr++;
         if(!state[1] && !state[2]) { //line following state X00X
             rc_usleep(20);
             double l_red_val = colour_sensor_red(CS_OUT1);
@@ -128,30 +129,27 @@ int main() {
             //line following state: 1000 and 0000
 
             if(state[0] && !state[1] && !state[2] && !state[3]) { //if going towards bullseye in state 1000
-                printf("%f\n",l_g_avg);
-                if(((l_b_avg) < BLUE_THRESHOLD+300 || (r_b_avg) < BLUE_THRESHOLD + 300)) {
-                    bluectr++;
-                }
-                if(((l_b_avg) > BLUE_THRESHOLD+300 || (r_b_avg) > BLUE_THRESHOLD + 300)) {
-                    bluectr = 0;
-                }
-                if(bluectr >= 4) { //4
-                    num_saw_blue++;
-
-                }
-                if(num_saw_blue == 3) {
-                    saw_blue = true;
-                }
-                if(saw_blue) {
-                    //printf("\nsaw blue, going to capture mode\n");
-                    //state = {1, 1, 0, 0}; //change state to capture mode
-                    //pause change to blue temporarily
-                    state[0] = 1;
-                    state[1] = 1;
-                    state[2] = 0;
-                    state[3] = 0;
+                if(loopctr > BULLSEYE_LOOP_CTR) {
+                    if (((l_b_avg) < BLUE_THRESHOLD + 300 || (r_b_avg) < BLUE_THRESHOLD + 300)) {
+                        bluectr++;
+                    }
+                    if (((l_b_avg) > BLUE_THRESHOLD + 300 || (r_b_avg) > BLUE_THRESHOLD + 300)) {
+                        bluectr = 0;
+                    }
+                    if (bluectr >= 4) { //4
+                        saw_blue = true;
+                    }
+                    if (saw_blue) {
+                        //printf("\nsaw blue, going to capture mode\n");
+                        //state = {1, 1, 0, 0}; //change state to capture mode
+                        //pause change to blue temporarily
+                        state[0] = 1;
+                        state[1] = 1;
+                        state[2] = 0;
+                        state[3] = 0;
 
 
+                    }
                 }
             }
             if(!state[0] && !state[1] && !state[2] && !state[3]) { //if sees tree on the way back in state 0000
