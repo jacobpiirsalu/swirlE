@@ -78,12 +78,11 @@ int main() {
     //state is arranged as: forward/back, capturing, dropping, returning
     robot_move_cup_up(frequency_hz); //cup starts down
     rc_usleep(SLEEP_TIME);
-    rc_usleep(SLEEP_TIME);
-    robot_turn_ninety(frequency_hz,-1);
+    robot_turn_ninety_ccw(frequency_hz);
     rc_usleep(SLEEP_TIME*1000);
-    robot_turn_ninety(frequency_hz,1); //turn cw 90
+    robot_turn_ninety_cw(frequency_hz); //turn cw 90
     rc_usleep(SLEEP_TIME*1000);
-    //robot_turn_ninety(frequency_hz,1);
+    //robot_turn_ninety_cw(frequency_hz,1);
     //MAIN CODE:
     while(0) {
         if(!state[1] && !state[2]) { //line following state X00X
@@ -279,11 +278,11 @@ int main() {
             //ch = 8; left servo
             rc_servo_send_pulse_normalized(8, 0);
             rc_usleep(SLEEP_TIME);
-            robot_turn_ninety(frequency_hz,-1);
+            robot_turn_ninety_cw(frequency_hz,-1);
             rc_usleep(SLEEP_TIME);
             robot_move_cup_up(frequency_hz); //let go of lego man
             rc_usleep(SLEEP_TIME);
-            robot_turn_ninety(frequency_hz,1); //turn cw 90
+            robot_turn_ninety_cw(frequency_hz,1); //turn cw 90
             rc_usleep(SLEEP_TIME);
             //state = {0,0,0,1};
             state[0] = 0;
