@@ -43,7 +43,7 @@ int main() {
     double leftC_sense = 0.0;
     double rightC_sense = 0.0;
     double corr_factor = 0.0;
-    double max_speed = 0.08*1; //base speed of swirlE
+    double max_speed = 0.08*.75//base speed of swirlE
     // - works decently at 0.08*1.25 and window size 3
     //safe speed is 0.08
 
@@ -268,7 +268,7 @@ int main() {
             robot_turn_one_eighty(frequency_hz,1);
 
             rc_usleep(SLEEP_TIME*10);
-            robot_back(5,frequency_hz);
+            robot_back(6,frequency_hz);
 
 
             //state = {0, 0, 0, 0}; //set state back to line following
