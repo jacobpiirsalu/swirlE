@@ -118,6 +118,28 @@ int main() {
             r_b_avg = rolling_avg(r_blue_arr, &r_blue_val, &r_b_sum);
             rc_usleep(20);
 
+            if(state[0] && !state[1] && !state[2] && !state[3]) { //if going towards bullseye in state 1000
+                if(loopctr > BULLSEYE_LOOP_CTR) {
+                    if (((l_b_avg) < BLUE_THRESHOLD + 100 || (r_b_avg) < BLUE_THRESHOLD + 100)) {
+                        bluectr++;
+                    }
+                    if (((l_b_avg) > BLUE_THRESHOLD + 100 || (r_b_avg) > BLUE_THRESHOLD + 100)) {
+                        bluectr = 0;
+                    }
+                    if (bluectr >= 4) { //4
+                        saw_blue = true;
+                    }
+                    if (saw_blue) {
+                        //printf("\nsaw blue, going to capture mode\n");
+                        //state = {1, 1, 0, 0}; //change state to capture mode
+                        //pause change to blue temporarily
+                        state[0] = 1;
+                        state[1] = 1;
+                        state[2] = 0;
+                        state[3] = 0;
+                    }
+                }
+            }
 
             servo_pos += direction * sweep_limit / frequency_hz;
 
@@ -207,30 +229,7 @@ int main() {
             //printf("%f\n", corr_factor_avg);
             //line following state: 1000 and 0000
 
-            if(state[0] && !state[1] && !state[2] && !state[3]) { //if going towards bullseye in state 1000
-                if(loopctr > BULLSEYE_LOOP_CTR) {
-                    if (((l_b_avg) < BLUE_THRESHOLD + 100 || (r_b_avg) < BLUE_THRESHOLD + 100)) {
-                        bluectr++;
-                    }
-                    if (((l_b_avg) > BLUE_THRESHOLD + 100 || (r_b_avg) > BLUE_THRESHOLD + 100)) {
-                        bluectr = 0;
-                    }
-                    if (bluectr >= 4) { //4
-                        saw_blue = true;
-                    }
-                    if (saw_blue) {
-                        //printf("\nsaw blue, going to capture mode\n");
-                        //state = {1, 1, 0, 0}; //change state to capture mode
-                        //pause change to blue temporarily
-                        state[0] = 1;
-                        state[1] = 1;
-                        state[2] = 0;
-                        state[3] = 0;
 
-
-                    }
-                }
-            }
             if(!state[0] && !state[1] && !state[2] && !state[3]) { //if sees tree on the way back in state 0000
                 if(distance_measurement_left() < 12) {
                     //printf("\nsaw dropzone, going to drop off mode\n");
