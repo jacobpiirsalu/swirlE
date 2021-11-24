@@ -166,12 +166,6 @@ int main() {
 
         }
         if(state[0] && state[1] && !state[2] && !state[3]) { //capturing state 1100
-            //stop
-            //ch = 7; right servo
-            rc_servo_send_pulse_normalized(7, 0);
-
-            //ch = 8; left servo
-            rc_servo_send_pulse_normalized(8, 0);
 
             robot_move_forward_bullseye(frequency_hz);
             rc_usleep(SLEEP_TIME*10);
