@@ -422,15 +422,6 @@ int robot_move_forward_bullseye(int frequency_hz) {
             servo_pos = sweep_limit;
         }
 
-        /**
-          if(servo_pos < (-sweep_limit)){
-          servo_pos = -sweep_limit;
-          direction = 1;
-          }
-
-        **/
-        // send result
-
         //ch = 7;
         if (rc_servo_send_pulse_normalized(7, servo_pos*.01) == -1) return -1;
 

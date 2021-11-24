@@ -78,11 +78,7 @@ int main() {
     //state is arranged as: forward/back, capturing, dropping, returning
     robot_move_cup_up(frequency_hz); //cup starts down
     rc_usleep(SLEEP_TIME);
-//    robot_turn_ninety_ccw(frequency_hz);
-//    rc_usleep(SLEEP_TIME*1000);
-//    robot_turn_ninety_cw(frequency_hz); //turn cw 90
-//    rc_usleep(SLEEP_TIME*1000);
-    //robot_turn_ninety_cw(frequency_hz,1);
+
     //MAIN CODE:
     while(1) {
         if(!state[1] && !state[2]) { //line following state X00X
