@@ -254,7 +254,7 @@ int main() {
             rc_usleep(SLEEP_TIME);
             robot_move_cup_down(frequency_hz);
             rc_usleep(SLEEP_TIME);
-            robot_turn_cw(110,frequency_hz);
+            robot_turn_cw(110*2,frequency_hz);
             //state = {0, 0, 0, 0}; //set state back to line following
             state[0] = 0;
             state[1] = 0;
@@ -269,11 +269,11 @@ int main() {
             //ch = 8; left servo
             rc_servo_send_pulse_normalized(8, 0);
             rc_usleep(SLEEP_TIME);
-            robot_turn_cw((110.0/2.0)*3.0,frequency_hz); //turn cw 270 to get drop zone on left
+            robot_turn_cw((110.0)*3.0,frequency_hz); //turn cw 270 to get drop zone on left
             rc_usleep(SLEEP_TIME);
             robot_move_cup_up(frequency_hz); //let go of lego man
             rc_usleep(SLEEP_TIME);
-            robot_turn_cw(110.0/2,frequency_hz); //turn cw 90
+            robot_turn_cw(110.0,frequency_hz); //turn cw 90
             rc_usleep(SLEEP_TIME);
             //state = {0,0,0,1};
             state[0] = 0;
