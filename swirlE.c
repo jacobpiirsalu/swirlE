@@ -66,7 +66,7 @@ int main() {
     double corr_factor_avg = 0.0;
     double sum = 0;
 
-    printf("red test\n");
+    //printf("red test\n");
     //robot_forward(1,frequency_hz);
 
     double pulseR = 0.0;
@@ -121,10 +121,10 @@ int main() {
             if (servo_pos > sweep_limit) {
                 servo_pos = sweep_limit;
             }
-            printf("%f\n", corr_factor_avg);
+            //printf("%f\n", corr_factor_avg);
             //line following state: 1000 and 0000
             if (1) { //only turn if seeing red
-                printf("\nturning\n");
+                //printf("\nturning\n");
                 if ((l_r_avg + 300) < LEFT_RED_LINE) { //left sensor greater than right, turn right
 
                     //ch = 7; right servo, -1 pulse
@@ -214,7 +214,7 @@ int main() {
                     saw_blue = true;
                 }
                 if(saw_blue) {
-                    printf("\nsaw blue, going to capture mode\n");
+                    //printf("\nsaw blue, going to capture mode\n");
                     //state = {1, 1, 0, 0}; //change state to capture mode
                     //pause change to blue temporarily
                     state[0] = 1;
@@ -227,7 +227,7 @@ int main() {
             }
             if(!state[0] && !state[1] && !state[2] && !state[3]) { //if sees tree on the way back in state 0000
                 if(distance_measurement_left() < 12) {
-                    printf("\nsaw dropzone, going to drop off mode\n");
+                    //printf("\nsaw dropzone, going to drop off mode\n");
                     //state = {0,0,1,0};
                     state[0] = 0;
                     state[1] = 0;
@@ -237,7 +237,7 @@ int main() {
             }
             if(!state[0] && !state[1] && !state[2] && state[3]) { //returning after drop off in state 0001
                 if((r_r_avg - DOUBLE_RED_THRESHOLD) > (r_g_avg+r_b_avg)/2.0 || (l_r_avg - DOUBLE_RED_THRESHOLD) > (l_g_avg+l_b_avg)/2.0) {
-                    printf("\nend of course, shutting off\n");
+                    //printf("\nend of course, shutting off\n");
                     break;
                 }
             }
