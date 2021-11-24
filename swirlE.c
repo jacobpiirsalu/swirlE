@@ -274,11 +274,11 @@ int main() {
             //ch = 8; left servo
             rc_servo_send_pulse_normalized(8, 0);
             rc_usleep(SLEEP_TIME);
-            robot_turn_cw((110.0)*3.0,frequency_hz);
+            robot_turn_ninety(frequency_hz,-1);
             rc_usleep(SLEEP_TIME);
             robot_move_cup_up(frequency_hz); //let go of lego man
             rc_usleep(SLEEP_TIME);
-            robot_turn_cw(110.0,frequency_hz); //turn cw 90
+            robot_turn_ninety(frequency_hz,1); //turn cw 90
             rc_usleep(SLEEP_TIME);
             //state = {0,0,0,1};
             state[0] = 0;
