@@ -31,7 +31,9 @@
 //#define BLUE_THRESHOLD 500
 #define BLUE_THRESHOLD 625
 #define GREEN_SEE_BLUE_THRESHOLD 800
-#define BULLSEYE_LOOP_CTR 1500
+
+
+#define BULLSEYE_LOOP_CTR 1000
 //blue low, green higher than baseline (phat margin) -> blue
 
 static int running = 1;
