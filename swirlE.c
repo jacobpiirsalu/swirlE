@@ -152,7 +152,7 @@ int main() {
         if(stop == true) {
             break;
         }
-        printf("%d\n",loopctr);
+        //printf("%d\n",loopctr);
         loopctr++;
         //printf("%d\n",loopctr);
         if(!state[1] && !state[2]) { //line following state X00X
