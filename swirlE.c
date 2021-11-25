@@ -145,15 +145,15 @@ int main() {
         rc_usleep(1e4);
     }
     robot_move_cup_up(frequency_hz); //cup starts down
-    rc_usleep(1e6);
-    robot_turn_one_eighty(frequency_hz,1);
-    rc_usleep(1e6);
-    robot_turn_ninety_cw(frequency_hz);
-    rc_usleep(1e6);
-    robot_turn_ninety_ccw(frequency_hz);
+//    rc_usleep(1e6);
+//    robot_turn_one_eighty(frequency_hz,1);
+//    rc_usleep(1e6);
+//    robot_turn_ninety_cw(frequency_hz);
+//    rc_usleep(1e6);
+//    robot_turn_ninety_ccw(frequency_hz);
     //MAIN CODE:
     printf("starting main\n");
-    while(0) {
+    while(1) {
         if(stop == true) {
             break;
         }
