@@ -36,7 +36,7 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "EndlessLoop"
 
-static bool start = false;
+bool start = false;
 static void __on_pause_press(void)
 {
     printf("Pause Pressed\n");
