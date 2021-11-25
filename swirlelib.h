@@ -17,7 +17,7 @@
 #define CS_OUT1 1//GPIO3_2, PURPLE -> left colour sensor -> 2 prev
 #define CS_OUT2 2//GPIO3_1, BLU -> right colour sensor //swap -> 1
 
-#define WINDOW 10 //10 accepted
+#define WINDOW 8 //10 accepted
 
 //colour detection thresholds
 #define TURN_THRESHOLD 0.1
@@ -409,7 +409,7 @@ int robot_turn_ninety_ccw(int frequency_hz) {
     return 1;
 }
 int robot_move_forward_bullseye(int frequency_hz) {
-    double direction = 1.0;
+    double direction = -1.0;
     int counter = 0;
     double servo_pos = 0;
     //double direction = 1;	// switches between 1 &-1 in sweep mode
