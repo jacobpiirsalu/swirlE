@@ -135,9 +135,8 @@ int main() {
     bool saw_red = false;
     //setting states for operation
     bool state[4] = {1, 0, 0, 0}; //initial state
-    rc_usleep(5e6);
+    //rc_usleep(5e6);
     //state is arranged as: forward/back, capturing, dropping, returning
-    robot_move_cup_up(frequency_hz); //cup starts down
 //    rc_usleep(SLEEP_TIME*100);
 //    robot_turn_ninety_cw(frequency_hz);
 //    rc_usleep(SLEEP_TIME*100);
@@ -177,8 +176,13 @@ int main() {
         //printf("\nsaw color\n");
     }
     //robot_turn_one_eighty(frequency_hz,1);
+    while(start == false) {
+        printf("waiting for button press\n");
+        rc_usleep(1e5);
+    }
+    robot_move_cup_up(frequency_hz); //cup starts down
     //MAIN CODE:
-    while(1 && start) {
+    while(1) {
         printf("starting main\n");
         loopctr++;
         printf("%d\n",loopctr);
