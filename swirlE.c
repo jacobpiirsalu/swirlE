@@ -97,7 +97,7 @@ int main() {
     double leftC_sense = 0.0;
     double rightC_sense = 0.0;
     double corr_factor = 0.0;
-    double max_speed = 0.08*1;//base speed of swirlE
+    double max_speed = 0.08*0.9;//base speed of swirlE
     // - works decently at 0.08*1.25 and window size 3
     //safe speed is 0.08
 
@@ -208,7 +208,7 @@ int main() {
                     if (((l_b_avg) > BLUE_THRESHOLD + 100 || (r_b_avg) > BLUE_THRESHOLD + 100)) {
                         bluectr = 0;
                     }
-                    if (bluectr >= 3) { //4
+                    if (bluectr >= 4) { //4
                         saw_blue = true;
                     }
                     if (saw_blue) {
