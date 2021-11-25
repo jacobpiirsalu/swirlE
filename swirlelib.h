@@ -304,7 +304,7 @@ int robot_turn_one_eighty(int frequency_hz, double direction) {
         // sleep roughly enough to maintain frequency_hz
         rc_usleep(1000000 / frequency_hz);
 
-        if (counter > 130) break;
+        if (counter > 125) break;
 
     }
     return 1;
@@ -533,23 +533,26 @@ double distance_measurement_right() {
 double colour_sensor_red(int OUT) {
     double freq = 0.0;
     int counterRise = 0;
+    //printf("about to set gpio values\n");
     //READ READ S2 = L, S3 = L
     rc_gpio_set_value(2, CS_S2, 0); //set S2 L
     rc_gpio_set_value(2, CS_S3, 0); //set S3 L
-
+    //printf("set values successfully\n");
     uint64_t *timeRise1Ptr = malloc(sizeof(uint64_t));
     uint64_t *timeFall1Ptr = malloc(sizeof(uint64_t));
-
-    while (!(rc_gpio_poll(3, OUT, 10000, timeRise1Ptr) == 1)) {
+    //printf("pointers allocated\n");
+    while (!(rc_gpio_poll(3, OUT, 100, timeRise1Ptr) == 1)) {
         counterRise++;
+        //printf("%f\n",counterRise);
         if (counterRise > 3) {
             counterRise = 0;
             break;
         }
 
     }
-    while (!(rc_gpio_poll(3, OUT, 10000, timeFall1Ptr) == 1)) {
+    while (!(rc_gpio_poll(3, OUT, 100, timeFall1Ptr) == 1)) {
         counterRise++;
+        //printf("%f\n",counterRise);
         if (counterRise > 3) {
             counterRise = 0;
             break;
@@ -561,7 +564,7 @@ double colour_sensor_red(int OUT) {
     timeRise1Ptr = NULL;
     free(timeFall1Ptr);
     timeFall1Ptr = NULL;
-
+    //printf("about to return\n");
     return freq;
 }
 
@@ -575,14 +578,14 @@ double colour_sensor_green(int OUT) {
     uint64_t *timeRise1Ptr = malloc(sizeof(uint64_t));
     uint64_t *timeFall1Ptr = malloc(sizeof(uint64_t));
 
-    while (!(rc_gpio_poll(3, OUT, 10000, timeRise1Ptr) == 1)) {
+    while (!(rc_gpio_poll(3, OUT, 100, timeRise1Ptr) == 1)) {
         counterRise++;
         if (counterRise > 3) {
             counterRise = 0;
             break;
         }
     }
-    while (!(rc_gpio_poll(3, OUT, 10000, timeFall1Ptr) == 1)){
+    while (!(rc_gpio_poll(3, OUT, 100, timeFall1Ptr) == 1)){
         counterRise++;
         if (counterRise > 3) {
             counterRise = 0;
@@ -609,14 +612,14 @@ double colour_sensor_blue(int OUT) {
     uint64_t *timeRise1Ptr = malloc(sizeof(uint64_t));
     uint64_t *timeFall1Ptr = malloc(sizeof(uint64_t));
 
-    while (!(rc_gpio_poll(3, OUT, 10000, timeRise1Ptr) == 1)){
+    while (!(rc_gpio_poll(3, OUT, 100, timeRise1Ptr) == 1)){
         counterRise++;
         if (counterRise > 3) {
             counterRise = 0;
             break;
         }
     }
-    while (!(rc_gpio_poll(3, OUT, 10000, timeFall1Ptr) == 1)){
+    while (!(rc_gpio_poll(3, OUT, 100, timeFall1Ptr) == 1)){
         counterRise++;
         if (counterRise > 3) {
             counterRise = 0;

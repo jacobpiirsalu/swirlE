@@ -43,7 +43,7 @@ int main() {
     double leftC_sense = 0.0;
     double rightC_sense = 0.0;
     double corr_factor = 0.0;
-    double max_speed = 0.08*1.0;//base speed of swirlE
+    double max_speed = 0.08*2;//base speed of swirlE
     // - works decently at 0.08*1.25 and window size 3
     //safe speed is 0.08
 
@@ -78,23 +78,62 @@ int main() {
     bool saw_red = false;
     //setting states for operation
     bool state[4] = {1, 0, 0, 0}; //initial state
+    rc_usleep(20e6);
     //state is arranged as: forward/back, capturing, dropping, returning
     robot_move_cup_up(frequency_hz); //cup starts down
 //    rc_usleep(SLEEP_TIME*100);
 //    robot_turn_ninety_cw(frequency_hz);
 //    rc_usleep(SLEEP_TIME*100);
 //    robot_turn_ninety_ccw(frequency_hz);
+    while(0) {
+        printf("starting reading\n");
+        rc_usleep(100);
+        double l_red_val = colour_sensor_red(CS_OUT1);
+        rc_usleep(100);
+
+        //double r_red_val = colour_sensor_red(CS_OUT2);
+        //rc_usleep(100);
+        printf("%f\n",l_red_val);
+        //printf("\nsaw red\n");
+        //l_r_avg = rolling_avg(l_red_arr, &l_red_val, &l_r_sum);
+        //rc_usleep(20);
+        //r_r_avg = rolling_avg(r_red_arr, &r_red_val, &r_r_sum);
+        //rc_usleep(20);
+        //double l_green_val = colour_sensor_green(CS_OUT1);
+        // rc_usleep(100);
+        //double r_green_val = colour_sensor_green(CS_OUT2);
+        // rc_usleep(100);
+        //l_g_avg = rolling_avg(l_green_arr, &l_green_val, &l_g_sum);
+        //rc_usleep(20);
+        //r_g_avg = rolling_avg(r_green_arr, &r_green_val, &r_g_sum);
+        //rc_usleep(20);
+
+
+        //double l_blue_val = colour_sensor_blue(CS_OUT1);
+        //rc_usleep(100);
+        //double r_blue_val = colour_sensor_blue(CS_OUT2);
+        //rc_usleep(100);
+        //l_b_avg = rolling_avg(l_blue_arr, &l_blue_val, &l_b_sum);
+        //rc_usleep(100);
+        //r_b_avg = rolling_avg(r_blue_arr, &r_blue_val, &r_b_sum);
+        //rc_usleep(100);
+        //printf("\nsaw color\n");
+    }
+    //robot_turn_one_eighty(frequency_hz,1);
     //MAIN CODE:
     while(1) {
         loopctr++;
         printf("%d\n",loopctr);
         if(!state[1] && !state[2]) { //line following state X00X
-            printf("line following\n");
+            //printf("\nline following\n");
             rc_usleep(100);
             double l_red_val = colour_sensor_red(CS_OUT1);
             rc_usleep(100);
+            //printf("\n%f\n",l_red_val);
             double r_red_val = colour_sensor_red(CS_OUT2);
             rc_usleep(100);
+
+            //printf("\nsaw red\n");
             l_r_avg = rolling_avg(l_red_arr, &l_red_val, &l_r_sum);
             //rc_usleep(20);
             r_r_avg = rolling_avg(r_red_arr, &r_red_val, &r_r_sum);
@@ -107,7 +146,7 @@ int main() {
             //rc_usleep(20);
             r_g_avg = rolling_avg(r_green_arr, &r_green_val, &r_g_sum);
             //rc_usleep(20);
-
+            //printf("%f %f",l_r_avg,r_r_avg);
 
             double l_blue_val = colour_sensor_blue(CS_OUT1);
             rc_usleep(100);
@@ -117,7 +156,7 @@ int main() {
             rc_usleep(100);
             r_b_avg = rolling_avg(r_blue_arr, &r_blue_val, &r_b_sum);
             rc_usleep(100);
-            printf("read color sensors\n");
+            //printf("\nsaw color\n");
             if(state[0] && !state[1] && !state[2] && !state[3]) { //if going towards bullseye in state 1000
                 if(loopctr > BULLSEYE_LOOP_CTR) {
                     if (((l_b_avg) < BLUE_THRESHOLD + 100 || (r_b_avg) < BLUE_THRESHOLD + 100)) {
@@ -146,12 +185,12 @@ int main() {
             if (servo_pos > sweep_limit) {
                 servo_pos = sweep_limit;
             }
-            printf("\nturning\n");
+            //printf("\nturning\n");
             //printf("%f %f\n", l_r_avg, r_r_avg);
             if ((l_r_avg + 300) < LEFT_RED_LINE) { //left sensor greater than right, turn right
 
                 //ch = 7; right servo, -1 pulse
-                pulseR = r_wheel_gain * (servo_pos * max_speed * 10);
+                pulseR = r_wheel_gain * (servo_pos * max_speed * 10/2.0);
                 pulseR = pulseR < 1.5 ? pulseR : 1.5;
                 rc_servo_send_pulse_normalized(7, -pulseR);
 
@@ -166,14 +205,14 @@ int main() {
                 rc_servo_send_pulse_normalized(7, -pulseR);
 
                 //ch = 8; left servo
-                pulseL = (servo_pos * max_speed * 10);
+                pulseL = (servo_pos * max_speed * 10/2.0);
                 pulseL = pulseL < 1.5 ? pulseL : 1.5;
                 rc_servo_send_pulse_normalized(8, pulseL);
             }
             else if ((l_r_avg + 200) < LEFT_RED_LINE) { //left sensor greater than right, turn right
 
                 //ch = 7; right servo, -1 pulse
-                pulseR = r_wheel_gain * (servo_pos * max_speed * 5);
+                pulseR = r_wheel_gain * (servo_pos * max_speed * 5/2.0);
                 pulseR = pulseR < 1.5 ? pulseR : 1.5;
                 rc_servo_send_pulse_normalized(7, -pulseR);
 
@@ -195,7 +234,7 @@ int main() {
             else if ((l_r_avg + 100) < LEFT_RED_LINE) { //left sensor greater than right, turn right
 
                 //ch = 7; right servo, -1 pulse
-                pulseR = r_wheel_gain * (servo_pos * max_speed * 5);
+                pulseR = r_wheel_gain * (servo_pos * max_speed * 5/2.0);
                 pulseR = pulseR < 1.5 ? pulseR : 1.5;
                 rc_servo_send_pulse_normalized(7, -pulseR);
 
