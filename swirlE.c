@@ -135,7 +135,7 @@ int main() {
     bool saw_red = false;
     //setting states for operation
     bool state[4] = {1, 0, 0, 0}; //initial state
-    rc_usleep(20e6);
+    rc_usleep(5e6);
     //state is arranged as: forward/back, capturing, dropping, returning
     robot_move_cup_up(frequency_hz); //cup starts down
 //    rc_usleep(SLEEP_TIME*100);
@@ -179,6 +179,7 @@ int main() {
     //robot_turn_one_eighty(frequency_hz,1);
     //MAIN CODE:
     while(1 && start) {
+        printf("starting main\n");
         loopctr++;
         printf("%d\n",loopctr);
         if(!state[1] && !state[2]) { //line following state X00X
