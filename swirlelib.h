@@ -29,8 +29,8 @@
 #define RIGHT_WOOD_RED 1050
 //#define RIGHT_RED_LINE 750
 #define RIGHT_RED_LINE 750
-//#define BLUE_THRESHOLD 500 //for the course
-#define BLUE_THRESHOLD 625
+#define BLUE_THRESHOLD 500 //for the course
+//#define BLUE_THRESHOLD 625
 #define GREEN_SEE_BLUE_THRESHOLD 800
 
 
