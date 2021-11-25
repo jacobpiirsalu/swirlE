@@ -1,8 +1,8 @@
 /**
  *@file swirlE.c
  *@example
- *
- *
+ * NOTE - MVP-1.0 BRANCH WAS KNOWN TO BE WORKING
+ * AT 10:40pm 2021-11-24
  *Demonstrates usage of ultrasonic sensors, all 3 servos, autonomous driving
  *
  *@author     Jacob Piirsalu
