@@ -145,10 +145,11 @@ int main() {
         rc_usleep(1e4);
     }
     robot_move_cup_up(frequency_hz); //cup starts down
-
+    rc_usleep(1e6);
+    robot_turn_one_eighty(frequency_hz,1);
     //MAIN CODE:
     printf("starting main\n");
-    while(1) {
+    while(0) {
         if(stop == true) {
             break;
         }
