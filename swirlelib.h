@@ -307,7 +307,7 @@ int robot_turn_one_eighty(int frequency_hz, double direction) {
         // sleep roughly enough to maintain frequency_hz
         rc_usleep(1000000 / frequency_hz);
 
-        if (counter > 130) break;
+        if (counter > 135) break;
 
     }
     return 1;
