@@ -553,7 +553,7 @@ double colour_sensor_red(int OUT) {
 
     }
     counterRise = 0;
-    while (!(rc_gpio_poll(3, OUT, COLOUR_TIMEOUT, timeFall1Ptr) == 2)) {
+    while (!(rc_gpio_poll(3, OUT, COLOUR_TIMEOUT, timeFall1Ptr) == 1)) {
         counterRise++;
         //printf("%f\n",counterRise);
         if (counterRise > 3) {
@@ -589,7 +589,7 @@ double colour_sensor_green(int OUT) {
         }
     }
     counterRise = 0;
-    while (!(rc_gpio_poll(3, OUT, COLOUR_TIMEOUT, timeFall1Ptr) == 2)){
+    while (!(rc_gpio_poll(3, OUT, COLOUR_TIMEOUT, timeFall1Ptr) == 1)){
         counterRise++;
         if (counterRise > 3) {
             counterRise = 0;
@@ -624,7 +624,7 @@ double colour_sensor_blue(int OUT) {
         }
     }
     counterRise = 0;
-    while (!(rc_gpio_poll(3, OUT, COLOUR_TIMEOUT, timeFall1Ptr) == 2)){
+    while (!(rc_gpio_poll(3, OUT, COLOUR_TIMEOUT, timeFall1Ptr) == 1)){
         counterRise++;
         if (counterRise > 3) {
             counterRise = 0;
