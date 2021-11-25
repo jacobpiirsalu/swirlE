@@ -78,7 +78,7 @@ int main() {
     //rc_button_set_callbacks(RC_BTN_PIN_PAUSE, __on_pause_press, __on_pause_release);
     rc_button_set_callbacks(RC_BTN_PIN_MODE, __on_mode_press, __on_mode_release);
     //toggle leds till the program state changes
-    printf("Press buttons to see response\n");
+    //printf("Press buttons to see response\n");
 
 
     int loopctr = 0;
@@ -136,44 +136,11 @@ int main() {
 //    robot_turn_ninety_cw(frequency_hz);
 //    rc_usleep(SLEEP_TIME*100);
 //    robot_turn_ninety_ccw(frequency_hz);
-    while(0) {
-        printf("starting reading\n");
-        rc_usleep(100);
-        double l_red_val = colour_sensor_red(CS_OUT1);
-        rc_usleep(100);
-
-        //double r_red_val = colour_sensor_red(CS_OUT2);
-        //rc_usleep(100);
-        printf("%f\n",l_red_val);
-        //printf("\nsaw red\n");
-        //l_r_avg = rolling_avg(l_red_arr, &l_red_val, &l_r_sum);
-        //rc_usleep(20);
-        //r_r_avg = rolling_avg(r_red_arr, &r_red_val, &r_r_sum);
-        //rc_usleep(20);
-        //double l_green_val = colour_sensor_green(CS_OUT1);
-        // rc_usleep(100);
-        //double r_green_val = colour_sensor_green(CS_OUT2);
-        // rc_usleep(100);
-        //l_g_avg = rolling_avg(l_green_arr, &l_green_val, &l_g_sum);
-        //rc_usleep(20);
-        //r_g_avg = rolling_avg(r_green_arr, &r_green_val, &r_g_sum);
-        //rc_usleep(20);
-
-
-        //double l_blue_val = colour_sensor_blue(CS_OUT1);
-        //rc_usleep(100);
-        //double r_blue_val = colour_sensor_blue(CS_OUT2);
-        //rc_usleep(100);
-        //l_b_avg = rolling_avg(l_blue_arr, &l_blue_val, &l_b_sum);
-        //rc_usleep(100);
-        //r_b_avg = rolling_avg(r_blue_arr, &r_blue_val, &r_b_sum);
-        //rc_usleep(100);
-        //printf("\nsaw color\n");
-    }
     //robot_turn_one_eighty(frequency_hz,1);
+    printf("waiting for button press\n");
     while(start == false) {
-        printf("waiting for button press\n");
-        rc_usleep(1e5);
+        //printf("waiting for button press\n");
+        rc_usleep(1e4);
     }
     robot_move_cup_up(frequency_hz); //cup starts down
     //MAIN CODE:
