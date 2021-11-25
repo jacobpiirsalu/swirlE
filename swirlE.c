@@ -79,9 +79,7 @@ int main() {
     rc_button_set_callbacks(RC_BTN_PIN_MODE, __on_mode_press, __on_mode_release);
     //toggle leds till the program state changes
     printf("Press buttons to see response\n");
-    while(1){
-        rc_usleep(500000);
-    }
+
     // cleanup and exit
     rc_button_cleanup();
 
