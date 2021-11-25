@@ -151,15 +151,15 @@ int main() {
 //    robot_turn_ninety_cw(frequency_hz);
 //    rc_usleep(1e6);
 //    robot_turn_ninety_ccw(frequency_hz);
-    rc_usleep(SLEEP_TIME*10);
-    robot_move_forward_bullseye(frequency_hz);
-    rc_usleep(SLEEP_TIME*100);
-    robot_move_cup_down(frequency_hz);
-    rc_usleep(SLEEP_TIME*100);
-    printf("starting main\n");
+//    rc_usleep(SLEEP_TIME*10);
+//    robot_move_forward_bullseye(frequency_hz);
+//    rc_usleep(SLEEP_TIME*100);
+//    robot_move_cup_down(frequency_hz);
+//    rc_usleep(SLEEP_TIME*100);
+//    printf("starting main\n");
     //MAIN CODE:
 
-    while(0) {
+    while(1) {
         if(stop == true) {
             break;
         }
@@ -341,7 +341,7 @@ int main() {
         }
         if(state[0] && state[1] && !state[2] && !state[3]) { //capturing state 1100
 
-            robot_move_forward_bullseye(frequency_hz);
+            //robot_move_forward_bullseye(frequency_hz);
             rc_usleep(SLEEP_TIME*10);
             robot_move_cup_down(frequency_hz);
             rc_usleep(SLEEP_TIME*10);
