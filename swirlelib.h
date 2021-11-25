@@ -34,7 +34,8 @@
 #define GREEN_SEE_BLUE_THRESHOLD 800
 
 
-#define BULLSEYE_LOOP_CTR 5000
+//#define BULLSEYE_LOOP_CTR 5000
+#define BULLSEYE_LOOP_CTR 1500
 //blue low, green higher than baseline (phat margin) -> blue
 
 #define COLOUR_TIMEOUT 50
