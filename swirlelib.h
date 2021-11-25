@@ -680,16 +680,17 @@ bool is_blue_detected(int OUTLeft, int OUTRight) {
     }
     return false;
 }
-double rolling_avg(double *corr_arr, double *corr_factor, double *sum) {
-    int avg_val_ctr = 0;
-    double corr_factor_avg = 0;
+double rolling_avg(double *readings, double *sum, int *index, double raw_val) {
+    double value = 0.0;
+    double average = 0.0;
+    *sum = *sum - readings[*index];       // Remove the oldest entry from the sum
+    value = raw_val;       // Read the next sensor value
+    readings[*index] = value;           // Add the newest reading to the window
+    *sum = *sum + value;                 // Add the newest reading to the sum
+    *index = (*index+1) % WINDOW;   // Increment the index, and wrap to 0 if it exceeds the window size
 
-    *sum = *sum - *(corr_arr + avg_val_ctr);
-    *(corr_arr + avg_val_ctr) = *corr_factor;
-    *sum = *sum + *corr_factor;
-    avg_val_ctr = (avg_val_ctr + 1) % WINDOW; //window size
-    corr_factor_avg = *sum / WINDOW;
-    return corr_factor_avg;
+    average = *sum / WINDOW;      // Divide the sum of the window by the window size for the result
+    return average;
 }
 
 #endif //SWIRLE_SWIRLELIB_H

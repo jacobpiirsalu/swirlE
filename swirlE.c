@@ -115,6 +115,7 @@ int main() {
 
     double l_r_sum = 0, l_g_sum = 0, l_b_sum = 0, r_r_sum = 0, r_g_sum = 0, r_b_sum = 0;
     double l_r_avg = 0, l_g_avg = 0, l_b_avg = 0, r_r_avg = 0, r_g_avg = 0, r_b_avg = 0;
+    double l_r_idx = 0, l_g_idx = 0, l_b_idx = 0, r_r_idx = 0, r_g_idx = 0, r_b_idx = 0;
 
 
     double corr_arr[WINDOW];
@@ -177,17 +178,17 @@ int main() {
             //printf("\n%f  %f",l_red_val,r_red_val);
 
             //printf("\nsaw red\n");
-            l_r_avg = rolling_avg(l_red_arr, &l_red_val, &l_r_sum);
+            l_r_avg = rolling_avg(l_red_arr,&l_r_sum,&l_r_idx,l_red_val);
             //rc_usleep(20);
-            r_r_avg = rolling_avg(r_red_arr, &r_red_val, &r_r_sum);
+            r_r_avg = rolling_avg(r_red_arr,&r_r_sum,&r_r_idx,r_red_val);
             //rc_usleep(20);
             double l_green_val = colour_sensor_green(CS_OUT1);
             rc_usleep(20);
             double r_green_val = colour_sensor_green(CS_OUT2);
             rc_usleep(20);
-            l_g_avg = rolling_avg(l_green_arr, &l_green_val, &l_g_sum);
+            l_g_avg = rolling_avg(l_green_arr,&l_g_sum,&l_g_idx,l_green_val);
             //rc_usleep(20);
-            r_g_avg = rolling_avg(r_green_arr, &r_green_val, &r_g_sum);
+            r_g_avg = rolling_avg(r_green_arr,&r_g_sum,&r_g_idx,r_green_val);
             //rc_usleep(20);
 
 
@@ -195,9 +196,9 @@ int main() {
             rc_usleep(20);
             double r_blue_val = colour_sensor_blue(CS_OUT2);
             rc_usleep(20);
-            l_b_avg = rolling_avg(l_blue_arr, &l_blue_val, &l_b_sum);
+            l_b_avg = rolling_avg(l_blue_arr,&l_b_sum,&l_b_idx,l_blue_val);
             rc_usleep(20);
-            r_b_avg = rolling_avg(r_blue_arr, &r_blue_val, &r_b_sum);
+            r_b_avg = rolling_avg(r_blue_arr,&r_b_sum,&r_b_idx,r_blue_val);
             rc_usleep(20);
             //printf("\nsaw color\n");
             if(state[0] && !state[1] && !state[2] && !state[3]) { //if going towards bullseye in state 1000
