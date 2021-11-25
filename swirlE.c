@@ -178,7 +178,7 @@ int main() {
             //rc_usleep(20);
             r_g_avg = rolling_avg(r_green_arr, &r_green_val, &r_g_sum);
             //rc_usleep(20);
-            //printf("%f %f",l_r_avg,r_r_avg);
+            printf("%f %f",l_r_avg,r_r_avg);
 
             double l_blue_val = colour_sensor_blue(CS_OUT1);
             rc_usleep(20);
