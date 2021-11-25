@@ -532,7 +532,6 @@ double distance_measurement_right() {
 
 double colour_sensor_red(int OUT) {
     double freq = 0.0;
-    int counterRise = 0;
     //printf("about to set gpio values\n");
     //READ READ S2 = L, S3 = L
     rc_gpio_set_value(2, CS_S2, 0); //set S2 L
