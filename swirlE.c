@@ -144,7 +144,7 @@ int main() {
     }
     robot_move_cup_up(frequency_hz); //cup starts down
     while(1) {
-        printf("%d",distance_measurement_left());
+        printf("%f\n",distance_measurement_left());
     }
 
     //MAIN CODE:
