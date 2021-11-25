@@ -154,8 +154,9 @@ int main() {
     //MAIN CODE:
     rc_usleep(SLEEP_TIME*10);
     robot_move_forward_bullseye(frequency_hz);
-    rc_usleep(SLEEP_TIME*10);
+    rc_usleep(SLEEP_TIME*100);
     robot_move_cup_down(frequency_hz);
+    rc_usleep(SLEEP_TIME*100);
     printf("starting main\n");
     while(0) {
         if(stop == true) {
