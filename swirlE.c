@@ -25,6 +25,11 @@
 #include <stdbool.h>
 #include <signal.h>
 #include <rc/button.h>
+#include <stdio.h>
+#include <signal.h>
+#include <rc/button.h>
+#include <rc/time.h>
+
 
 #include "swirlelib.h" //all robot functions written here
 
