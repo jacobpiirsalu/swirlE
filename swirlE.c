@@ -80,9 +80,6 @@ int main() {
     //toggle leds till the program state changes
     printf("Press buttons to see response\n");
 
-    // cleanup and exit
-    rc_button_cleanup();
-
 
     int loopctr = 0;
     double servo_pos = 0;
@@ -409,5 +406,7 @@ int main() {
     rc_servo_power_rail_en(0);
     rc_servo_cleanup();
     rc_dsm_cleanup();
+    // cleanup and exit
+    rc_button_cleanup();
     return 0;
 }
