@@ -161,7 +161,7 @@ int main() {
 
             double r_red_val = colour_sensor_red(CS_OUT2);
             rc_usleep(20);
-            printf("\n%f  %f",l_red_val,r_red_val);
+            //printf("\n%f  %f",l_red_val,r_red_val);
 
             //printf("\nsaw red\n");
             l_r_avg = rolling_avg(l_red_arr, &l_red_val, &l_r_sum);
@@ -176,7 +176,7 @@ int main() {
             //rc_usleep(20);
             r_g_avg = rolling_avg(r_green_arr, &r_green_val, &r_g_sum);
             //rc_usleep(20);
-            //printf("%f %f",l_r_avg,r_r_avg);
+            printf("%f %f",l_r_avg,r_r_avg);
 
             double l_blue_val = colour_sensor_blue(CS_OUT1);
             rc_usleep(20);
