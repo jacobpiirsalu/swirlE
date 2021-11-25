@@ -152,15 +152,16 @@ int main() {
     while(1) {
 
         loopctr++;
-        printf("%d\n",loopctr);
+        //printf("%d\n",loopctr);
         if(!state[1] && !state[2]) { //line following state X00X
             //printf("\nline following\n");
             rc_usleep(20);
             double l_red_val = colour_sensor_red(CS_OUT1);
             rc_usleep(20);
-            //printf("\n%f\n",l_red_val);
+
             double r_red_val = colour_sensor_red(CS_OUT2);
             rc_usleep(20);
+            printf("\n%f  %f",l_red_val,r_red_val);
 
             //printf("\nsaw red\n");
             l_r_avg = rolling_avg(l_red_arr, &l_red_val, &l_r_sum);
