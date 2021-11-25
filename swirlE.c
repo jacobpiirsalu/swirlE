@@ -152,9 +152,9 @@ int main() {
 //    rc_usleep(1e6);
 //    robot_turn_ninety_ccw(frequency_hz);
     //MAIN CODE:
-    rc_usleep(1e6);
+    rc_usleep(SLEEP_TIME*10);
     robot_move_forward_bullseye(frequency_hz);
-    rc_usleep(1e6);
+    rc_usleep(SLEEP_TIME*10);
     robot_move_cup_down(frequency_hz);
     printf("starting main\n");
     while(0) {
