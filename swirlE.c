@@ -23,12 +23,49 @@
 #include <inttypes.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <signal.h>
+#include <rc/button.h>
+
 #include "swirlelib.h" //all robot functions written here
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "EndlessLoop"
 
+static bool start = false;
+static void __on_pause_press(void)
+{
+    printf("Pause Pressed\n");
+    start = true;
+    return;
+}
+
 int main() {
+    // initialize pause and mode buttons
+    if(rc_button_init(RC_BTN_PIN_PAUSE, RC_BTN_POLARITY_NORM_HIGH,
+                      RC_BTN_DEBOUNCE_DEFAULT_US)){
+        fprintf(stderr,"ERROR: failed to init buttons\n");
+        return -1;
+    }
+    if(rc_button_init(RC_BTN_PIN_MODE, RC_BTN_POLARITY_NORM_HIGH,
+                      RC_BTN_DEBOUNCE_DEFAULT_US)){
+        fprintf(stderr,"ERROR: failed to init buttons\n");
+        return -1;
+    }
+    // set signal handler so the loop can exit cleanly
+    //signal(SIGINT, __signal_handler);
+    //running = 1;
+    // Assign callback functions
+    rc_button_set_callbacks(RC_BTN_PIN_PAUSE, __on_pause_press, __on_pause_release);
+    rc_button_set_callbacks(RC_BTN_PIN_MODE, __on_mode_press, __on_mode_release);
+    //toggle leds till the program state changes
+    printf("Press buttons to see response\n");
+    while(1){
+        rc_usleep(500000);
+    }
+    // cleanup and exit
+    rc_button_cleanup();
+
+
     int loopctr = 0;
     double servo_pos = 0;
     double sweep_limit = 1.5;
@@ -121,7 +158,7 @@ int main() {
     }
     //robot_turn_one_eighty(frequency_hz,1);
     //MAIN CODE:
-    while(1) {
+    while(1 && start) {
         loopctr++;
         printf("%d\n",loopctr);
         if(!state[1] && !state[2]) { //line following state X00X
