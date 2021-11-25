@@ -37,20 +37,20 @@
 #pragma ide diagnostic ignored "EndlessLoop"
 
 bool start = false;
-static void __on_pause_press(void)
-{
-    printf("Pause Pressed\n");
-    start = true;
-    return;
-}
-static void __on_pause_release(void)
-{
-    printf("Pause Released\n");
-    return;
-}
+//static void __on_pause_press(void)
+//{
+//    printf("Pause Pressed\n");
+//    return;
+//}
+//static void __on_pause_release(void)
+//{
+//    printf("Pause Released\n");
+//    return;
+//}
 static void __on_mode_press(void)
 {
     printf("Mode Pressed\n");
+    start = true;
     return;
 }
 static void __on_mode_release(void)
@@ -75,7 +75,7 @@ int main() {
     //signal(SIGINT, __signal_handler);
     //running = 1;
     // Assign callback functions
-    rc_button_set_callbacks(RC_BTN_PIN_PAUSE, __on_pause_press, __on_pause_release);
+    //rc_button_set_callbacks(RC_BTN_PIN_PAUSE, __on_pause_press, __on_pause_release);
     rc_button_set_callbacks(RC_BTN_PIN_MODE, __on_mode_press, __on_mode_release);
     //toggle leds till the program state changes
     printf("Press buttons to see response\n");
