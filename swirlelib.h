@@ -409,7 +409,7 @@ int robot_turn_ninety_ccw(int frequency_hz) {
     return 1;
 }
 int robot_move_forward_bullseye(int frequency_hz) {
-    double direction = -1.0;
+    double direction = 1.0;
     int counter = 0;
     double servo_pos = 0;
     //double direction = 1;	// switches between 1 &-1 in sweep mode
@@ -435,12 +435,12 @@ int robot_move_forward_bullseye(int frequency_hz) {
         if (rc_servo_send_pulse_normalized(7, servo_pos*.1*1.35) == -1) return -1;
 
         //ch = 8;
-        if(rc_servo_send_pulse_normalized(8,servo_pos*.1)==-1) return -1;
+        if(rc_servo_send_pulse_normalized(8,-servo_pos*.1)==-1) return -1;
 
         // sleep roughly enough to maintain frequency_hz
         rc_usleep(1000000 / frequency_hz);
         counter++;
-        if (counter >= 0) break;//35/10.0
+        if (counter > 5) break;//35/10.0
 
     }
     return 1;
