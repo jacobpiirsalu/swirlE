@@ -144,8 +144,9 @@ int main() {
     }
     robot_move_cup_up(frequency_hz); //cup starts down
     //MAIN CODE:
+    printf("starting main\n");
     while(1) {
-        printf("starting main\n");
+
         loopctr++;
         printf("%d\n",loopctr);
         if(!state[1] && !state[2]) { //line following state X00X
