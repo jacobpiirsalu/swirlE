@@ -37,6 +37,8 @@
 #define BULLSEYE_LOOP_CTR 5000
 //blue low, green higher than baseline (phat margin) -> blue
 
+#define COLOUR_TIMEOUT 50
+
 static int running = 1;
 
 void robot_forward(int numRotations, int frequency_hz) {
@@ -541,7 +543,7 @@ double colour_sensor_red(int OUT) {
     uint64_t *timeRise1Ptr = malloc(sizeof(uint64_t));
     uint64_t *timeFall1Ptr = malloc(sizeof(uint64_t));
     //printf("pointers allocated\n");
-    while (!(rc_gpio_poll(3, OUT, 10, timeRise1Ptr) == 1)) {
+    while (!(rc_gpio_poll(3, OUT, COLOUR_TIMEOUT, timeRise1Ptr) == 1)) {
         counterRise++;
         //printf("%f\n",counterRise);
         if (counterRise > 3) {
@@ -550,7 +552,7 @@ double colour_sensor_red(int OUT) {
         }
 
     }
-    while (!(rc_gpio_poll(3, OUT, 10, timeFall1Ptr) == 1)) {
+    while (!(rc_gpio_poll(3, OUT, COLOUR_TIMEOUT, timeFall1Ptr) == 1)) {
         counterRise++;
         //printf("%f\n",counterRise);
         if (counterRise > 3) {
@@ -578,14 +580,14 @@ double colour_sensor_green(int OUT) {
     uint64_t *timeRise1Ptr = malloc(sizeof(uint64_t));
     uint64_t *timeFall1Ptr = malloc(sizeof(uint64_t));
 
-    while (!(rc_gpio_poll(3, OUT, 10, timeRise1Ptr) == 1)) {
+    while (!(rc_gpio_poll(3, OUT, COLOUR_TIMEOUT, timeRise1Ptr) == 1)) {
         counterRise++;
         if (counterRise > 3) {
             counterRise = 0;
             break;
         }
     }
-    while (!(rc_gpio_poll(3, OUT, 10, timeFall1Ptr) == 1)){
+    while (!(rc_gpio_poll(3, OUT, COLOUR_TIMEOUT, timeFall1Ptr) == 1)){
         counterRise++;
         if (counterRise > 3) {
             counterRise = 0;
@@ -612,14 +614,14 @@ double colour_sensor_blue(int OUT) {
     uint64_t *timeRise1Ptr = malloc(sizeof(uint64_t));
     uint64_t *timeFall1Ptr = malloc(sizeof(uint64_t));
 
-    while (!(rc_gpio_poll(3, OUT, 10, timeRise1Ptr) == 1)){
+    while (!(rc_gpio_poll(3, OUT, COLOUR_TIMEOUT, timeRise1Ptr) == 1)){
         counterRise++;
         if (counterRise > 3) {
             counterRise = 0;
             break;
         }
     }
-    while (!(rc_gpio_poll(3, OUT, 10, timeFall1Ptr) == 1)){
+    while (!(rc_gpio_poll(3, OUT, COLOUR_TIMEOUT, timeFall1Ptr) == 1)){
         counterRise++;
         if (counterRise > 3) {
             counterRise = 0;
