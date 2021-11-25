@@ -143,13 +143,13 @@ int main() {
         rc_usleep(1e4);
     }
     robot_move_cup_up(frequency_hz); //cup starts down
-    while(1) {
+    while(0) {
         printf("%f\n",distance_measurement_left());
     }
 
     //MAIN CODE:
     printf("starting main\n");
-    while(0) {
+    while(1) {
 
         loopctr++;
         printf("%d\n",loopctr);
