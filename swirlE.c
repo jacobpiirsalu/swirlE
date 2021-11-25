@@ -37,16 +37,18 @@
 #pragma ide diagnostic ignored "EndlessLoop"
 
 bool start = false;
-//static void __on_pause_press(void)
-//{
-//    printf("Pause Pressed\n");
-//    return;
-//}
-//static void __on_pause_release(void)
-//{
-//    printf("Pause Released\n");
-//    return;
-//}
+bool stop = false;
+static void __on_pause_press(void)
+{
+    printf("Pause Pressed\n");
+    stop = true;
+    return;
+}
+static void __on_pause_release(void)
+{
+    printf("Pause Released\n");
+    return;
+}
 static void __on_mode_press(void)
 {
     printf("Mode Pressed\n");
@@ -143,13 +145,13 @@ int main() {
         rc_usleep(1e4);
     }
     robot_move_cup_up(frequency_hz); //cup starts down
-    while(0) {
-        printf("%f\n",distance_measurement_left());
-    }
 
     //MAIN CODE:
     printf("starting main\n");
     while(1) {
+        if(stop == true) {
+            break;
+        }
         printf("%d\n",loopctr);
         loopctr++;
         //printf("%d\n",loopctr);
