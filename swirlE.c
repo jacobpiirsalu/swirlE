@@ -150,7 +150,7 @@ int main() {
     //MAIN CODE:
     printf("starting main\n");
     while(1) {
-        printf("%f\n",loopctr);
+        printf("%d\n",loopctr);
         loopctr++;
         //printf("%d\n",loopctr);
         if(!state[1] && !state[2]) { //line following state X00X
