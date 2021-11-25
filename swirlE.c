@@ -159,7 +159,7 @@ int main() {
         }
         //printf("%d\n",loopctr);
         loopctr++;
-        printf("%d\n",loopctr);
+        //printf("%d\n",loopctr);
         if(!state[1] && !state[2]) { //line following state X00X
             //printf("\nline following\n");
             rc_usleep(20);
@@ -183,7 +183,7 @@ int main() {
             //rc_usleep(20);
             r_g_avg = rolling_avg(r_green_arr, &r_green_val, &r_g_sum);
             //rc_usleep(20);
-            //printf("%f %f\n",l_r_avg,r_r_avg);
+            printf("%f %f\n",l_r_avg,r_r_avg);
 
             double l_blue_val = colour_sensor_blue(CS_OUT1);
             rc_usleep(20);
