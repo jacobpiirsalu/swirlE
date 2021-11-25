@@ -77,7 +77,7 @@ int main() {
     //signal(SIGINT, __signal_handler);
     //running = 1;
     // Assign callback functions
-    //rc_button_set_callbacks(RC_BTN_PIN_PAUSE, __on_pause_press, __on_pause_release);
+    rc_button_set_callbacks(RC_BTN_PIN_PAUSE, __on_pause_press, __on_pause_release);
     rc_button_set_callbacks(RC_BTN_PIN_MODE, __on_mode_press, __on_mode_release);
     //toggle leds till the program state changes
     //printf("Press buttons to see response\n");
