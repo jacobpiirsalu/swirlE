@@ -43,6 +43,21 @@ static void __on_pause_press(void)
     start = true;
     return;
 }
+static void __on_pause_release(void)
+{
+    printf("Pause Released\n");
+    return;
+}
+static void __on_mode_press(void)
+{
+    printf("Mode Pressed\n");
+    return;
+}
+static void __on_mode_release(void)
+{
+    printf("Mode Released\n");
+    return;
+}
 
 int main() {
     // initialize pause and mode buttons
