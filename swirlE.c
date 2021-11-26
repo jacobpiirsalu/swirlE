@@ -345,6 +345,9 @@ int main() {
                         break;
                     }
                 }
+                if(loopctr > STOP_CTR) {
+                    break;
+                }
             }
 
         }

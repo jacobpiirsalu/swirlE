@@ -40,7 +40,8 @@
 //#define BULLSEYE_LOOP_CTR 5000
 #define BULLSEYE_LOOP_CTR 10000
 //blue low, green higher than baseline (phat margin) -> blue
-#define DOUBLE_RED_CTR 70000
+#define DOUBLE_RED_CTR 18000
+#define STOP_CTR 30000
 #define COLOUR_TIMEOUT 50
 
 static int running = 1;
