@@ -237,7 +237,7 @@ int main() {
 //            r_b_avg *= 2;
 //            printf("%f\n",l_r_avg);
             //printf("\nturning\n");
-            printf("%f %f\n", l_r_avg, r_r_avg);
+            printf("%f %f\n", l_b_avg, r_b_avg);
             if ((l_r_avg) < LEFT_RED_LINE  + 3*500) { //left sensor greater than right, turn right
 
                 //ch = 7; right servo, -1 pulse
