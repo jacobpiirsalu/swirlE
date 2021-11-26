@@ -3,7 +3,7 @@
  *@example
  * NOTE - WORKED AT 9:00pm 2021-ll-25
  *
- *Demonstrates usage of ultrasonic sensors, all 3 servos, autonomous driving
+ *worked on course
  *
  *@author     Jacob Piirsalu
  *@date       11/11/2021
