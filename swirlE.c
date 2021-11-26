@@ -338,7 +338,7 @@ int main() {
                         redctr = 0;
                     }
                     if (redctr >= 4) { //4
-                        printf("%f  %f\n",l_r_avg,r_r_avg);
+                        //printf("%f  %f\n",l_r_avg,r_r_avg);
                         saw_red = true;
                     }
                     if(saw_red) {
