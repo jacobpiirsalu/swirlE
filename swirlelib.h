@@ -34,11 +34,11 @@
 //#define BLUE_THRESHOLD 500 //for the course
 #define BLUE_THRESHOLD 6000 //for the course
 //#define BLUE_THRESHOLD 625
-#define GREEN_SEE_BLUE_THRESHOLD 10000
+#define GREEN_SEE_BLUE_THRESHOLD 800
 
 
 //#define BULLSEYE_LOOP_CTR 5000
-#define BULLSEYE_LOOP_CTR 15
+#define BULLSEYE_LOOP_CTR 10000
 //blue low, green higher than baseline (phat margin) -> blue
 
 #define COLOUR_TIMEOUT 50
