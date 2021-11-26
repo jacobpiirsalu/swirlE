@@ -330,10 +330,10 @@ int main() {
                 }
             }
             if(!state[0] && !state[1] && !state[2] && state[3]) { //returning after drop off in state 0001
-                if ((l_r_avg + 200) < LEFT_RED_LINE && (r_r_avg + 200) < RIGHT_RED_LINE) {
+                if ((l_r_avg) < LEFT_RED_LINE + 100 && (r_r_avg) < RIGHT_RED_LINE + 100) {
                     redctr++;
                 }
-                if ((l_r_avg + 200) > LEFT_RED_LINE && (r_r_avg + 200) > RIGHT_RED_LINE) {
+                if ((l_r_avg) > LEFT_RED_LINE + 100 && (r_r_avg) > RIGHT_RED_LINE + 100) {
                     redctr = 0;
                 }
                 if (redctr >= 4) { //4
