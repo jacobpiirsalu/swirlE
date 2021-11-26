@@ -321,6 +321,7 @@ int main() {
 
             if(!state[0] && !state[1] && !state[2] && !state[3]) { //if sees tree on the way back in state 0000
                 if(distance_measurement_left() < 12) {
+                    printf("\n\n%f\n\n",distance_measurement_left());
                     //printf("\nsaw dropzone, going to drop off mode\n");
                     //state = {0,0,1,0};
                     state[0] = 0;
