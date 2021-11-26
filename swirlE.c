@@ -164,7 +164,7 @@ int main() {
     fp = fopen("./output.csv", "w+");
     while(1) {
         if(stop == true) {
-            fclose( FILE *fp );
+            fclose(fp);
             break;
         }
         loopctr++;
