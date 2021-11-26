@@ -159,8 +159,55 @@ int main() {
 //    rc_usleep(SLEEP_TIME*100);
 //    printf("starting main\n");
     //MAIN CODE:
+    FILE *fp;
 
+    fp = fopen("./output.csv", "w+");
     while(1) {
+        if(stop == true) {
+            fclose( FILE *fp );
+            break;
+        }
+        loopctr++;
+        //printf("\nline following\n");
+        rc_usleep(20);
+        double l_red_val = colour_sensor_red(CS_OUT1);
+        rc_usleep(20);
+
+        double r_red_val = colour_sensor_red(CS_OUT2);
+        rc_usleep(20);
+        //printf("\n%f  %f",l_red_val,r_red_val);
+
+        //printf("\nsaw red\n");
+        l_r_avg = rolling_avg(l_red_arr,&l_r_sum,&l_r_idx,l_red_val);
+        //rc_usleep(20);
+        r_r_avg = rolling_avg(r_red_arr,&r_r_sum,&r_r_idx,r_red_val);
+        //rc_usleep(20);
+        double l_green_val = colour_sensor_green(CS_OUT1);
+        rc_usleep(20);
+        double r_green_val = colour_sensor_green(CS_OUT2);
+        rc_usleep(20);
+        l_g_avg = rolling_avg(l_green_arr,&l_g_sum,&l_g_idx,l_green_val);
+        //rc_usleep(20);
+        r_g_avg = rolling_avg(r_green_arr,&r_g_sum,&r_g_idx,r_green_val);
+        //rc_usleep(20);
+
+
+        double l_blue_val = colour_sensor_blue(CS_OUT1);
+        rc_usleep(20);
+        double r_blue_val = colour_sensor_blue(CS_OUT2);
+        rc_usleep(20);
+        l_b_avg = rolling_avg(l_blue_arr,&l_b_sum,&l_b_idx,l_blue_val);
+        rc_usleep(20);
+        r_b_avg = rolling_avg(r_blue_arr,&r_b_sum,&r_b_idx,r_blue_val);
+        rc_usleep(20);
+        //printf("\nsaw color\n");
+        fprintf(fp, "%d,%f,%f,%f,%f,%f,%f\n",loopctr,l_r_avg,l_g_avg,l_b_avg,r_r_avg,r_g_avg,r_b_avg);
+        printf("%d,%f,%f,%f,%f,%f,%f\n",loopctr,l_r_avg,l_g_avg,l_b_avg,r_r_avg,r_g_avg,r_b_avg);
+
+    }
+
+
+    while(0) {
         if(stop == true) {
             break;
         }
