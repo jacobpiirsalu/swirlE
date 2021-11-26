@@ -203,10 +203,10 @@ int main() {
             //printf("\nsaw color\n");
             if(state[0] && !state[1] && !state[2] && !state[3]) { //if going towards bullseye in state 1000
                 if(loopctr > BULLSEYE_LOOP_CTR) {
-                    if (((l_b_avg) < BLUE_THRESHOLD + 1000 || (r_b_avg) < BLUE_THRESHOLD + 1000)) {
+                    if (((l_b_avg) < BLUE_THRESHOLD + 500 || (r_b_avg) < BLUE_THRESHOLD + 500)) {
                         bluectr++;
                     }
-                    if (((l_b_avg) > BLUE_THRESHOLD + 1000 || (r_b_avg) > BLUE_THRESHOLD + 1000)) {
+                    if (((l_b_avg) > BLUE_THRESHOLD + 500 || (r_b_avg) > BLUE_THRESHOLD + 500)) {
                         bluectr = 0;
                     }
                     if (bluectr >= 4) { //4
