@@ -32,7 +32,7 @@
 //#define RIGHT_RED_LINE 870
 #define RIGHT_RED_LINE 6000
 //#define BLUE_THRESHOLD 500 //for the course
-#define BLUE_THRESHOLD 6000 //for the course
+#define BLUE_THRESHOLD 5000 //for the course
 //#define BLUE_THRESHOLD 625
 #define GREEN_SEE_BLUE_THRESHOLD 800
 
