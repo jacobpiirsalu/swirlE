@@ -105,13 +105,13 @@ int main() {
     double r_wheel_gain = 1.35; //1.35 when full battery 1.5 when under 50%
     int avg_val_ctr = 0;
 
-    double l_red_arr[WINDOW];
-    double l_green_arr[WINDOW];
-    double l_blue_arr[WINDOW];
+    double l_red_arr[WINDOW] = {0};
+    double l_green_arr[WINDOW] = {0};
+    double l_blue_arr[WINDOW] = {0};
 
-    double r_red_arr[WINDOW];
-    double r_green_arr[WINDOW];
-    double r_blue_arr[WINDOW];
+    double r_red_arr[WINDOW] = {0};
+    double r_green_arr[WINDOW] = {0};
+    double r_blue_arr[WINDOW] = {0};
 
     double l_r_sum = 0, l_g_sum = 0, l_b_sum = 0, r_r_sum = 0, r_g_sum = 0, r_b_sum = 0;
     double l_r_avg = 0, l_g_avg = 0, l_b_avg = 0, r_r_avg = 0, r_g_avg = 0, r_b_avg = 0;
