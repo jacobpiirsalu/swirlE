@@ -34,7 +34,7 @@
 //#define BLUE_THRESHOLD 500 //for the course
 #define BLUE_THRESHOLD 6000 //for the course
 //#define BLUE_THRESHOLD 625
-#define GREEN_SEE_BLUE_THRESHOLD 800
+#define GREEN_SEE_BLUE_THRESHOLD 10000
 
 
 //#define BULLSEYE_LOOP_CTR 5000
