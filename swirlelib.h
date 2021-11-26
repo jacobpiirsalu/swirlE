@@ -40,7 +40,7 @@
 //#define BULLSEYE_LOOP_CTR 5000
 #define BULLSEYE_LOOP_CTR 10000
 //blue low, green higher than baseline (phat margin) -> blue
-
+#define DOUBLE_RED_CTR 70000
 #define COLOUR_TIMEOUT 50
 
 static int running = 1;
@@ -310,7 +310,7 @@ int robot_turn_one_eighty(int frequency_hz, double direction) {
         // sleep roughly enough to maintain frequency_hz
         rc_usleep(1000000 / frequency_hz);
 
-        if (counter > 135) break;
+        if (counter > 130) break;
 
     }
     return 1;

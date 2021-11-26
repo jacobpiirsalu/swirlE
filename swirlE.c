@@ -166,7 +166,7 @@ int main() {
         }
         //printf("%d\n",loopctr);
         loopctr++;
-        //printf("%d\n",loopctr);
+        printf("%d\n",loopctr);
         if(!state[1] && !state[2]) { //line following state X00X
             //printf("\nline following\n");
             rc_usleep(20);
@@ -237,7 +237,7 @@ int main() {
 //            r_b_avg *= 2;
 //            printf("%f\n",l_r_avg);
             //printf("\nturning\n");
-            printf("%f %f\n", l_r_avg, r_r_avg);
+            //printf("%f %f\n", l_r_avg, r_r_avg);
             if ((l_r_avg) < LEFT_RED_LINE + 100) { //left sensor greater than right, turn right
 
                 //ch = 7; right servo, -1 pulse
@@ -330,18 +330,20 @@ int main() {
                 }
             }
             if(!state[0] && !state[1] && !state[2] && state[3]) { //returning after drop off in state 0001
-                if ((l_r_avg) < LEFT_RED_LINE + 100 && (r_r_avg) < RIGHT_RED_LINE + 100) {
-                    redctr++;
-                }
-                if ((l_r_avg) > LEFT_RED_LINE + 100 && (r_r_avg) > RIGHT_RED_LINE + 100) {
-                    redctr = 0;
-                }
-                if (redctr >= 4) { //4
-                    printf("%f  %f\n",l_r_avg,r_r_avg);
-                    saw_red = true;
-                }
-                if(saw_red) {
-                    break;
+                if(loopctr > DOUBLE_RED_CTR) {
+                    if ((l_r_avg) < LEFT_RED_LINE + 100 && (r_r_avg) < RIGHT_RED_LINE + 100) {
+                        redctr++;
+                    }
+                    if ((l_r_avg) > LEFT_RED_LINE + 100 && (r_r_avg) > RIGHT_RED_LINE + 100) {
+                        redctr = 0;
+                    }
+                    if (redctr >= 4) { //4
+                        printf("%f  %f\n",l_r_avg,r_r_avg);
+                        saw_red = true;
+                    }
+                    if(saw_red) {
+                        break;
+                    }
                 }
             }
 
