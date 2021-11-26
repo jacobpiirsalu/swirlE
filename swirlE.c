@@ -238,7 +238,7 @@ int main() {
 //            printf("%f\n",l_r_avg);
             //printf("\nturning\n");
             printf("%f %f\n", l_r_avg, r_r_avg);
-            if ((l_r_avg + 3*500) < LEFT_RED_LINE) { //left sensor greater than right, turn right
+            if ((l_r_avg) < LEFT_RED_LINE  + 3*500) { //left sensor greater than right, turn right
 
                 //ch = 7; right servo, -1 pulse
                 pulseR = r_wheel_gain * (servo_pos * max_speed * 10/2.0);
@@ -249,7 +249,7 @@ int main() {
                 pulseL = 0 * servo_pos * max_speed;
                 pulseL = pulseL < 1.5 ? pulseL : 1.5;
                 rc_servo_send_pulse_normalized(8, pulseL);
-            } else if ((r_r_avg + 3*500) < RIGHT_RED_LINE) { //right sensor greater than left, turn left
+            } else if ((r_r_avg) < RIGHT_RED_LINE  + 3*500) { //right sensor greater than left, turn left
                 //ch = 7; right servo
                 pulseR = r_wheel_gain * 0 * (servo_pos * max_speed);
                 pulseR = pulseR < 1.5 ? pulseR : 1.5;
@@ -260,7 +260,7 @@ int main() {
                 pulseL = pulseL < 1.5 ? pulseL : 1.5;
                 rc_servo_send_pulse_normalized(8, pulseL);
             }
-            else if ((l_r_avg + 2*500) < LEFT_RED_LINE) { //left sensor greater than right, turn right
+            else if ((l_r_avg) < LEFT_RED_LINE  + 2*500) { //left sensor greater than right, turn right
 
                 //ch = 7; right servo, -1 pulse
                 pulseR = r_wheel_gain * (servo_pos * max_speed * 5/2.0);
@@ -271,7 +271,7 @@ int main() {
                 pulseL = 0.5 * servo_pos * max_speed;
                 pulseL = pulseL < 1.5 ? pulseL : 1.5;
                 rc_servo_send_pulse_normalized(8, pulseL);
-            } else if ((r_r_avg + 2*500) < RIGHT_RED_LINE) { //right sensor greater than left, turn left
+            } else if ((r_r_avg) < RIGHT_RED_LINE  + 2*500) { //right sensor greater than left, turn left
                 //ch = 7; right servo
                 pulseR = r_wheel_gain * 0.5 * (servo_pos * max_speed);
                 pulseR = pulseR < 1.5 ? pulseR : 1.5;
@@ -282,7 +282,7 @@ int main() {
                 pulseL = pulseL < 1.5 ? pulseL : 1.5;
                 rc_servo_send_pulse_normalized(8, pulseL);
             }
-            else if ((l_r_avg + 500) < LEFT_RED_LINE) { //left sensor greater than right, turn right
+            else if ((l_r_avg) < LEFT_RED_LINE  + 500) { //left sensor greater than right, turn right
 
                 //ch = 7; right servo, -1 pulse
                 pulseR = r_wheel_gain * (servo_pos * max_speed * 5/2.0);
@@ -293,7 +293,7 @@ int main() {
                 pulseL = 1 * servo_pos * max_speed;
                 pulseL = pulseL < 1.5 ? pulseL : 1.5;
                 rc_servo_send_pulse_normalized(8, pulseL);
-            } else if ((r_r_avg + 500) < RIGHT_RED_LINE) { //right sensor greater than left, turn left
+            } else if ((r_r_avg) < RIGHT_RED_LINE  + 500) { //right sensor greater than left, turn left
                 //ch = 7; right servo
                 pulseR = r_wheel_gain * 1 * (servo_pos * max_speed);
                 pulseR = pulseR < 1.5 ? pulseR : 1.5;
